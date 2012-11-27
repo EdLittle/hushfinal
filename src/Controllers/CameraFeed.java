@@ -79,8 +79,9 @@ public class CameraFeed extends Panel{
         BufferedImage bf = (BufferedImage)img;
         
         //Dimension
-        bf.getSubimage(80, 80, 350, 200);      
-        return bf;
+        //bf.getSubimage(80, 80, 350, 200);      
+        //bf.getSubimage(230, 190, 175, 100);
+        return bf.getSubimage(190, 165, 250, 150);
     }
     
     public BufferedImage getFeed(){

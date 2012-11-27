@@ -40,11 +40,11 @@ public class GameManager {
     private JLabel stopLight2;
     private JLabel displayLabel;
     private ScheduledExecutorService executor;
-    //private String colors[] = {"black", "blue", "green", "orange", "yellow", "red", "white"};
-    private String colors[] = {"black", "black", "black", "black", "black", "white", "white"};
+    private String colors[] = {"black", "blue", "green", "orange", "yellow", "red", "white"};
+    //private String colors[] = {"black", "black", "black", "black", "black", "white", "white"};
  //   private String shapes[] = {"circle", "square"};
     private String randomColors[] = {"", "", "", "", "" , "", ""};
-    private String randomShapes[] = {"circle", "square"};
+    private String randomShapes[] = {"circle", "circle"};
     private boolean running;
     private int round;
     private int level;
@@ -67,8 +67,6 @@ public class GameManager {
         round = 0;
         level = 1;
         bandsAnalyzer = new BandsAnalyzer();
-        
-
         camera = decoyPlay.getCamera();
         setRandomColors();
     }
@@ -142,6 +140,7 @@ public class GameManager {
                             
                             BufferedImage image = camera.grabImage();
                             String detectedColor = bandsAnalyzer.analyzeImage(image);
+                            
                             System.out.println(detectedColor + " against hush's " + randomColors[round-1]);
                             boolean correct = detectedColor.equals(randomColors[round-1]);
                             
@@ -190,6 +189,9 @@ public class GameManager {
                             //CIRCLE
                             if (round==1) {
                                 ImagePlus pic = new ImagePlus(null, Toolkit.getDefaultToolkit().createImage(image.getSource()));
+                                //System.out.println("Height: " + pic.getHeight());
+                                //System.out.println("Width: " + pic.getWidth());
+                                pic.show();
                                 circleDetector = new CircleHT();
                                 circleDetector.processImage(pic);
                                 correct = circleDetector.isDetected();
@@ -211,8 +213,6 @@ public class GameManager {
 
                             if((correct) || (tries == NUMBER_OF_TRIES)){
                                 ScoreManager.addScore();
-                                System.out.println("I dont need a man" + NUMBER_OF_TRIES);
-                                
                                 getFuture().cancel(true);
 
                                 if(round < 2){                                
