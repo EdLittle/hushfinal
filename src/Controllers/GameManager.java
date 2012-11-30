@@ -32,7 +32,8 @@ import java.awt.Toolkit;
 /**
  *
  * @author Administrator
- */
+ */   
+
 public class GameManager {
     private Hush hush;
     private DecoyPlay decoyPlay;
