@@ -256,9 +256,10 @@ public class JMFCapture implements ControllerListener
     if (im == null) {
       System.out.println("No grabbed image");
       return null;
-    }
-
-    return makeBIM(im);
+    }   
+    BufferedImage bim = makeBIM(im);
+    System.out.println("Warsh");
+    return bim.getSubimage(400, 50, 350, 250);
   }  // end of grabImage()
 
 

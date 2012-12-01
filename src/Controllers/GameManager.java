@@ -189,7 +189,8 @@ public class GameManager {
                             boolean correct = false;
                             //CIRCLE
                             if (round==1) {
-                                ImagePlus pic = new ImagePlus(null, Toolkit.getDefaultToolkit().createImage(image.getSource()));
+                                //ImagePlus pic = new ImagePlus(null, Toolkit.getDefaultToolkit().createImage(image.getSource()));
+                                ImagePlus pic = new ImagePlus(null, camera.grabImage());
                                 //System.out.println("Height: " + pic.getHeight());
                                 //System.out.println("Width: " + pic.getWidth());
                                 pic.show();
@@ -202,7 +203,9 @@ public class GameManager {
                             else if (round==2) {
                                 DetectQuadrilateral detector = new DetectQuadrilateral();
                               //  detector.processImagePlus("quad6.jpg");
-                                detector.processImagePlus(new ImagePlus(null, Toolkit.getDefaultToolkit().createImage(image.getSource())));
+                                //detector.processImagePlus(new ImagePlus(null, Toolkit.getDefaultToolkit().createImage(image.getSource())));
+                                ImagePlus pic = new ImagePlus(null, camera.grabImage());
+                                pic.show();
                                 detector.processLines();
                                 correct = detector.isQuadPresent();
                             }

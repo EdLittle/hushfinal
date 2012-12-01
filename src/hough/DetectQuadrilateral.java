@@ -59,9 +59,9 @@ public class DetectQuadrilateral {
         ovlay.setup(null, pic);
         ovlay.run(ip2);
         
-        imp2.show();
         * 
         */
+        imp2.show();
     }
     
     public void processLines(){

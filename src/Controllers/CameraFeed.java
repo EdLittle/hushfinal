@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import javax.swing.JFrame;
 
 
 /**
@@ -81,7 +82,13 @@ public class CameraFeed extends Panel{
         //Dimension
         //bf.getSubimage(80, 80, 350, 200);      
         //bf.getSubimage(230, 190, 175, 100);
-        return bf.getSubimage(190, 165, 250, 150);
+        ImagePanel imagePanel = new ImagePanel();
+        System.out.println("Wash");
+        imagePanel.setImage(bf);
+        JFrame frame = new JFrame();
+        frame.add(imagePanel);
+        frame.isVisible();
+        return bf.getSubimage(220, 25, 350, 250);
     }
     
     public BufferedImage getFeed(){
