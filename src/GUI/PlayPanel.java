@@ -22,7 +22,7 @@ public class PlayPanel extends javax.swing.JPanel {
 
     /** Creates new form PlayPanel */
     public PlayPanel() throws Exception {
-        initComponents();
+        initComponents(); 
         ScoreManager.setSlots(jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7);
     }
     

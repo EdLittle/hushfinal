@@ -10,7 +10,6 @@
  */
 package GUI;
 
-import Controllers.RoutesManager;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -113,7 +112,6 @@ public class FieldPanel extends javax.swing.JPanel {
             LoginPanel.setUsername(this.number, newUsername);
             CardLayout cardLayout = (CardLayout)panels[this.number].getLayout();
             cardLayout.show(panels[this.number], "card3");
-            RoutesManager.push("playCard");
         }
         
     }//GEN-LAST:event_jTextField1KeyPressed

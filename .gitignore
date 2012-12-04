@@ -1,11 +1,26 @@
+
+/.bundle
+/db/*.sqlite3
+/log/*.log
+doc/
+*.swp
+*~
+.project
+.DS_Store
+/dist/
 *.class
 
 # Package Files #
-*.jar
+.jar
 *.war
 *.ear
 *.log
 *.db
 *.DS_Store
 *.zip
-/build/
+/nbproject/private
+/build/classes/circle
+/build/classes/Controllers
+/build/classes/GUI
+/build/hough/
+/build/image/

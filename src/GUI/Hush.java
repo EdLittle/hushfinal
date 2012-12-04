@@ -11,8 +11,8 @@
 package GUI;
 
 import Controllers.SoundManager;
-import Controllers.RoutesManager;
 import Controllers.DatabaseManager;
+import Controllers.RoutesManager;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.LayoutManager;
@@ -32,27 +32,29 @@ public class Hush extends javax.swing.JFrame {
     private GUI.About aboutPanel;
     private String[] users;
     private GUI.LoginPanel loginPanel;
+    private GUI.ScoreSummary scoreSummaryPanel;
     
     //public static CardLayout cardlayout;
 
     /** Creates new form Hush */
     public Hush() throws Exception{
-        //soundManager = new SoundManager();
+        soundManager = new SoundManager();
+        RoutesManager.push("titleCard");
+        System.out.println("State: " +  RoutesManager.currState());
+        
+        //Hush.soundManager.playBgmusic();
+        initComponents();
+        addOtherCards();
         DatabaseManager databaseManager = new DatabaseManager();
-        //databaseManager.storeNames(new String[]{"Nicki Minaj", "Katy Perry", "Jessie J", "Infinite", "MBLAQ"});
-        //databaseManager.storeNames(new String[]{"Sung Gyu", "Dong Woo", "Woo Hyun", "Hoya", "Sung Yeol" , "L","SungJong"});
         users = databaseManager.getNames();
         
         int length = users.length;
         for(int counter = 0 ; counter < length; counter++){
             System.out.println(counter + " " + users[counter]);
         }
-        //databaseManager.storeNames(new String[]{"Nicki Minaj", "Katy Perry", "Jessie J", "Infinite", "MBLAQ"});
-        initComponents();
-        addOtherCards();
+        
         loginPanel.setNames(users);
         loginPanel.assemblePanels();
-        RoutesManager.push("titleCard");
     }
 
     /** This method is called from within the constructor to
@@ -75,7 +77,6 @@ public class Hush extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
     private void addOtherCards() throws Exception{
         loginPanel = new GUI.LoginPanel();
         getContentPane().add(loginPanel, "loginCard");
@@ -86,7 +87,8 @@ public class Hush extends javax.swing.JFrame {
         playPanel = new GUI.PlayPanel();
         getContentPane().add(playPanel, "playCard");
         
-        
+        scoreSummaryPanel = new GUI.ScoreSummary();
+        getContentPane().add(scoreSummaryPanel, "scoreCard");
     }
     
     public static Hush getHush(){
@@ -96,7 +98,9 @@ public class Hush extends javax.swing.JFrame {
     public DecoyPlay getDecoyPlay(){
         return playPanel.getGamePanel();
     }
-    
+    public ScoreSummary getScoreSummary(){
+        return scoreSummaryPanel;
+    }
     /**
      * @param args the command line arguments
      */
@@ -133,13 +137,22 @@ public class Hush extends javax.swing.JFrame {
                 
             }
         });
-        
-        
     }
     
     public LayoutManager getCardLayout(){
         return getContentPane().getLayout();
     }
+    
+    public void navigate(String cardName){
+       System.out.println("State: " +  RoutesManager.currState() + " to " + cardName);
+       hush = Hush.getHush();
+       CardLayout cardLayout = (CardLayout) hush.getCardLayout();
+       cardLayout.show(hush.getContentPane(), cardName);
+       RoutesManager.push(cardName);
+       Hush.soundManager.playClickOff();
+    
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.TitlePage titlePage;
     // End of variables declaration//GEN-END:variables

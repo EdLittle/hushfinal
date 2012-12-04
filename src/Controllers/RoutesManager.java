@@ -29,4 +29,14 @@ public class RoutesManager {
             return null;
         }
     }
+        
+    public static String currState(){
+        if(navigationStack.peek() != null){
+            System.out.println("Current " + navigationStack.peek());
+            return navigationStack.peek();
+        }
+        else{
+            return null;
+        }
+    }
 }

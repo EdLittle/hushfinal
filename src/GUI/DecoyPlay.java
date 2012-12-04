@@ -12,7 +12,10 @@ package GUI;
 
 import Controllers.CameraFeed;
 import Controllers.GameManager;
+import Controllers.RoutesManager;
+import java.awt.CardLayout;
 import java.awt.Graphics;
+import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
@@ -26,7 +29,8 @@ public class DecoyPlay extends javax.swing.JPanel {
     //public GameplayManager gameplayManager;
     public GameManager gameManager;
     //private CameraCapture camera;
-    private CameraFeed camera;
+    private CameraFeed camera;    
+    private Hush hush;
     /** Creates new form DecoyPlay */
     public DecoyPlay() throws Exception{
         initComponents();
@@ -39,9 +43,6 @@ public class DecoyPlay extends javax.swing.JPanel {
     //public ImagePanel getImagePanel1(){
         //return imagePanel1;
     //}
-    public JLabel getStopLight1(){
-        return stopLight1;
-    }
 
     //public CameraCapture getCamera(){
         //return camera;
@@ -50,7 +51,10 @@ public class DecoyPlay extends javax.swing.JPanel {
     public CameraFeed getCamera(){
         return camera;
     }
-    
+        
+    public JLabel getStopLight1(){
+        return stopLight1;
+    }
     
     public JLabel getStopLight2(){
         return stopLight2;
@@ -60,9 +64,13 @@ public class DecoyPlay extends javax.swing.JPanel {
         return jLabel1;
     }
     
-    public void startGame(){
+    public void startGame() throws FileNotFoundException{
         //gameplayManager = new GameplayManager(1);
         gameManager = new GameManager();
+    }
+    
+    public GameManager getGameManager(){
+        return gameManager;
     }
     /** This method is called from within the constructor to
      * initialize the form.
@@ -124,11 +132,11 @@ public class DecoyPlay extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        
         if(!gameManager.isRunning()){
             try {
+                //hush = Hush.getHush();
+                //hush.navigate("playCard");
                 gameManager.startGame();
-                
             } catch (InterruptedException ex) {
                 Logger.getLogger(DecoyPlay.class.getName()).log(Level.SEVERE, null, ex);
             }

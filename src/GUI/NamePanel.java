@@ -10,7 +10,9 @@
  */
 package GUI;
 
+import Controllers.ScoreManager;
 import Controllers.DatabaseManager;
+import Controllers.RoutesManager;
 import java.awt.CardLayout;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,6 +25,7 @@ import javax.swing.JPanel;
  * @author FREAK
  */
 public class NamePanel extends javax.swing.JPanel {
+    private Hush hush;
     int number;
     public static String[] users;
     static JPanel[] panels;
@@ -41,7 +44,6 @@ public class NamePanel extends javax.swing.JPanel {
     
     public void setDisplayName(String name){
         this.name.setText(name);
-        System.out.println("Setting " + name);
     }
     
     public static void setStaticFields(JPanel[] userPanels){
@@ -86,11 +88,10 @@ public class NamePanel extends javax.swing.JPanel {
 
     private void buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMouseClicked
         // TODO add your handling code here:
-        System.out.println("This is namePanel" + this.number);
         //name.setText("");
         CardLayout cardLayout = (CardLayout) panels[this.number].getLayout();
         cardLayout.show(panels[number], "card2");
-        
+               
     }//GEN-LAST:event_buttonMouseClicked
 
     private void nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameMouseClicked
@@ -103,12 +104,16 @@ public class NamePanel extends javax.swing.JPanel {
         } catch (IOException ex) {
             Logger.getLogger(NamePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        Hush hush = Hush.getHush();
-        CardLayout cardLayout = (CardLayout) hush.getCardLayout();
-        cardLayout.show(hush.getContentPane(), "playCard");
-        hush.getDecoyPlay().startGame();
+        hush = Hush.getHush();
+        hush.navigate("playCard");   
+    
+        try {
+            hush.getDecoyPlay().startGame();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(NamePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         hush.getDecoyPlay().getCamera().startFeed();
+        ScoreManager.setUsername(this.name.getText());
         //new GameplayManager(1);
     }//GEN-LAST:event_nameMouseClicked
     
