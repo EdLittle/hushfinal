@@ -45,7 +45,7 @@ public class GameManager {
     //private String colors[] = {"black", "black", "black", "black", "black", "white", "white"};
  //   private String shapes[] = {"circle", "square"};
     private String randomColors[] = {"", "", "", "", "" , "", ""};
-    private String randomShapes[] = {"circle", "circle"};
+    private String randomShapes[] = {"circle", "square"};
     private boolean running;
     private int round;
     private int level;
