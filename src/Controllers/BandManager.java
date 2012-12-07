@@ -42,17 +42,6 @@ public class BandManager
     redCol = c.getRed();
     greenCol = c.getGreen();
     blueCol = c.getBlue();
-  /*  System.out.println("redCol = " + redCol);
-    System.out.println("greenCol = " + greenCol);
-    System.out.println("blueCol = " + blueCol);
-    System.out.println("");
-    System.out.println("");
-    
-    redCol = 0xBE0032;
-    greenCol = 0x007959;
-    blueCol = 0xB9B459;
-*/
-    
     blobs = new ArrayList();
     currBlobIdx = -1;
   }  // end of BandManager()
@@ -68,15 +57,6 @@ public class BandManager
   public boolean isBandColour(int r, int g, int b)
   /* is (r,g,b) close enough to the band colour? */
   {
-/*
-	    System.out.println("\n\nRed: " + r);
-	    System.out.println("green: " + g);
-	    System.out.println("blue: " + b);
-
-	    System.out.println("\nRedCol: " + redCol);
-	    System.out.println("greenCol: " + greenCol);
-	    System.out.println("blueCol: " + blueCol);
-	    */
     int redDiff = r - redCol;
     int greenDiff = g - greenCol;
     int blueDiff = b - blueCol;

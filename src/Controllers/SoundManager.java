@@ -73,10 +73,7 @@ public class SoundManager {
     }
     
     public void playToggle(){
-        //AudioPlayer.player.start(as);
-        //AudioPlayer.player.stop(in);
         toggleClip.start();
-        //System.out.println("" + clip.isRunning());
         toggleClip.setFramePosition(0);
     }
     

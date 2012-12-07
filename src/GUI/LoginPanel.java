@@ -80,7 +80,6 @@ public class LoginPanel extends javax.swing.JPanel {
             names[counter] = namePanels[counter].getUsername();
         }
         
-        System.out.println("I lost my mind");
         for(counter = 0; counter < 8; counter++){
             System.out.println(names[counter]);
         }

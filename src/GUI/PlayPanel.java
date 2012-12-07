@@ -13,8 +13,6 @@ package GUI;
 import Controllers.ScoreManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JLabel;
-
 
 /**
  *
@@ -31,41 +29,6 @@ public class PlayPanel extends javax.swing.JPanel {
     public DecoyPlay getGamePanel(){
         return decoyPlay1;
     }
-
-    
-    /*public JLabel getJLabel(int slot){
-        JLabel label;
-        switch(slot){
-            case 0:
-                label = jLabel1;
-                break;
-            case 1:
-                label = jLabel2;
-                break;
-            case 2:
-                label = jLabel3;
-                break;
-            case 3:
-                label = jLabel4;
-                break;
-            case 4:
-                label = jLabel5;
-                break;
-            case 5:
-                label = jLabel6;
-                break;
-            case 6:
-                label = jLabel7;
-                break;
-            default:
-                label = null;
-                break;                
-        }
-        return label;
-    }
-    * 
-    */
-
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -125,7 +88,6 @@ public class PlayPanel extends javax.swing.JPanel {
 
         jPanel2.setMinimumSize(new java.awt.Dimension(500, 75));
         jPanel2.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel2.setLayout(new java.awt.GridLayout(1, 7));
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -305,3 +267,4 @@ public class PlayPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
 }
+>>>>>>> 4a3d5da8c09890428cd47d2e70a87714c7c20b18

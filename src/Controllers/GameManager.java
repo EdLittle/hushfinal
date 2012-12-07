@@ -7,7 +7,7 @@ package Controllers;
 import GUI.DecoyPlay;
 import GUI.Hush;
 import GUI.ImagePanel;
-import circle.detection.CircleDetection;
+import ij.ImagePlus;
 import java.awt.image.BufferedImage;
 import java.util.Vector;
 import java.util.concurrent.Executors;
@@ -20,10 +20,20 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import hough.CircleHT;
+import hough.DetectQuadrilateral;
+import ij.ImagePlus;
+import ij.gui.ImageWindow;
+import ij.process.ImageConverter;
+import ij.process.ImageProcessor;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author Administrator
- */
+ */   
+
 public class GameManager {
     private Hush hush;
     private DecoyPlay decoyPlay;
@@ -31,9 +41,11 @@ public class GameManager {
     private JLabel stopLight2;
     private JLabel displayLabel;
     private ScheduledExecutorService executor;
-    //private String colors[] = {"black", "blue", "green", "orange", "yellow", "red", "white"};
-    private String colors[] = {"black", "black", "black", "black", "black", "black", "black"};
+    private String colors[] = {"black", "blue", "green", "orange", "yellow", "red", "white"};
+    //private String colors[] = {"black", "black", "black", "black", "black", "white", "white"};
+ //   private String shapes[] = {"circle", "square"};
     private String randomColors[] = {"", "", "", "", "" , "", ""};
+    private String randomShapes[] = {"circle", "circle"};
     private boolean running;
     private int round;
     private int level;
@@ -42,7 +54,7 @@ public class GameManager {
     //private CameraCapture camera;
     private CameraFeed camera;
     private BandsAnalyzer bandsAnalyzer;
-    private CircleDetection circleDetector;
+    private CircleHT circleDetector;
     private final int NUMBER_OF_TRIES = 15;
     
     public GameManager(){
@@ -54,10 +66,8 @@ public class GameManager {
         executor = Executors.newScheduledThreadPool(15);
         running = false;
         round = 0;
-        level = 0;
+        level = 1;
         bandsAnalyzer = new BandsAnalyzer();
-        
-        //roundFinished = false;
         camera = decoyPlay.getCamera();
         setRandomColors();
     }
@@ -69,13 +79,7 @@ public class GameManager {
         //for level
         for(k = 0; k < 1; k++){
         
-            //for round
-            /*startTime = System.currentTimeMillis();
-            long oneSecondLater = startTime + 1000;
-            long twoSecondsLater = startTime + 2000;
-            long threeSecondsLater = startTime + 3000;
-            */
-            
+            round++;
             executor.schedule(new Runnable(){
 
                 @Override
@@ -108,30 +112,26 @@ public class GameManager {
                 }
             
             }, 3, TimeUnit.SECONDS);
+            
+            
+            //ASK FOR COLORS OR SHAPES
             if(level == 0){
                 executor.schedule(new Runnable(){
                     public void run(){
-
-                        displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/" + randomColors[round] + ".png")));
-                        System.out.println("Asking for " + randomColors[round]);
+                        displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/" + randomColors[round-1] + ".png")));
+                        System.out.println("Asking for " + randomColors[round-1]);
                     }
-                }, 5, TimeUnit.SECONDS);
-
-                        
-
+                }, 4, TimeUnit.SECONDS);
             }
             else if(level == 1){
                 executor.schedule(new Runnable(){
-                    public void run(){
-                        displayLabel.setIcon(null);
-                        displayLabel.setText("Circle");
+                    public void run(){displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/" + randomShapes[round-1] + ".png")));
+                        System.out.println("Asking for " + randomShapes[round-1]);
                     }
-                }, 5, TimeUnit.SECONDS);
-
+                }, 4, TimeUnit.SECONDS);
             }
             
             if(level == 0){
-                
                 gameTask = executor.scheduleAtFixedRate(new Runnable(){
                     int tries = 1;
                     int random;
@@ -141,32 +141,26 @@ public class GameManager {
                             
                             BufferedImage image = camera.grabImage();
                             String detectedColor = bandsAnalyzer.analyzeImage(image);
-                            System.out.println("The shit detected" + detectedColor + " " + round);
                             
-                            boolean correct = detectedColor.equals(randomColors[round]);
+                            System.out.println(detectedColor + " against hush's " + randomColors[round-1]);
+                            boolean correct = detectedColor.equals(randomColors[round-1]);
+                            
+                            if(correct)
+                                ScoreManager.addScore();
                             
 
                             if((correct) || (tries == NUMBER_OF_TRIES)){
-                                cancelFuture();
-                                
-                                if(correct){
-                                    ScoreManager.addScore();
-                                }
-                                
-                                startGame();
-                                /*
-                                if(round < 6){                                    
+                                getFuture().cancel(true);
+
+                                if(round < 7){
                                     startGame();
                                 }
-                                else if (round == 6){
-
-                                    System.out.println("Next level please!");
+                                else if (round == 7){
+                                    System.out.println("Next level!");
                                     round = 0;
                                     level++;
                                     startGame();
                                 }
-                                * 
-                                */
                                 //roundFinished = true;
                             }
                             else{
@@ -176,9 +170,7 @@ public class GameManager {
                             Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
-
-                }, 6, 1, TimeUnit.SECONDS);
-
+                }, 5, 1, TimeUnit.SECONDS);
             }
             
             
@@ -191,36 +183,50 @@ public class GameManager {
                         try {
                             random = (int) (Math.random() * 100) % 5;
                             BufferedImage image = camera.grabImage();
-                            circleDetector = new CircleDetection(image);
-                            boolean correct = circleDetector.isDetected();
+                            
+                            System.out.println("Detecting for...." + randomShapes[round-1]);
+                            
+                            boolean correct = false;
+                            //CIRCLE
+                            if (round==1) {
+                                //ImagePlus pic = new ImagePlus(null, Toolkit.getDefaultToolkit().createImage(image.getSource()));
+                                ImagePlus pic = new ImagePlus(null, camera.grabImage());
+                                //System.out.println("Height: " + pic.getHeight());
+                                //System.out.println("Width: " + pic.getWidth());
+                                pic.show();
+                                circleDetector = new CircleHT();
+                                circleDetector.processImage(pic);
+                                correct = circleDetector.isDetected();
+                            }
+                            
+                            //SQUARE
+                            else if (round==2) {
+                                DetectQuadrilateral detector = new DetectQuadrilateral();
+                              //  detector.processImagePlus("quad6.jpg");
+                                //detector.processImagePlus(new ImagePlus(null, Toolkit.getDefaultToolkit().createImage(image.getSource())));
+                                ImagePlus pic = new ImagePlus(null, camera.grabImage());
+                                pic.show();
+                                detector.processLines();
+                                correct = detector.isQuadPresent();
+                            }
+                            
                             
                             if(correct)
                                 System.out.println("Correct!");
 
-                            if((random == 0) || (tries == NUMBER_OF_TRIES)){
+
+                            if((correct) || (tries == NUMBER_OF_TRIES)){
+                                ScoreManager.addScore();
                                 getFuture().cancel(true);
 
-
-                                if(round < 7){
-                                //System.out.println("Grab image here and analise" + round);
-                                //BufferedImage image = camera.grabImage();
-                                //JFrame frame = new JFrame();
-                                //ImagePanel panel = new ImagePanel();
-                                //panel.setImage(image);
-                                //frame.add(panel);
-                                //frame.setSize(450, 450);
-                                //frame.setVisible(true);
-                                //round++;
-                                //System.out.println("Exo");
-                                startGame();
-                                }
-                                else if (round == 7){
-                                    System.out.println("Next level please!");
-                                    round = 0;
-                                    level++;
+                                if(round < 2){                                
                                     startGame();
                                 }
-                                //roundFinished = true;
+                                else if (round == 2){
+                                    System.out.println("DONE!");
+                                    round = 0;
+                                    level = 0;
+                                }
                             }
                             else{
                                 tries++;
@@ -229,40 +235,14 @@ public class GameManager {
                             Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
-
-                }, 6, 1, TimeUnit.SECONDS);
-
+                }, 5, 1, TimeUnit.SECONDS);
             }
-            /*while(!roundFinished){
-                //System.out.println("Boom");
-            }
-            /*for(j = 0; j < 7; j++){
-                
-                
-                while(true){
-                    
-                    Thread.sleep(1000);
-                }
-            }*/
         }
         
     }
     
     private Future<?> getFuture(){
         return gameTask;
-    }
-    
-    private void cancelFuture(){
-        
-        getFuture().cancel(true);
-        round++;
-        if(round == 7){
-            ScoreManager.revokeStars();
-            round = 0;
-            level++;
-        }
-        
-        
     }
     
     private void colorRound() throws InterruptedException{
@@ -289,12 +269,11 @@ public class GameManager {
     
     private void setRandomColors(){
         Vector randomPermutation = getRandomPermutation();
-        Integer[] order = {10, 10, 10, 10, 10, 10, 10};
-
+        Integer[] order = {10,10,10,10,10,10,10};
         
         order = (Integer[])randomPermutation.toArray(new Integer[0]);
         for (int i = 0; i < 7; i++){
-            randomColors[i] = colors[(int)order[i]];
+            randomColors[i] = colors[(int)order[i]];            
             //randomColors[i] = colors[randomPermutation.elementAt(i)];
             //System.out.println(randomColors[i]);
         }

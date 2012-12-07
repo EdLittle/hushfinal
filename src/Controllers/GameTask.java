@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -122,7 +123,7 @@ public class GameTask implements Runnable{
     }
     
     private void singleColorRound() throws InterruptedException{
-        System.out.println("D.O.");
+        
         for(int i = 0; i < 16; i++){
             
             int rand = (int)(Math.random() * 100) % 5;
@@ -134,12 +135,12 @@ public class GameTask implements Runnable{
             }
             Thread.sleep(1000);
         }
-        System.out.println("If I were a boy");
+        
         finished = true;
     }
-    
+   
     private void detectColor(){
-        System.out.println("BaekHyun");
+//        System.out.println("BaekHyun");
         
     }
     

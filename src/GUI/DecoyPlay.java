@@ -124,27 +124,11 @@ public class DecoyPlay extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        
-        System.out.println("Screamo");
         if(!gameManager.isRunning()){
             try {
-                // TODO add your handling code here:
-
-
                 gameManager.startGame();
-                System.out.println("Nicki Minaj");
-                /*if(!gameplayManager.isRunning()){
-                    try {
-                        gameplayManager.startGame();
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(DecoyPlay.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    System.out.println("Yohohohoho");
-                }
-                * 
-                */
+                
             } catch (InterruptedException ex) {
-                System.out.println("Im as focused as a laser");
                 Logger.getLogger(DecoyPlay.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

@@ -26,7 +26,6 @@ public class DatabaseManager {
     static File file;
 
     public DatabaseManager() throws Exception{
-        System.out.println("Hey soul sister");
         
         file = new File("data/users.txt");
         
@@ -48,13 +47,11 @@ public class DatabaseManager {
         String line = "";
         String[] users = null;
         String names = "";
-        //System.out.println("Baby");
         while((line = br.readLine()) != null){
-            //System.out.println(line);
+            
             names = names + line + "\n";
             
         }
-        //System.out.println("4MEN");
         users = names.split("\n");
         return users;
     }
@@ -73,7 +70,6 @@ public class DatabaseManager {
     }
     
     public static void setUsernames(String[] usernames) throws FileNotFoundException, IOException{
-        System.out.println("Yo. Im here.");
         for(int i = 0; i < 8; i++){
             System.out.println(usernames[i]);
         }

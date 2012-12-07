@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import javax.swing.JFrame;
 
 
 /**
@@ -40,8 +41,7 @@ public class CameraFeed extends Panel{
         
         setLayout(new BorderLayout());
         setSize(320, 550);
-        //String str = "vfw:Microsoft WDM Image Capture (Win32):0";
-        String str = "vfw:0";
+        String str = "vfw:Microsoft WDM Image Capture (Win32):0";
         di = CaptureDeviceManager.getDevice(str);
         ml = new MediaLocator(str);
         executor = Executors.newScheduledThreadPool(5);
@@ -52,7 +52,6 @@ public class CameraFeed extends Panel{
             player.start();
         }
         catch(Exception e){
-
             e.printStackTrace();
         }
     }
@@ -79,8 +78,17 @@ public class CameraFeed extends Panel{
         btoi = new BufferToImage((VideoFormat)buf.getFormat());
         img = btoi.createImage(buf);
         BufferedImage bf = (BufferedImage)img;
-        bf.getSubimage(80, 80, 350, 200);
-        return bf;
+        
+        //Dimension
+        //bf.getSubimage(80, 80, 350, 200);      
+        //bf.getSubimage(230, 190, 175, 100);
+        ImagePanel imagePanel = new ImagePanel();
+        System.out.println("Wash");
+        imagePanel.setImage(bf);
+        JFrame frame = new JFrame();
+        frame.add(imagePanel);
+        frame.isVisible();
+        return bf.getSubimage(220, 25, 350, 250);
     }
     
     public BufferedImage getFeed(){
@@ -91,4 +99,6 @@ public class CameraFeed extends Panel{
         BufferedImage bf = (BufferedImage)img;
         return bf;
     }
+    
+    
 }

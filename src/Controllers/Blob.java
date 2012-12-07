@@ -4,7 +4,6 @@
  */
 package Controllers;
 
-
 // Blob.java
 // Andrew Davison, October 2005, ad@fivedots.coe.psu.ac.th
 
@@ -14,7 +13,6 @@ package Controllers;
 
 import java.awt.*;
 import java.util.*;
-
 
 public class Blob
 {
@@ -29,13 +27,11 @@ public class Blob
   private int numPoints;
   private int xSum, ySum;   // sum of (x,y) coords
 
-
   public Blob()
   {  points = new ArrayList();
      numPoints = 0;  
      xSum = 0; ySum = 0;
   } // end of Blob()
-
 
   public boolean isClose(int x, int y)
   /* is (x,y) close to a point in the blob? */
@@ -52,7 +48,6 @@ public class Blob
     return false;
   }  // end of isClose()
 
-
   public boolean addPoint(int x, int y)
   /* add (x,y) to the blob's points, and report if the
      blob is now 'large' */
@@ -64,10 +59,8 @@ public class Blob
     return (numPoints > LARGE_BLOB_SIZE);
   }  // end of addPoint()
 
-
   public int numPoints()
   {  return numPoints;  }
-
 
   public Point getCenter()
   /* Return the center point of the blob. This is

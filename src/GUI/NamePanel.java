@@ -42,7 +42,6 @@ public class NamePanel extends javax.swing.JPanel {
     
     public void setDisplayName(String name){
         this.name.setText(name);
-        //System.out.println("Setting " + name);
     }
     
     public static void setStaticFields(JPanel[] userPanels){
@@ -87,7 +86,6 @@ public class NamePanel extends javax.swing.JPanel {
 
     private void buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMouseClicked
         // TODO add your handling code here:
-        //System.out.println("This is namePanel" + this.number);
         //name.setText("");
         CardLayout cardLayout = (CardLayout) panels[this.number].getLayout();
         cardLayout.show(panels[number], "card2");
@@ -110,7 +108,6 @@ public class NamePanel extends javax.swing.JPanel {
         cardLayout.show(hush.getContentPane(), "playCard");
         hush.getDecoyPlay().startGame();
         hush.getDecoyPlay().getCamera().startFeed();
-        System.out.println("Rara");
         ScoreManager.setUsername(this.name.getText());
         //new GameplayManager(1);
     }//GEN-LAST:event_nameMouseClicked

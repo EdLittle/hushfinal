@@ -43,16 +43,6 @@ public class BandsAnalyzer extends Thread{
         bandManagers[6] = new BandManager("black", BLACK);
         
     }
-    
-    /*public void run(){
-        camera = new JMFCapture();
-        BufferedImage im = null;
-        
-        im = camera.grabImage();
-        analyzeImage(im);
-        //applyBigBlob();
-    }*/
-    
     public String analyzeImage(BufferedImage im){
         if (im == null){
             System.out.println("There is no image");
@@ -87,8 +77,6 @@ public class BandsAnalyzer extends Thread{
         }
         if(bandIdx != -1){
             BandManager bm = bandManagers[bandIdx];
-            //Point pt = bm.getBlobCenter(blobIdx);
-            //String name =
             return bm.getName();
         }
         return "";

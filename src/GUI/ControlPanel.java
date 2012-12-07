@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -27,7 +28,6 @@ public class ControlPanel extends javax.swing.JPanel {
     private Hush hush;
     private CardLayout cardLayout;
     private int test = 0;
-
     /** Creates new form ControlPanel */
     public ControlPanel() {
         initComponents();        
@@ -118,7 +118,13 @@ private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-
+        try {
+            // TODO add your handling code here:
+            ScoreManager.giveStar(test);
+        } catch (IOException ex) {
+            Logger.getLogger(ControlPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        test++;
     }//GEN-LAST:event_jLabel2MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
