@@ -42,7 +42,6 @@ public class BandManager
     redCol = c.getRed();
     greenCol = c.getGreen();
     blueCol = c.getBlue();
-    
     blobs = new ArrayList();
     currBlobIdx = -1;
   }  // end of BandManager()

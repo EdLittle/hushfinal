@@ -130,6 +130,7 @@ public class JMFCapture implements ControllerListener
     }
 
     for (int i = 0; i < devices.size(); i++) {
+
       CaptureDeviceInfo devInfo = (CaptureDeviceInfo) devices.elementAt(i);
       String devName = devInfo.getName();
       if (devName.equals(requireDeviceName)) {   // found device
@@ -256,9 +257,9 @@ public class JMFCapture implements ControllerListener
     if (im == null) {
       System.out.println("No grabbed image");
       return null;
+
     }   
     BufferedImage bim = makeBIM(im);
-    System.out.println("Warsh");
     return bim.getSubimage(400, 50, 350, 250);
   }  // end of grabImage()
 
@@ -276,7 +277,7 @@ public class JMFCapture implements ControllerListener
 
     // create a graphics context
     Graphics2D g2d = copy.createGraphics();
-    
+
     // image --> resized BufferedImage
     g2d.scale(scaleFactor, scaleFactor);
          /* Scale the image according to the scaleFactor value, by

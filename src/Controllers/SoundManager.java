@@ -74,7 +74,6 @@ public class SoundManager {
     
     public void playToggle(){
         toggleClip.start();
-        
         toggleClip.setFramePosition(0);
     }
     

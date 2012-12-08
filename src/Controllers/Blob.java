@@ -21,7 +21,7 @@ public class Blob
 
   private static final int PROXIMITY = 4; //4
   /* Used to judge if a new point is close enough to the blob to
-     join it. */    
+     join it. */
 
   private ArrayList points;   // of Point objects
   private int numPoints;

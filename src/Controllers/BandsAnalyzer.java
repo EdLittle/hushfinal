@@ -43,7 +43,6 @@ public class BandsAnalyzer extends Thread{
         bandManagers[6] = new BandManager("black", BLACK);
         
     }
-    
     public String analyzeImage(BufferedImage im){
         if (im == null){
             System.out.println("There is no image");

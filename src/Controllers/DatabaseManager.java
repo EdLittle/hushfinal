@@ -47,13 +47,11 @@ public class DatabaseManager {
         String line = "";
         String[] users = null;
         String names = "";
-        
         while((line = br.readLine()) != null){
             
             names = names + line + "\n";
             
         }
-        
         users = names.split("\n");
         return users;
     }
@@ -72,7 +70,6 @@ public class DatabaseManager {
     }
     
     public static void setUsernames(String[] usernames) throws FileNotFoundException, IOException{
-        
         for(int i = 0; i < 8; i++){
             System.out.println(usernames[i]);
         }
