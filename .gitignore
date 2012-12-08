@@ -19,3 +19,8 @@ doc/
 *.DS_Store
 *.zip
 /nbproject/private
+/build/classes/circle
+/build/classes/Controllers
+/build/classes/GUI
+/build/hough/
+/build/image/
