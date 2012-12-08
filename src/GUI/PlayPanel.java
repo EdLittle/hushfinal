@@ -267,4 +267,3 @@ public class PlayPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
 }
->>>>>>> 4a3d5da8c09890428cd47d2e70a87714c7c20b18

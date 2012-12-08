@@ -83,7 +83,7 @@ public class ScoreManager {
     }
 * 
 * */
-    private static void giveStar(int slot) throws IOException{
+    public static void giveStar(int slot) throws IOException{
         //JLabel label = playPanel.getJLabel(slot);
         starSlots[slot].setIcon(new ImageIcon("src/med/badge-colored.png"));
         //label.setIcon(new ImageIcon("src/med/badge-colored.png"));
