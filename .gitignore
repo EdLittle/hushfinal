@@ -1,11 +1,11 @@
 *.class
 
 # Package Files #
-*.jar
+.jar
 *.war
 *.ear
 *.log
 *.db
 *.DS_Store
 *.zip
-/build/
+/nbproject/private
