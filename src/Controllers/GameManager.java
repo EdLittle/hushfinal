@@ -28,7 +28,11 @@ import ij.process.ImageConverter;
 import ij.process.ImageProcessor;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Enumeration;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -56,13 +60,14 @@ public class GameManager {
     //private boolean roundFinished;
     private Future gameTask;
     //private CameraCapture camera;
+    private SoundManager soundManager;
     private ScoreManager scoreManager;
     private CameraFeed camera;
     private BandsAnalyzer bandsAnalyzer;
     private CircleHT circleDetector;
     private final int NUMBER_OF_TRIES = 15;
     
-    public GameManager(){
+    public GameManager() throws FileNotFoundException{
         hush = Hush.hush;
         decoyPlay = hush.getDecoyPlay();
         stopLight1 = decoyPlay.getStopLight1();
@@ -73,9 +78,18 @@ public class GameManager {
         round = 0;
         level = 0;
         bandsAnalyzer = new BandsAnalyzer();
-        scoreManager = new ScoreManager();
+        scoreManager = new ScoreManager();       
         camera = decoyPlay.getCamera();
         setRandomColors();
+        try {
+            soundManager = new SoundManager();
+        } catch (IOException ex) {
+            Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void startGame() throws InterruptedException{
@@ -152,6 +166,7 @@ public class GameManager {
                             boolean correct = detectedColor.equals(randomColors[round-1]);
                             
                             if(correct) {
+                                //soundManager.playCorrect();
                                 scoreManager.addScore(detectedColor, level);
                             }
 
@@ -233,8 +248,9 @@ public class GameManager {
                             
                             
                             if(correct) {
-                                scoreManager.addScore(randomShapes[round-1], level);
                                 System.out.println("Correct!");
+                                //soundManager.playCorrect();
+                                scoreManager.addScore(randomShapes[round-1], level);
                             }
 
                             if((correct) || (tries == NUMBER_OF_TRIES)){

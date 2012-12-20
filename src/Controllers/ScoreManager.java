@@ -55,9 +55,6 @@ public class ScoreManager {
         System.out.println("Score is " + score);
     }
     
-    public static int getScore(){
-        return score;
-    }
     /*
     //call after everything before displaying scorePanel
     public static int totalScore(){
@@ -68,6 +65,10 @@ public class ScoreManager {
     //call databaseManager
     }
 
+    public static int getScore(){
+        return score;
+    }
+    
     public static String getUsername(){
         return username;
     }
@@ -86,6 +87,23 @@ public class ScoreManager {
     
     public static Vector getRightShapes(){
        return rightShapes;
+    }
+    
+    public static String getCategory(){
+       String category = "";
+       if (score>=8){
+           category = "Gold";
+       }
+       else if ((score<8)||(score>=6)){
+           category = "Silver";
+       }
+       else if((score<6)||(score>=4)){
+           category = "Bronze";
+       }
+       else {
+           category = "Wood";
+       }
+       return category;
     }
 
     public static void giveStar(int slot) throws IOException{
@@ -121,13 +139,13 @@ public class ScoreManager {
         username = name;
         System.out.println("User is " + username);
     }
-    /*
+    
     public static void resetAll(){
-    * reset all scores to 0
-    * reset all vectors to empty vectors
-    * reset all stars to 7 gray ones
-    * new game comes from loginpanel
-    * ers
+        score = 0;
+        colorScore = 0;
+        shapeScore = 0;
+        netScore = 0;
+        rightColors.clear();
+        rightShapes.clear();
     }
-    * */
 } 

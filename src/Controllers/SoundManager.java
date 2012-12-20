@@ -28,6 +28,8 @@ public class SoundManager {
     public AudioInputStream clickOff;
     public AudioInputStream button;
     public AudioInputStream bgmusic;
+    //public AudioInputStream correct;
+    //public AudioInputStream buzzer;
     
     
     public Clip toggleClip;
@@ -37,7 +39,9 @@ public class SoundManager {
     public Clip click2Clip;
     public Clip clickOffClip;
     public Clip buttonClip;
-    public static Clip bgmusicClip;
+    public Clip bgmusicClip;
+    //public Clip correctClip;
+    //public Clip buzzerClip;
     
     public SoundManager() throws FileNotFoundException, IOException, UnsupportedAudioFileException, LineUnavailableException{
         //String currentDir = new File(".").getAbsolutePath();
@@ -52,6 +56,8 @@ public class SoundManager {
         clickOff = AudioSystem.getAudioInputStream(new File("sounds/click off.wav").getAbsoluteFile());
         button = AudioSystem.getAudioInputStream(new File("sounds/button.wav").getAbsoluteFile());
         bgmusic = AudioSystem.getAudioInputStream(new File("sounds/bgmusic.wav").getAbsoluteFile());
+        //correct = AudioSystem.getAudioInputStream(new File("sounds/correct.wav").getAbsoluteFile());
+        //buzzer = AudioSystem.getAudioInputStream(new File("sounds/buzzer.wav").getAbsoluteFile());
         
         toggleClip = AudioSystem.getClip();
         toggleClip.open(toggle);
@@ -76,6 +82,14 @@ public class SoundManager {
         
         bgmusicClip = AudioSystem.getClip();
         bgmusicClip.open(bgmusic);
+     /*   
+        correctClip = AudioSystem.getClip();
+        correctClip.open(correct);
+        
+        buzzerClip = AudioSystem.getClip();
+        buzzerClip.open(buzzer);
+        
+        */
     }
     
     public void playToggle(){
@@ -117,6 +131,17 @@ public class SoundManager {
         bgmusicClip.start();
         bgmusicClip.setFramePosition(0);
     }
+    /*
+    public void playCorrect(){
+        correctClip.start();
+        correctClip.setFramePosition(0);
+    }
+    public void playBuzzer(){
+        buzzerClip.start();
+        buzzerClip.setFramePosition(0);
+    }
+    * 
+    */
     
     public void stopBgmusic(){
         bgmusicClip.stop();
