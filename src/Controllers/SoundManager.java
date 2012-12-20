@@ -114,17 +114,17 @@ public class SoundManager {
     }
     
     public void playBgmusic(){
-        this.bgmusicClip.start();
-        this.bgmusicClip.setFramePosition(0);
+        bgmusicClip.start();
+        bgmusicClip.setFramePosition(0);
     }
     
     public void stopBgmusic(){
-        this.bgmusicClip.stop();
-        this.bgmusicClip.setFramePosition(0);
+        bgmusicClip.stop();
+        bgmusicClip.setFramePosition(0);
     }
     
     public boolean isActiveBgmusic(){
-        return this.bgmusicClip.isActive();
+        return bgmusicClip.isActive();
     }
     
     

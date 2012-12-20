@@ -11,6 +11,7 @@ import GUI.PlayPanel;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
+import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -25,25 +26,31 @@ public class ScoreManager {
     private static int netScore = 0;
     private static JLabel[] starSlots;
     private static String username;
-    //private static Vector rightColors
-    //private static Vector rightShapes
+    private static Vector rightColors = new Vector();
+    private static Vector rightShapes = new Vector();
     
+    
+    public void ScoreManager(){
+    }
     //private static PlayPanel playPanel = Hush.hush.getPlayPanel();
     //private static ImageIcon coloredBadge = new ImageIcon("/med/badge-colored.png");
     
     // add string addScore(String item, int level)
-    public static void addScore() throws IOException{
+    //public static void addScore() throws IOException{
+    public static void addScore(String item, int level) throws IOException{
         
         giveStar(score);
-        /*
-         if color level
-         * colorScore++;
-         * rightColors << item
-         * else
-         * shapeScore++;
-         * rightShapes << item
-         * 
-         */
+        
+         if (level==0) {
+            System.out.println("Passing " + item + " on number " + colorScore);
+            rightColors.add(item);
+            colorScore++;
+            
+         }
+         else {
+            rightShapes.add(item);
+            shapeScore++;
+         }
         score++;
         System.out.println("Score is " + score);
     }
@@ -51,6 +58,11 @@ public class ScoreManager {
     public static int getScore(){
         return score;
     }
+    /*
+    //call after everything before displaying scorePanel
+    public static int totalScore(){
+        return netScore;
+    */
     
     public static void saveScore(){
     //call databaseManager
@@ -67,13 +79,7 @@ public class ScoreManager {
     public static int getShapeScore(){
         return shapeScore;
     }
-    
-    //call after everything before displaying scorePanel
-    public static int totalScore(){
-        return netScore;
-    }
-    
-    /*
+   
     public static Vector getRightColors(){
         return rightColors;
     }
@@ -81,8 +87,7 @@ public class ScoreManager {
     public static Vector getRightShapes(){
        return rightShapes;
     }
-* 
-* */
+
     public static void giveStar(int slot) throws IOException{
         //JLabel label = playPanel.getJLabel(slot);
         starSlots[slot].setIcon(new ImageIcon("src/med/badge-colored.png"));
@@ -125,4 +130,4 @@ public class ScoreManager {
     * ers
     }
     * */
-}
+} 
