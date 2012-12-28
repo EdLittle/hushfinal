@@ -17,10 +17,10 @@ import Controllers.ScoreManager;
  * @author FREAK
  */
 public class ScoreSummary extends javax.swing.JPanel {
-    private String username;
-    private int score;
-    private int colorScore;
-    private int shapeScore;
+    private String username = "Friend";
+    private int score = 0;
+    private int colorScore = 0;
+    private int shapeScore = 0;
     private String[] starCategories = {"G", "S", "B", "W"};
     
     
@@ -48,9 +48,16 @@ public class ScoreSummary extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
+        controlPanel1 = new GUI.ControlPanel();
         jPanel9 = new javax.swing.JPanel();
 
         setMaximumSize(new java.awt.Dimension(650, 550));
@@ -58,7 +65,6 @@ public class ScoreSummary extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(650, 550));
         setLayout(new java.awt.GridBagLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(75, 75));
         jPanel1.setPreferredSize(new java.awt.Dimension(75, 75));
 
@@ -78,7 +84,6 @@ public class ScoreSummary extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         add(jPanel1, gridBagConstraints);
 
-        jPanel2.setBackground(new java.awt.Color(102, 255, 102));
         jPanel2.setPreferredSize(new java.awt.Dimension(500, 75));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -97,7 +102,6 @@ public class ScoreSummary extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         add(jPanel2, gridBagConstraints);
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
         jPanel3.setMinimumSize(new java.awt.Dimension(75, 75));
         jPanel3.setPreferredSize(new java.awt.Dimension(75, 75));
 
@@ -117,7 +121,6 @@ public class ScoreSummary extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         add(jPanel3, gridBagConstraints);
 
-        jPanel4.setBackground(new java.awt.Color(51, 153, 255));
         jPanel4.setMinimumSize(new java.awt.Dimension(75, 500));
         jPanel4.setPreferredSize(new java.awt.Dimension(75, 400));
 
@@ -137,18 +140,61 @@ public class ScoreSummary extends javax.swing.JPanel {
         gridBagConstraints.gridy = 1;
         add(jPanel4, gridBagConstraints);
 
-        jPanel5.setBackground(new java.awt.Color(153, 0, 0));
         jPanel5.setPreferredSize(new java.awt.Dimension(500, 400));
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
+        jLabel1.setText("GAME OVER");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/star.png"))); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel3.setText("Good job,");
+        jLabel3.setText(("Good job, \n" + username));
+
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel4.setText("Total Score:");
+
+        jLabel5.setText("<username here>");
+
+        jLabel6.setText("<score here>");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(191, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(181, 181, 181))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6))
+                    .addComponent(jLabel1))
+                .addGap(132, 132, 132))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel6))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -156,7 +202,6 @@ public class ScoreSummary extends javax.swing.JPanel {
         gridBagConstraints.gridy = 1;
         add(jPanel5, gridBagConstraints);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 153));
         jPanel6.setPreferredSize(new java.awt.Dimension(75, 400));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -175,7 +220,6 @@ public class ScoreSummary extends javax.swing.JPanel {
         gridBagConstraints.gridy = 1;
         add(jPanel6, gridBagConstraints);
 
-        jPanel7.setBackground(new java.awt.Color(102, 0, 102));
         jPanel7.setPreferredSize(new java.awt.Dimension(75, 75));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -194,26 +238,14 @@ public class ScoreSummary extends javax.swing.JPanel {
         gridBagConstraints.gridy = 2;
         add(jPanel7, gridBagConstraints);
 
-        jPanel8.setBackground(new java.awt.Color(255, 204, 51));
         jPanel8.setPreferredSize(new java.awt.Dimension(500, 75));
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 75, Short.MAX_VALUE)
-        );
+        jPanel8.add(controlPanel1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         add(jPanel8, gridBagConstraints);
 
-        jPanel9.setBackground(new java.awt.Color(0, 153, 153));
         jPanel9.setPreferredSize(new java.awt.Dimension(75, 75));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -233,6 +265,13 @@ public class ScoreSummary extends javax.swing.JPanel {
         add(jPanel9, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private GUI.ControlPanel controlPanel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
