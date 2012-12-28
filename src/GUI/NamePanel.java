@@ -106,7 +106,11 @@ public class NamePanel extends javax.swing.JPanel {
         Hush hush = Hush.getHush();
         CardLayout cardLayout = (CardLayout) hush.getCardLayout();
         cardLayout.show(hush.getContentPane(), "playCard");
-        hush.getDecoyPlay().startGame();
+        try {
+            hush.getDecoyPlay().startGame();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(NamePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         hush.getDecoyPlay().getCamera().startFeed();
         ScoreManager.setUsername(this.name.getText());
         //new GameplayManager(1);
