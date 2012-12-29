@@ -13,6 +13,7 @@ package GUI;
 import Controllers.CameraFeed;
 import Controllers.GameManager;
 import java.awt.Graphics;
+import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
@@ -60,7 +61,7 @@ public class DecoyPlay extends javax.swing.JPanel {
         return jLabel1;
     }
     
-    public void startGame(){
+    public void startGame() throws FileNotFoundException{
         //gameplayManager = new GameplayManager(1);
         gameManager = new GameManager();
     }
