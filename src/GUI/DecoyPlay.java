@@ -124,7 +124,6 @@ public class DecoyPlay extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        
         if(!gameManager.isRunning()){
             try {
                 gameManager.startGame();

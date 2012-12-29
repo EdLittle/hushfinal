@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -112,17 +113,13 @@ private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         // TODO add your handling code here:
         hush = Hush.getHush();
         cardLayout = (CardLayout) hush.getCardLayout();
-        cardLayout.show(hush.getContentPane(), "titleCard");
-        RoutesManager.push("titleCard");
+        cardLayout.show(hush.getContentPane(), "titleCard_contentPane");
+        RoutesManager.push("titleCard_routeManager");
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        try {
-            // TODO add your handling code here:
-            ScoreManager.giveStar(test);
-        } catch (IOException ex) {
-            Logger.getLogger(ControlPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        System.out.println("Music on!");
+        Hush.soundManager.playBgMusic();
         test++;
     }//GEN-LAST:event_jLabel2MouseClicked
 

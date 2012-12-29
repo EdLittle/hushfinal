@@ -27,6 +27,7 @@ public class SoundManager {
     public AudioInputStream click2;
     public AudioInputStream clickOff;
     public AudioInputStream button;
+    public AudioInputStream bgmusic;
     
     
     public Clip toggleClip;
@@ -36,6 +37,7 @@ public class SoundManager {
     public Clip click2Clip;
     public Clip clickOffClip;
     public Clip buttonClip;
+    public Clip bgmusicClip;
     
     public SoundManager() throws FileNotFoundException, IOException, UnsupportedAudioFileException, LineUnavailableException{
         //String currentDir = new File(".").getAbsolutePath();
@@ -49,6 +51,7 @@ public class SoundManager {
         click2 = AudioSystem.getAudioInputStream(new File("sounds/click2.wav").getAbsoluteFile());
         clickOff = AudioSystem.getAudioInputStream(new File("sounds/click off.wav").getAbsoluteFile());
         button = AudioSystem.getAudioInputStream(new File("sounds/button.wav").getAbsoluteFile());
+        bgmusic = AudioSystem.getAudioInputStream(new File("sounds/bgmusic.wav").getAbsoluteFile());
         
         toggleClip = AudioSystem.getClip();
         toggleClip.open(toggle);
@@ -70,11 +73,13 @@ public class SoundManager {
         
         buttonClip = AudioSystem.getClip();
         buttonClip.open(button);
+        
+        bgmusicClip = AudioSystem.getClip();
+        bgmusicClip.open(bgmusic);
     }
     
     public void playToggle(){
         toggleClip.start();
-        
         toggleClip.setFramePosition(0);
     }
     
@@ -106,5 +111,10 @@ public class SoundManager {
     public void playButton(){
         buttonClip.start();
         buttonClip.setFramePosition(0);
+    }
+    
+    public void playBgMusic(){
+        bgmusicClip.start();
+        bgmusicClip.setFramePosition(0);
     }
 }

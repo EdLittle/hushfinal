@@ -54,7 +54,7 @@ public class DetectQuadrilateral {
         ip2 = ImageEdge.areaEdge(ip2, 5, (float)0.5, 100, 50);
         LinearHT linearHT = new LinearHT(ip2, 256, 256);
         lines = linearHT.getMaxLines(10, 150);
-       /* 
+       /*
         Plugin_Hough_Linear_Ovlay ovlay = new Plugin_Hough_Linear_Ovlay();
         ovlay.setup(null, pic);
         ovlay.run(ip2);

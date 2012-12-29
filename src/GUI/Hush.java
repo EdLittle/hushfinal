@@ -37,7 +37,7 @@ public class Hush extends javax.swing.JFrame {
 
     /** Creates new form Hush */
     public Hush() throws Exception{
-        //soundManager = new SoundManager();
+        soundManager = new SoundManager();
         DatabaseManager databaseManager = new DatabaseManager();
         //databaseManager.storeNames(new String[]{"Nicki Minaj", "Katy Perry", "Jessie J", "Infinite", "MBLAQ"});
         //databaseManager.storeNames(new String[]{"Sung Gyu", "Dong Woo", "Woo Hyun", "Hoya", "Sung Yeol" , "L","SungJong"});
