@@ -27,8 +27,7 @@ public class SoundManager {
     public AudioInputStream click2;
     public AudioInputStream clickOff;
     public AudioInputStream button;
-    public AudioInputStream bgmusic;
-    
+    public AudioInputStream bgmusic;    
     
     public Clip toggleClip;
     public Clip switchClip;
@@ -113,8 +112,29 @@ public class SoundManager {
         buttonClip.setFramePosition(0);
     }
     
-    public void playBgMusic(){
+    public void playBgmusic(){
         bgmusicClip.start();
         bgmusicClip.setFramePosition(0);
     }
+    /*
+    public void playCorrect(){
+        correctClip.start();
+        correctClip.setFramePosition(0);
+    }
+    public void playBuzzer(){
+        buzzerClip.start();
+        buzzerClip.setFramePosition(0);
+    }
+    * 
+    */
+    
+    public void stopBgmusic(){
+        bgmusicClip.stop();
+        bgmusicClip.setFramePosition(0);
+    }
+    
+    public boolean isActiveBgmusic(){
+        return bgmusicClip.isActive();
+    }
+    
 }

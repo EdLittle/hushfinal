@@ -11,6 +11,7 @@ import GUI.PlayPanel;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
+import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -25,37 +26,49 @@ public class ScoreManager {
     private static int netScore = 0;
     private static JLabel[] starSlots;
     private static String username;
-    //private static Vector rightColors
-    //private static Vector rightShapes
+    private static Vector rightColors = new Vector();
+    private static Vector rightShapes = new Vector();
     
+    
+    public void ScoreManager(){
+    }
     //private static PlayPanel playPanel = Hush.hush.getPlayPanel();
     //private static ImageIcon coloredBadge = new ImageIcon("/med/badge-colored.png");
     
     // add string addScore(String item, int level)
-    public static void addScore() throws IOException{
+    //public static void addScore() throws IOException{
+    public static void addScore(String item, int level) throws IOException{
         
         giveStar(score);
-        /*
-         if color level
-         * colorScore++;
-         * rightColors << item
-         * else
-         * shapeScore++;
-         * rightShapes << item
-         * 
-         */
+        
+         if (level==0) {
+            System.out.println("Passing " + item + " on number " + colorScore);
+            rightColors.add(item);
+            colorScore++;
+            
+         }
+         else {
+            rightShapes.add(item);
+            shapeScore++;
+         }
         score++;
         System.out.println("Score is " + score);
     }
     
-    public static int getScore(){
-        return score;
-    }
+    /*
+    //call after everything before displaying scorePanel
+    public static int totalScore(){
+        return netScore;
+    */
     
     public static void saveScore(){
     //call databaseManager
     }
 
+    public static int getScore(){
+        return score;
+    }
+    
     public static String getUsername(){
         return username;
     }
@@ -67,13 +80,7 @@ public class ScoreManager {
     public static int getShapeScore(){
         return shapeScore;
     }
-    
-    //call after everything before displaying scorePanel
-    public static int totalScore(){
-        return netScore;
-    }
-    
-    /*
+   
     public static Vector getRightColors(){
         return rightColors;
     }
@@ -81,8 +88,24 @@ public class ScoreManager {
     public static Vector getRightShapes(){
        return rightShapes;
     }
-* 
-* */
+    
+    public static String getCategory(){
+       String category = "";
+       if (score>=8){
+           category = "Gold";
+       }
+       else if ((score<8)||(score>=6)){
+           category = "Silver";
+       }
+       else if((score<6)||(score>=4)){
+           category = "Bronze";
+       }
+       else {
+           category = "Wood";
+       }
+       return category;
+    }
+
     public static void giveStar(int slot) throws IOException{
         //JLabel label = playPanel.getJLabel(slot);
         starSlots[slot].setIcon(new ImageIcon("src/med/badge-colored.png"));
@@ -116,13 +139,13 @@ public class ScoreManager {
         username = name;
         System.out.println("User is " + username);
     }
-    /*
+    
     public static void resetAll(){
-    * reset all scores to 0
-    * reset all vectors to empty vectors
-    * reset all stars to 7 gray ones
-    * new game comes from loginpanel
-    * ers
+        score = 0;
+        colorScore = 0;
+        shapeScore = 0;
+        netScore = 0;
+        rightColors.clear();
+        rightShapes.clear();
     }
-    * */
-}
+} 

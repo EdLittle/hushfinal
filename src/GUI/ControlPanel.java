@@ -13,12 +13,16 @@ package GUI;
 
 import Controllers.ScoreManager;
 import Controllers.RoutesManager;
+import Controllers.SoundManager;
 import java.awt.CardLayout;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -26,6 +30,7 @@ import java.util.logging.Logger;
  */
 public class ControlPanel extends javax.swing.JPanel {
     private Hush hush;
+    public SoundManager soundManager;
     private CardLayout cardLayout;
     private int test = 0;
     /** Creates new form ControlPanel */
@@ -106,7 +111,18 @@ private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
         // TODO add your handling code here:
-        //Hush.soundManager.playSwitch();
+        
+       try {
+            soundManager = new SoundManager();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ControlPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(ControlPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(ControlPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ControlPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
@@ -118,8 +134,16 @@ private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        System.out.println("Music on!");
-        Hush.soundManager.playBgMusic();
+            // TODO add your handling code here:
+        
+            if (soundManager.isActiveBgmusic()){
+                System.out.println("Music off!");
+                soundManager.stopBgmusic();
+            }
+            else{                
+                System.out.println("Music on!");
+                soundManager.playBgmusic();
+            }
         test++;
     }//GEN-LAST:event_jLabel2MouseClicked
 

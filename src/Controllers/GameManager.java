@@ -28,6 +28,11 @@ import ij.process.ImageConverter;
 import ij.process.ImageProcessor;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Enumeration;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -49,15 +54,20 @@ public class GameManager {
     private boolean running;
     private int round;
     private int level;
+    private int score;
+    private Vector colorResult;
+    private Vector shapeResult;
     //private boolean roundFinished;
     private Future gameTask;
     //private CameraCapture camera;
+    private SoundManager soundManager;
+    private ScoreManager scoreManager;
     private CameraFeed camera;
     private BandsAnalyzer bandsAnalyzer;
     private CircleHT circleDetector;
     private final int NUMBER_OF_TRIES = 15;
     
-    public GameManager(){
+    public GameManager() throws FileNotFoundException{
         hush = Hush.hush;
         decoyPlay = hush.getDecoyPlay();
         stopLight1 = decoyPlay.getStopLight1();
@@ -66,10 +76,20 @@ public class GameManager {
         executor = Executors.newScheduledThreadPool(15);
         running = false;
         round = 0;
-        level = 1;
+        level = 0;
         bandsAnalyzer = new BandsAnalyzer();
+        scoreManager = new ScoreManager();       
         camera = decoyPlay.getCamera();
         setRandomColors();
+        try {
+            soundManager = new SoundManager();
+        } catch (IOException ex) {
+            Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void startGame() throws InterruptedException{
@@ -145,18 +165,34 @@ public class GameManager {
                             System.out.println(detectedColor + " against hush's " + randomColors[round-1]);
                             boolean correct = detectedColor.equals(randomColors[round-1]);
                             
-                            if(correct)
-                                ScoreManager.addScore();
-                            
+                            if(correct) {
+                                //soundManager.playCorrect();
+                                scoreManager.addScore(detectedColor, level);
+                            }
 
                             if((correct) || (tries == NUMBER_OF_TRIES)){
                                 getFuture().cancel(true);
 
                                 if(round < 7){
                                     startGame();
-                                }
+                                } 
                                 else if (round == 7){
-                                    System.out.println("Next level!");
+                                    System.out.println("Next level!");   
+                                    
+                                    colorResult = scoreManager.getRightColors();
+                                    Enumeration e = colorResult.elements();
+                                    
+                                    //enumerate correct answers; give score
+                                    if (colorResult.size()==0){
+                                        System.out.print("You can do better next time!");
+                                    }
+                                    else {                                        
+                                        System.out.println("Right color/s: ");
+                                        while(e.hasMoreElements()){
+                                            System.out.println(" " + e.nextElement());
+                                        }
+                                    }                                   
+                                    System.out.println("Total Color Score: " + colorResult.size());
                                     round = 0;
                                     level++;
                                     startGame();
@@ -211,19 +247,34 @@ public class GameManager {
                             }
                             
                             
-                            if(correct)
+                            if(correct) {
                                 System.out.println("Correct!");
-
+                                //soundManager.playCorrect();
+                                scoreManager.addScore(randomShapes[round-1], level);
+                            }
 
                             if((correct) || (tries == NUMBER_OF_TRIES)){
-                                ScoreManager.addScore();
                                 getFuture().cancel(true);
 
                                 if(round < 2){                                
-                                    startGame();
+                                    startGame();                                    
                                 }
                                 else if (round == 2){
-                                    System.out.println("DONE!");
+                                    System.out.println("DONE!");                     
+                                    shapeResult = scoreManager.getRightShapes();
+                                    Enumeration e = shapeResult.elements();
+                                    
+                                    //enumerate correct answers; give score
+                                    if (shapeResult.size()==0){
+                                        System.out.print("You can do better next time!");
+                                    }
+                                    else {                                        
+                                        System.out.println("Right shape/s: ");
+                                        while(e.hasMoreElements()){
+                                            System.out.println(" " + e.nextElement());
+                                        }
+                                    }                                   
+                                    System.out.println("Total Shape Score: " + shapeResult.size());
                                     round = 0;
                                     level = 0;
                                 }
