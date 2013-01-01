@@ -129,8 +129,8 @@ private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         // TODO add your handling code here:
         hush = Hush.getHush();
         cardLayout = (CardLayout) hush.getCardLayout();
-        cardLayout.show(hush.getContentPane(), "titleCard");
-        RoutesManager.push("titleCard");
+        cardLayout.show(hush.getContentPane(), "titleCard_contentPane");
+        RoutesManager.push("titleCard_routeManager");
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
