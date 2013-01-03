@@ -83,7 +83,6 @@ public class CameraFeed extends Panel{
         //bf.getSubimage(80, 80, 350, 200);      
         //bf.getSubimage(230, 190, 175, 100);
         ImagePanel imagePanel = new ImagePanel();
-        System.out.println("Wash");
         imagePanel.setImage(bf);
         JFrame frame = new JFrame();
         frame.add(imagePanel);

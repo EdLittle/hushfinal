@@ -26,6 +26,8 @@ import ij.ImagePlus;
 import ij.gui.ImageWindow;
 import ij.process.ImageConverter;
 import ij.process.ImageProcessor;
+import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.FileNotFoundException;
@@ -76,7 +78,7 @@ public class GameManager {
         executor = Executors.newScheduledThreadPool(15);
         running = false;
         round = 0;
-        level = 0;
+        level = 1;
         bandsAnalyzer = new BandsAnalyzer();
         scoreManager = new ScoreManager();       
         camera = decoyPlay.getCamera();
@@ -224,24 +226,21 @@ public class GameManager {
                             
                             boolean correct = false;
                             //CIRCLE
-                            if (round==1) {
-                                //ImagePlus pic = new ImagePlus(null, Toolkit.getDefaultToolkit().createImage(image.getSource()));
-                                ImagePlus pic = new ImagePlus(null, camera.grabImage());
-                                //System.out.println("Height: " + pic.getHeight());
-                                //System.out.println("Width: " + pic.getWidth());
-                                pic.show();
-                                circleDetector = new CircleHT();
-                                circleDetector.processImage(pic);
-                                correct = circleDetector.isDetected();
+                            if (round == 1) {
+                                //ImagePlus pic = new ImagePlus(null, camera.grabImage());
+                                //pic.show();
+                                //circleDetector = new CircleHT();
+                                //circleDetector.processImage(pic);
+                                //correct = circleDetector.isDetected();
+                                System.out.println("Circling");
                             }
                             
                             //SQUARE
-                            else if (round==2) {
+                            else if(round == 2) {
                                 DetectQuadrilateral detector = new DetectQuadrilateral();
-                              //  detector.processImagePlus("quad6.jpg");
-                                //detector.processImagePlus(new ImagePlus(null, Toolkit.getDefaultToolkit().createImage(image.getSource())));
                                 ImagePlus pic = new ImagePlus(null, camera.grabImage());
-                                pic.show();
+                                detector.processImagePlus(pic);
+                                //pic.show();
                                 detector.processLines();
                                 correct = detector.isQuadPresent();
                             }
@@ -252,6 +251,7 @@ public class GameManager {
                                 //soundManager.playCorrect();
                                 scoreManager.addScore(randomShapes[round-1], level);
                             }
+                            
 
                             if((correct) || (tries == NUMBER_OF_TRIES)){
                                 getFuture().cancel(true);
@@ -260,7 +260,12 @@ public class GameManager {
                                     startGame();                                    
                                 }
                                 else if (round == 2){
-                                    System.out.println("DONE!");                     
+                                    System.out.println("DONE!");
+                                    
+                                    CardLayout cardLayout = (CardLayout) hush.getCardLayout();
+                                    cardLayout.show(hush.getContentPane(), "scoreCard");
+                                    
+                                    
                                     shapeResult = scoreManager.getRightShapes();
                                     Enumeration e = shapeResult.elements();
                                     
