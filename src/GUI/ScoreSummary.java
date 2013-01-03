@@ -11,6 +11,7 @@
 package GUI;
 
 import Controllers.ScoreManager;
+import java.util.Vector;
 
 /**
  *
@@ -19,17 +20,22 @@ import Controllers.ScoreManager;
 public class ScoreSummary extends javax.swing.JPanel {
     private String username = "Friend";
     private int score = 0;
-    private int colorScore = 0;
-    private int shapeScore = 0;
+    private Vector rightColors = new Vector();
+    private Vector rightShapes = new Vector();
     private String[] starCategories = {"G", "S", "B", "W"};
     
-    
+    /**
+     * Enumerate all right colors and shapes after
+     * under the star.
+     * 
+     * /
+     * 
     /** Creates new form ScoreSummary */
     public ScoreSummary() {
         this.username = ScoreManager.getUsername();
-        this.score = ScoreManager.getScore();
-        this.colorScore = ScoreManager.getColorScore();
-        this.shapeScore= ScoreManager.getShapeScore();
+        this.rightColors = ScoreManager.getRightColors();
+        this.rightShapes = ScoreManager.getRightShapes();
+        this.score = this.rightColors.size() + this.rightShapes.size();
         initComponents();
     }
 
