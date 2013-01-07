@@ -65,6 +65,10 @@ public class DecoyPlay extends javax.swing.JPanel {
         //gameplayManager = new GameplayManager(1);
         gameManager = new GameManager();
     }
+    
+    public GameManager getGameManager(){
+        return gameManager;
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is

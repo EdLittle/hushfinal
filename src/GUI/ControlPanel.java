@@ -11,6 +11,7 @@
  */
 package GUI;
 
+import Controllers.GameManager;
 import Controllers.ScoreManager;
 import Controllers.RoutesManager;
 import Controllers.SoundManager;
@@ -104,7 +105,8 @@ private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     cardLayout = (CardLayout) hush.getCardLayout();
     String cardName = RoutesManager.pop();
     cardLayout.show(hush.getContentPane(), cardName);
-    
+    GameManager gameManager = hush.getDecoyPlay().getGameManager();
+    gameManager.resetGame();
 }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered

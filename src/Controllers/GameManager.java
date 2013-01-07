@@ -78,7 +78,7 @@ public class GameManager {
         executor = Executors.newScheduledThreadPool(15);
         running = false;
         round = 0;
-        level = 1;
+        level = 0;
         bandsAnalyzer = new BandsAnalyzer();
         scoreManager = new ScoreManager();       
         camera = decoyPlay.getCamera();
@@ -323,6 +323,22 @@ public class GameManager {
         return running;
     }
     
+    public void resetGame(){
+        //shut down game
+        executor.shutdownNow();
+     
+        //score back to zero
+        //right vectors should empty
+        ScoreManager.reset();
+        
+        //level goes back to zero
+        level = 0;
+           
+        JLabel jLabel1 = Hush.getHush().getDecoyPlay().getJLabel1();
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/start.png"))); // NOI18N
+        
+    }
+    
     private void setRandomColors(){
         Vector randomPermutation = getRandomPermutation();
         Integer[] order = {10,10,10,10,10,10,10};
@@ -350,4 +366,5 @@ public class GameManager {
         
         return randomPermutation;
     }
+    
 }

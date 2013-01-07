@@ -51,7 +51,7 @@ public class ScoreManager {
             rightShapes.add(item);
             shapeScore++;
          }
-        score++;
+         score++;
         System.out.println("Score is " + score);
     }
     
@@ -121,10 +121,6 @@ public class ScoreManager {
         }
     }
     
-    public static void resetScore(){
-        score = 0;
-    }
-    
     public static void setSlots(JLabel jlabel1, JLabel jlabel2, JLabel jlabel3, JLabel jlabel4, JLabel jlabel5, JLabel jlabel6, JLabel jlabel7){
         starSlots = new JLabel[]{jlabel1, jlabel2, jlabel3, jlabel4, jlabel5, jlabel6, jlabel7};
     }
@@ -140,12 +136,13 @@ public class ScoreManager {
         System.out.println("User is " + username);
     }
     
-    public static void resetAll(){
+    public static void reset(){
         score = 0;
         colorScore = 0;
         shapeScore = 0;
         netScore = 0;
         rightColors.clear();
         rightShapes.clear();
+        revokeStars();
     }
 } 
