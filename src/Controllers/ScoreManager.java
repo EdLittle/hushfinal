@@ -89,20 +89,21 @@ public class ScoreManager {
        return rightShapes;
     }
     
-    public static String getCategory(){
-       String category = "";
+    public static int getCategory(){
+       int category = 3;
        if (score>=8){
-           category = "Gold";
+           category = 0;
        }
        else if ((score<8)||(score>=6)){
-           category = "Silver";
+           category = 1;
        }
        else if((score<6)||(score>=4)){
-           category = "Bronze";
+           category = 2;
        }
        else {
-           category = "Wood";
+           category = 3;
        }
+       System.out.println("Scorela: " + score + ";    Categla: " + category);
        return category;
     }
 

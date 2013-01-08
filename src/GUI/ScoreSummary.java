@@ -11,6 +11,7 @@
 package GUI;
 
 import Controllers.ScoreManager;
+import java.awt.Color;
 import java.util.Vector;
 
 /**
@@ -19,10 +20,13 @@ import java.util.Vector;
  */
 public class ScoreSummary extends javax.swing.JPanel {
     private String username = "Friend";
+    private String greeting = "Hi";
+    private String categ = "Water";
     private int score = 0;
     private Vector rightColors = new Vector();
     private Vector rightShapes = new Vector();
-    private String[] starCategories = {"G", "S", "B", "W"};
+    private String[] msgGreeting = {"Excellent work", "Good job", "Nice playing", "Hi"};
+    private String[] starCategories = {"Gold", "Silver", "Bronze", "Wood"};
     
     /**
      * Enumerate all right colors and shapes after
@@ -35,10 +39,49 @@ public class ScoreSummary extends javax.swing.JPanel {
         this.username = ScoreManager.getUsername();
         this.rightColors = ScoreManager.getRightColors();
         this.rightShapes = ScoreManager.getRightShapes();
-        this.score = this.rightColors.size() + this.rightShapes.size();
+        setMessage();
         initComponents();
     }
 
+    public void setMessage (){
+        this.greeting = msgGreeting[ScoreManager.getCategory()];
+        this.categ = starCategories[ScoreManager.getCategory()];
+        System.out.println("Score: " + ScoreManager.getScore() + ";    Categ: " + categ + ";   User: " + username);
+       
+    }
+    
+    public void correctAns(){
+            if (rightColors.contains("red")){
+                red.setForeground(Color.RED);
+            }
+            if (rightColors.contains("orange")){
+                orange.setForeground(Color.ORANGE);
+            }
+            if (rightColors.contains("yellow")){
+                yellow.setForeground(Color.YELLOW);
+            }
+            if (rightColors.contains("green")){
+                green.setForeground(Color.GREEN);
+            }
+            if (rightColors.contains("blue")){
+                blue.setForeground(Color.BLUE);
+            }
+            if (rightColors.contains("white")){
+                white.setForeground(Color.WHITE);
+            }
+            if (rightColors.contains("black")){
+                black.setForeground(Color.BLACK);
+            }
+            
+            if (rightShapes.contains("square")){
+                square.setForeground(Color.DARK_GRAY);
+            }
+            if (rightColors.contains("circle")){
+                circle.setForeground(Color.DARK_GRAY);
+            }
+            
+
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -56,20 +99,24 @@ public class ScoreSummary extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
+        msg = new java.awt.Label();
+        declareCateg = new javax.swing.JLabel();
+        msg2 = new java.awt.Label();
+        msg3 = new java.awt.Label();
         jLabel14 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
+        listOfCorrAns = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        red = new javax.swing.JLabel();
+        orange = new javax.swing.JLabel();
+        green = new javax.swing.JLabel();
+        yellow = new javax.swing.JLabel();
+        blue = new javax.swing.JLabel();
+        black = new javax.swing.JLabel();
+        white = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        square = new javax.swing.JLabel();
+        circle = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -148,7 +195,7 @@ public class ScoreSummary extends javax.swing.JPanel {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -161,6 +208,15 @@ public class ScoreSummary extends javax.swing.JPanel {
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/star.png"))); // NOI18N
 
+        msg.setText(greeting + ", " + username + "!");
+
+        declareCateg.setFont(new java.awt.Font("Century Gothic", 1, 20));
+        declareCateg.setText(categ);
+
+        msg2.setText("You now have ");
+
+        msg3.setText(" badge.");
+
         jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         jLabel14.setText("Game Over");
 
@@ -168,15 +224,26 @@ public class ScoreSummary extends javax.swing.JPanel {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addGap(79, 79, 79))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(109, 109, 109))))
+                    .addComponent(jLabel14)
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel10Layout.createSequentialGroup()
+                            .addComponent(msg2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(declareCateg, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(msg3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(43, 43, 43))
+                        .addGroup(jPanel10Layout.createSequentialGroup()
+                            .addGap(48, 48, 48)
+                            .addComponent(jLabel13)
+                            .addGap(109, 109, 109)))))
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(135, 135, 135)
+                .addComponent(msg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,12 +251,25 @@ public class ScoreSummary extends javax.swing.JPanel {
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
-                .addContainerGap(366, Short.MAX_VALUE))
+                .addGap(83, 83, 83)
+                .addComponent(msg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(msg3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(declareCateg, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(msg2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, -1));
 
         jPanel11.setLayout(new java.awt.GridLayout(12, 1));
+
+        listOfCorrAns.setFont(new java.awt.Font("Century Gothic", 0, 11));
+        listOfCorrAns.setForeground(new java.awt.Color(0, 0, 0));
+        listOfCorrAns.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        listOfCorrAns.setText("You got the ff. right:");
+        jPanel11.add(listOfCorrAns);
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -197,53 +277,47 @@ public class ScoreSummary extends javax.swing.JPanel {
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel11.add(jLabel1);
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Red");
-        jPanel11.add(jLabel2);
+        red.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        red.setForeground(new java.awt.Color(204, 204, 204));
+        red.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        red.setText("Red");
+        jPanel11.add(red);
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Orange");
-        jPanel11.add(jLabel3);
+        orange.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        orange.setForeground(new java.awt.Color(204, 204, 204));
+        orange.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        orange.setText("Orange");
+        jPanel11.add(orange);
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Yellow");
-        jPanel11.add(jLabel4);
+        green.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        green.setForeground(new java.awt.Color(204, 204, 204));
+        green.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        green.setText("Green");
+        jPanel11.add(green);
 
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Green");
-        jPanel11.add(jLabel5);
+        yellow.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        yellow.setForeground(new java.awt.Color(204, 204, 204));
+        yellow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        yellow.setText("Yellow");
+        jPanel11.add(yellow);
 
-        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Blue");
-        jPanel11.add(jLabel6);
+        blue.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        blue.setForeground(new java.awt.Color(204, 204, 204));
+        blue.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        blue.setText("Blue");
+        jPanel11.add(blue);
 
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Violet");
-        jPanel11.add(jLabel7);
+        black.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        black.setForeground(new java.awt.Color(204, 204, 204));
+        black.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        black.setText("Black");
+        jPanel11.add(black);
 
-        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Black");
-        jPanel11.add(jLabel8);
-
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("White");
-        jPanel11.add(jLabel9);
+        white.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        white.setForeground(new java.awt.Color(204, 204, 204));
+        white.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        white.setText("White");
+        jPanel11.add(white);
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -251,17 +325,17 @@ public class ScoreSummary extends javax.swing.JPanel {
         jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel11.add(jLabel10);
 
-        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Square");
-        jPanel11.add(jLabel11);
+        square.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        square.setForeground(new java.awt.Color(204, 204, 204));
+        square.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        square.setText("Square");
+        jPanel11.add(square);
 
-        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Circle");
-        jPanel11.add(jLabel12);
+        circle.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        circle.setForeground(new java.awt.Color(204, 204, 204));
+        circle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        circle.setText("Circle");
+        jPanel11.add(circle);
 
         jPanel5.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 130, 400));
 
@@ -333,21 +407,16 @@ public class ScoreSummary extends javax.swing.JPanel {
         add(jPanel9, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel black;
+    private javax.swing.JLabel blue;
+    private javax.swing.JLabel circle;
     private GUI.ControlPanel controlPanel1;
+    private javax.swing.JLabel declareCateg;
+    private javax.swing.JLabel green;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -359,5 +428,15 @@ public class ScoreSummary extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel listOfCorrAns;
+    private java.awt.Label msg;
+    private java.awt.Label msg2;
+    private java.awt.Label msg3;
+    private javax.swing.JLabel orange;
+    private javax.swing.JLabel red;
+    private javax.swing.JLabel square;
+    private javax.swing.JLabel white;
+    private javax.swing.JLabel yellow;
     // End of variables declaration//GEN-END:variables
 }
+

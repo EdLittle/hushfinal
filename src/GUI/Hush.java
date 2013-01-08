@@ -100,7 +100,11 @@ public class Hush extends javax.swing.JFrame {
     public DecoyPlay getDecoyPlay(){
         return playPanel.getGamePanel();
     }
-    
+    /*
+    public ScoreSummary getScoreSummary(){
+        return scoreSummary.getGamePanel();
+    }
+    */
     /**
      * @param args the command line arguments
      */
