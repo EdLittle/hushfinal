@@ -45,7 +45,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class GameManager {
     private Hush hush;
     private DecoyPlay decoyPlay;
-    //private ScoreSummary scoreSummary;
+    private ScoreSummary scoreSummary;
     private JLabel stopLight1;
     private JLabel stopLight2;
     private JLabel displayLabel;
@@ -74,6 +74,7 @@ public class GameManager {
     public GameManager() throws FileNotFoundException{
         hush = Hush.hush;
         decoyPlay = hush.getDecoyPlay();
+        scoreSummary = hush.getScoreSummary();
         stopLight1 = decoyPlay.getStopLight1();
         stopLight2 = decoyPlay.getStopLight2();
         displayLabel = decoyPlay.getJLabel1();
@@ -284,8 +285,8 @@ public class GameManager {
                                     System.out.println("Total Shape Score: " + shapeResult.size());
                                     round = 0;
                                     level = 0;
-                                    //scoreSummary = new ScoreSummary();
-                                    //scoreSummary.setMessage();
+                                    
+                                    scoreSummary.setMessage();
                                 }
                             }
                             else{

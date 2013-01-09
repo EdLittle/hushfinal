@@ -32,7 +32,7 @@ public class Hush extends javax.swing.JFrame {
     private GUI.About aboutPanel;
     private String[] users;
     private GUI.LoginPanel loginPanel;
-    private GUI.ScoreSummary scoreSummary;
+    private GUI.ScoreSummary scoreSummaryPanel;
     
     //public static CardLayout cardlayout;
 
@@ -87,8 +87,8 @@ public class Hush extends javax.swing.JFrame {
         playPanel = new GUI.PlayPanel();
         getContentPane().add(playPanel, "playCard");
         
-        scoreSummary = new GUI.ScoreSummary();
-        getContentPane().add(scoreSummary, "scoreCard");
+        scoreSummaryPanel = new GUI.ScoreSummary();
+        getContentPane().add(scoreSummaryPanel, "scoreCard");
         
         
     }
@@ -99,6 +99,9 @@ public class Hush extends javax.swing.JFrame {
     
     public DecoyPlay getDecoyPlay(){
         return playPanel.getGamePanel();
+    }
+    public ScoreSummary getScoreSummary(){
+        return scoreSummaryPanel;
     }
     /*
     public ScoreSummary getScoreSummary(){
