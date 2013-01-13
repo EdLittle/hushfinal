@@ -81,7 +81,7 @@ public class GameManager {
         executor = Executors.newScheduledThreadPool(15);
         running = false;
         round = 0;
-        level = 0;
+        level = 1;
         bandsAnalyzer = new BandsAnalyzer();
         scoreManager = new ScoreManager();       
         camera = decoyPlay.getCamera();
@@ -228,14 +228,15 @@ public class GameManager {
                             System.out.println("Detecting for...." + randomShapes[round-1]);
                             
                             boolean correct = false;
+                            
                             //CIRCLE
                             if (round == 1) {
-                                //ImagePlus pic = new ImagePlus(null, camera.grabImage());
+                                ImagePlus pic = new ImagePlus(null, camera.grabImage());
                                 //pic.show();
-                                //circleDetector = new CircleHT();
-                                //circleDetector.processImage(pic);
-                                //correct = circleDetector.isDetected();
-                                System.out.println("Circling");
+                                circleDetector = new CircleHT();
+                                circleDetector.processImage(pic);
+                                correct = circleDetector.isDetected();
+                                System.out.println("Circling");                                
                             }
                             
                             //SQUARE
@@ -243,7 +244,7 @@ public class GameManager {
                                 DetectQuadrilateral detector = new DetectQuadrilateral();
                                 ImagePlus pic = new ImagePlus(null, camera.grabImage());
                                 detector.processImagePlus(pic);
-                                //pic.show();
+                                pic.show();
                                 detector.processLines();
                                 correct = detector.isQuadPresent();
                             }
