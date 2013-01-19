@@ -6,6 +6,7 @@ import hough.LinearHT.HoughLine;
 import hough.Plugin_Hough_Linear_Ovlay;
 import ij.IJ;
 import ij.ImagePlus;
+import ij.gui.Roi;
 import ij.process.ImageConverter;
 import ij.process.ImageProcessor;
 import image.edge.ImageEdge;
@@ -41,7 +42,10 @@ public class DetectQuadrilateral {
         new ImageConverter(pic).convertToGray16();
         ImageProcessor ip = pic.getProcessor();
         
-        ip.setRoi(260, 172, 569, 390);
+        //set cropped image for detection (same size)
+        //ip.setRoi(260, 172, 569, 390);
+        ip.setRoi(Roi.previousRoi);
+        //220, 25, 350, 250
         ImageProcessor ip2 = ip.crop();
         String title = pic.getTitle() + "cropped";
         ImagePlus imp2 = new ImagePlus(title, ip2);
@@ -55,6 +59,14 @@ public class DetectQuadrilateral {
         LinearHT linearHT = new LinearHT(ip2, 256, 256);
         lines = linearHT.getMaxLines(10, 150);
 
+        //show green lines
+        Plugin_Hough_Linear_Ovlay ovlay = new Plugin_Hough_Linear_Ovlay();
+        ovlay.setup(null, pic);
+        ovlay.run(ip2);
+        
+        //show grayscale image
+        imp2.show();
+        
         //imp2.show();
     }
     
@@ -87,7 +99,7 @@ public class DetectQuadrilateral {
                 double angle3 = Math.abs(angle1 - angle2);
                 
                 if (Math.abs(right_angle - angle3) < 0.05){
-                    //System.out.println("Perpendicular! Pairs " + pair1[0] + " " + pair1[1] + " and " + pair2[0] + " " +pair2[1]);
+                    System.out.println("Perpendicular! Pairs " + pair1[0] + " " + pair1[1] + " and " + pair2[0] + " " +pair2[1]);
                     perpendicularPairs.add(new int[]{i, j});
                 }
             }

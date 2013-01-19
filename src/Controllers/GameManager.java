@@ -170,7 +170,8 @@ public class GameManager {
                             System.out.println(detectedColor + " against hush's " + randomColors[round-1]);
                             boolean correct = detectedColor.equals(randomColors[round-1]);
                             
-                            if(correct) {
+                            if(correct) {                                
+                                getFuture().cancel(true);
                                 //soundManager.playCorrect();
                                 scoreManager.addScore(detectedColor, level);
                             }
@@ -227,8 +228,7 @@ public class GameManager {
                             
                             System.out.println("Detecting for...." + randomShapes[round-1]);
                             
-                            boolean correct = false;
-                            
+                            boolean correct = false;                            
                             //CIRCLE
                             if (round == 1) {
                                 ImagePlus pic = new ImagePlus(null, camera.grabImage());
@@ -244,14 +244,15 @@ public class GameManager {
                                 DetectQuadrilateral detector = new DetectQuadrilateral();
                                 ImagePlus pic = new ImagePlus(null, camera.grabImage());
                                 detector.processImagePlus(pic);
-                                pic.show();
+                              //  pic.show();
                                 detector.processLines();
                                 correct = detector.isQuadPresent();
                             }
                             
                             
                             if(correct) {
-                                System.out.println("Correct!");
+                                System.out.println("Correct " + randomShapes[round-1]);                                               
+                                getFuture().cancel(true);
                                 //soundManager.playCorrect();
                                 scoreManager.addScore(randomShapes[round-1], level);
                             }

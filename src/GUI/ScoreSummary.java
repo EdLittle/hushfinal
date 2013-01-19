@@ -85,13 +85,14 @@ public class ScoreSummary extends javax.swing.JPanel {
                 black.setFont(new java.awt.Font("Century Gothic", 1, 18));
             }
             
-            if (rightShapes.contains("square")){
-                square.setForeground(Color.PINK);
-                square.setFont(new java.awt.Font("Century Gothic", 1, 18));
-            }
-            if (rightColors.contains("circle")){
-                circle.setForeground(Color.PINK);
+            if (rightShapes.contains("circle")){
+                circle.setForeground(Color.DARK_GRAY);
                 circle.setFont(new java.awt.Font("Century Gothic", 1, 18));
+            }
+            
+            if (rightShapes.contains("square")){
+                square.setForeground(Color.DARK_GRAY);
+                square.setFont(new java.awt.Font("Century Gothic", 1, 18));
             }
             
 

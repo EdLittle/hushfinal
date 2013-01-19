@@ -48,6 +48,7 @@ public class ScoreManager {
             
          }
          else {
+            System.out.println("Passing " + item + " on number " + shapeScore);
             rightShapes.add(item);
             shapeScore++;
          }
