@@ -139,6 +139,57 @@ public class GameManager {
             }, 3, TimeUnit.SECONDS);
             
             
+             executor.schedule(new Runnable(){
+
+                @Override
+                public void run() {
+                    stopLight1.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/5.png")));
+                    stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/5.png")));                
+                }
+            
+            }, 11, TimeUnit.SECONDS);
+             
+             executor.schedule(new Runnable(){
+
+                @Override
+                public void run() {
+                    stopLight1.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/4.png")));
+                    stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/4.png")));                
+                }
+            
+            }, 12, TimeUnit.SECONDS);
+                         
+             executor.schedule(new Runnable(){
+
+                @Override
+                public void run() {
+                    stopLight1.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-green.png")));
+                    stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-green.png")));                
+                }
+            
+            }, 13, TimeUnit.SECONDS);
+            
+             executor.schedule(new Runnable(){
+
+                @Override
+                public void run() {
+                    stopLight1.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-orange.png")));
+                    stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-orange.png")));
+                
+                }
+            
+            }, 14, TimeUnit.SECONDS);
+            executor.schedule(new Runnable(){
+
+                @Override
+                public void run() {
+                    stopLight1.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
+                    stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
+                
+                }
+            
+            }, 15, TimeUnit.SECONDS);
+            
             //ASK FOR COLORS OR SHAPES
             if(level == 0){
                 executor.schedule(new Runnable(){
