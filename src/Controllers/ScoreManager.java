@@ -30,8 +30,6 @@ public class ScoreManager {
     private static Vector rightShapes = new Vector();
     
     
-    public void ScoreManager(){
-    }
     //private static PlayPanel playPanel = Hush.hush.getPlayPanel();
     //private static ImageIcon coloredBadge = new ImageIcon("/med/badge-colored.png");
     
@@ -107,6 +105,15 @@ public class ScoreManager {
        System.out.println("Scorela: " + score + ";    Categla: " + category);
        return category;
     }
+    
+    public static void resetBadges(){        
+        score = 0;
+        starSlots[0].setIcon(new ImageIcon("src/med/badge.png"));
+        starSlots[1].setIcon(new ImageIcon("src/med/badge.png"));
+        for(int x=2; x<7; x++){            
+         starSlots[x].setIcon(null);
+        }
+    }
 
     public static void giveStar(int slot) throws IOException{
         //JLabel label = playPanel.getJLabel(slot);
@@ -123,10 +130,10 @@ public class ScoreManager {
         }
     }
     
-    public static void setSlots(JLabel jlabel1, JLabel jlabel2, JLabel jlabel3, JLabel jlabel4, JLabel jlabel5, JLabel jlabel6, JLabel jlabel7){
+   public static void setSlots(JLabel jlabel1, JLabel jlabel2, JLabel jlabel3, JLabel jlabel4, JLabel jlabel5, JLabel jlabel6, JLabel jlabel7){
         starSlots = new JLabel[]{jlabel1, jlabel2, jlabel3, jlabel4, jlabel5, jlabel6, jlabel7};
     }
-    
+        
     /* clear slots after first round into only two stars/medals
     public static void clearSlots(){
     * starSlots

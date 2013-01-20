@@ -22,7 +22,7 @@ public class PlayPanel extends javax.swing.JPanel {
 
     /** Creates new form PlayPanel */
     public PlayPanel() throws Exception {
-        initComponents();
+        initComponents(); 
         ScoreManager.setSlots(jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7);
     }
     
@@ -123,6 +123,7 @@ public class PlayPanel extends javax.swing.JPanel {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/badge.png"))); // NOI18N
         jLabel7.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel7.setDisabledIcon(null);
         jPanel2.add(jLabel7);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
