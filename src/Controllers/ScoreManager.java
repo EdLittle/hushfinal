@@ -28,8 +28,7 @@ public class ScoreManager {
     private static String username;
     private static Vector rightColors = new Vector();
     private static Vector rightShapes = new Vector();
-    
-    
+        
     //private static PlayPanel playPanel = Hush.hush.getPlayPanel();
     //private static ImageIcon coloredBadge = new ImageIcon("/med/badge-colored.png");
     

@@ -43,7 +43,7 @@ public class TitlePage extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         playIcon = new javax.swing.JLabel();
-        settingsIcon = new javax.swing.JLabel();
+        optionsIcon = new javax.swing.JLabel();
         aboutIcon = new javax.swing.JLabel();
         quitIcon = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -95,7 +95,7 @@ public class TitlePage extends javax.swing.JPanel {
 
         jPanel2.add(jPanel4);
 
-        playIcon.setFont(new java.awt.Font("Century Gothic", 1, 14));
+        playIcon.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         playIcon.setForeground(new java.awt.Color(153, 153, 153));
         playIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         playIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/controls-alt-2.png"))); // NOI18N
@@ -116,27 +116,27 @@ public class TitlePage extends javax.swing.JPanel {
         });
         jPanel2.add(playIcon);
 
-        settingsIcon.setFont(new java.awt.Font("Century Gothic", 1, 14));
-        settingsIcon.setForeground(new java.awt.Color(153, 153, 153));
-        settingsIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        settingsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/settings.png"))); // NOI18N
-        settingsIcon.setText("SETTINGS");
-        settingsIcon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        settingsIcon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        settingsIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+        optionsIcon.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        optionsIcon.setForeground(new java.awt.Color(153, 153, 153));
+        optionsIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        optionsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options.png"))); // NOI18N
+        optionsIcon.setText("OPTIONS");
+        optionsIcon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        optionsIcon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        optionsIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                settingsIconMouseClicked(evt);
+                optionsIconMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                settingsIconMouseEntered(evt);
+                optionsIconMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                settingsIconMouseExited(evt);
+                optionsIconMouseExited(evt);
             }
         });
-        jPanel2.add(settingsIcon);
+        jPanel2.add(optionsIcon);
 
-        aboutIcon.setFont(new java.awt.Font("Century Gothic", 1, 14));
+        aboutIcon.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         aboutIcon.setForeground(new java.awt.Color(153, 153, 153));
         aboutIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         aboutIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/about.png"))); // NOI18N
@@ -209,18 +209,19 @@ private void playIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     playIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/controls-alt-2.png")));
 }//GEN-LAST:event_playIconMouseExited
 
-private void settingsIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsIconMouseEntered
+private void optionsIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseEntered
 // TODO add your handling code here:
-    settingsIcon.setForeground(Color.black);
-    settingsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/settings-hov.png")));
+    optionsIcon.setForeground(Color.black);
+    optionsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options-hov.png")));
+    System.out.println("Database");
     //Hush.soundManager.playClick();
-}//GEN-LAST:event_settingsIconMouseEntered
+}//GEN-LAST:event_optionsIconMouseEntered
 
-private void settingsIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsIconMouseExited
+private void optionsIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseExited
 // TODO add your handling code here:
-    settingsIcon.setForeground(defaultFontColor);
-    settingsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/settings.png")));
-}//GEN-LAST:event_settingsIconMouseExited
+    optionsIcon.setForeground(defaultFontColor);
+    optionsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options.png")));
+}//GEN-LAST:event_optionsIconMouseExited
 
 private void aboutIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutIconMouseEntered
 // TODO add your handling code here:
@@ -272,10 +273,10 @@ private void aboutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:e
     //Hush.soundManager.playToggle();
 }//GEN-LAST:event_aboutIconMouseClicked
 
-    private void settingsIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsIconMouseClicked
+    private void optionsIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseClicked
         // TODO add your handling code here:
         //Hush.soundManager.playToggle();
-    }//GEN-LAST:event_settingsIconMouseClicked
+    }//GEN-LAST:event_optionsIconMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel aboutIcon;
@@ -283,9 +284,9 @@ private void aboutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:e
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel optionsIcon;
     private javax.swing.JLabel playIcon;
     private javax.swing.JLabel quitIcon;
-    private javax.swing.JLabel settingsIcon;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

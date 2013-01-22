@@ -63,7 +63,6 @@ public class GameManager {
     private Vector shapeResult;
     //private boolean roundFinished;
     private Future gameTask;
-    //private CameraCapture camera;
     private SoundManager soundManager;
     private ScoreManager scoreManager;
     private CameraFeed camera;
@@ -382,7 +381,7 @@ public class GameManager {
         return running;
     }
     
-    public void resetGame(){
+    public void restartGame(){
         //shut down game
         executor.shutdownNow();
      
@@ -391,10 +390,13 @@ public class GameManager {
         ScoreManager.reset();
         
         //level goes back to zero
-        level = 0;
-           
+        level = 0;           
         JLabel jLabel1 = Hush.getHush().getDecoyPlay().getJLabel1();
+        JLabel stopLight1 = Hush.getHush().getDecoyPlay().getStopLight1();
+        JLabel stopLight2 = Hush.getHush().getDecoyPlay().getStopLight2();
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/start.png"))); // NOI18N
+        stopLight1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight.png"))); // NOI18N
+        stopLight2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight.png"))); // NOI18N
         
     }
     

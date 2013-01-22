@@ -40,9 +40,6 @@ public class DecoyPlay extends javax.swing.JPanel {
     //public ImagePanel getImagePanel1(){
         //return imagePanel1;
     //}
-    public JLabel getStopLight1(){
-        return stopLight1;
-    }
 
     //public CameraCapture getCamera(){
         //return camera;
@@ -51,7 +48,10 @@ public class DecoyPlay extends javax.swing.JPanel {
     public CameraFeed getCamera(){
         return camera;
     }
-    
+        
+    public JLabel getStopLight1(){
+        return stopLight1;
+    }
     
     public JLabel getStopLight2(){
         return stopLight2;
