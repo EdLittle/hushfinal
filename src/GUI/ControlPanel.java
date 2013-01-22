@@ -49,9 +49,10 @@ public class ControlPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        restart = new javax.swing.JLabel();
+        sounds = new javax.swing.JLabel();
+        home = new javax.swing.JLabel();
+        reset = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
 
@@ -60,56 +61,73 @@ public class ControlPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(500, 75));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/enter.png"))); // NOI18N
-        jLabel1.setToolTipText("Back");
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        restart.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        restart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        restart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options.png"))); // NOI18N
+        restart.setToolTipText("Back");
+        restart.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        restart.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        restart.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        restart.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                restartMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel1MouseEntered(evt);
+                restartMouseEntered(evt);
             }
         });
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 50));
+        add(restart, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 50));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/MD-sound.png"))); // NOI18N
-        jLabel2.setToolTipText("Mute");
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        sounds.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/MD-sound.png"))); // NOI18N
+        sounds.setToolTipText("Mute");
+        sounds.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        sounds.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                soundsMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel2MouseEntered(evt);
+                soundsMouseEntered(evt);
             }
         });
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 0, -1, -1));
+        add(sounds, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 0, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/home.png"))); // NOI18N
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/home.png"))); // NOI18N
+        home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                homeMouseClicked(evt);
             }
         });
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, -1, -1));
+        add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, -1, -1));
+
+        reset.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        reset.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/enter.png"))); // NOI18N
+        reset.setToolTipText("Back");
+        reset.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        reset.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        reset.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        reset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                resetMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                resetMouseEntered(evt);
+            }
+        });
+        add(reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 50));
     }// </editor-fold>//GEN-END:initComponents
 
-private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restartMouseClicked
 // TODO add your handling code here:
         newGame("loginCard");
-}//GEN-LAST:event_jLabel1MouseClicked
+}//GEN-LAST:event_restartMouseClicked
 
-    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+    private void restartMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restartMouseEntered
         // TODO add your handling code here:
-        Hush.soundManager.playBgmusic();
-    }//GEN-LAST:event_jLabel1MouseEntered
+        //Hush.soundManager.playBgmusic();
+    }//GEN-LAST:event_restartMouseEntered
 
-    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+    private void soundsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_soundsMouseEntered
         // TODO add your handling code here:
         
        try {
@@ -123,14 +141,14 @@ private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         } catch (IOException ex) {
             Logger.getLogger(ControlPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jLabel2MouseEntered
+    }//GEN-LAST:event_soundsMouseEntered
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
         // TODO add your handling code here:
         newGame("titleCard");
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_homeMouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void soundsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_soundsMouseClicked
             // TODO add your handling code here:
         
             if (soundManager.isActiveBgmusic()){
@@ -142,7 +160,16 @@ private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 soundManager.playBgmusic();
             }
         test++;
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_soundsMouseClicked
+
+    private void resetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseClicked
+        // TODO add your handling code here:
+        newGame("playCard");
+    }//GEN-LAST:event_resetMouseClicked
+
+    private void resetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_resetMouseEntered
     private void newGame(String cardName){        
         hush = Hush.getHush();
         cardLayout = (CardLayout) hush.getCardLayout();
@@ -152,9 +179,10 @@ private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         gameManager.restartGame();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel home;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel reset;
+    private javax.swing.JLabel restart;
+    private javax.swing.JLabel sounds;
     // End of variables declaration//GEN-END:variables
 }

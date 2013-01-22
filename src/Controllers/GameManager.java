@@ -31,6 +31,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Enumeration;
@@ -77,7 +78,7 @@ public class GameManager {
         stopLight1 = decoyPlay.getStopLight1();
         stopLight2 = decoyPlay.getStopLight2();
         displayLabel = decoyPlay.getJLabel1();
-        executor = Executors.newScheduledThreadPool(15);
+        //executor = Executors.newScheduledThreadPool(15);
         running = false;
         round = 0;
         level = 0;
@@ -101,6 +102,7 @@ public class GameManager {
         running = true;
         
         //for level
+        executor = Executors.newScheduledThreadPool(15);
         for(k = 0; k < 1; k++){
         
             round++;
@@ -383,21 +385,20 @@ public class GameManager {
     
     public void restartGame(){
         //shut down game
+        this.running = false;
         executor.shutdownNow();
-     
         //score back to zero
         //right vectors should empty
         ScoreManager.reset();
         
         //level goes back to zero
-        level = 0;           
+        level = 0;         
         JLabel jLabel1 = Hush.getHush().getDecoyPlay().getJLabel1();
         JLabel stopLight1 = Hush.getHush().getDecoyPlay().getStopLight1();
         JLabel stopLight2 = Hush.getHush().getDecoyPlay().getStopLight2();
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/start.png"))); // NOI18N
         stopLight1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight.png"))); // NOI18N
-        stopLight2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight.png"))); // NOI18N
-        
+        stopLight2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight.png"))); // NOI18
     }
     
     private void setRandomColors(){

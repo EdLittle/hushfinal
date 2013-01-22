@@ -132,7 +132,6 @@ public class DecoyPlay extends javax.swing.JPanel {
         if(!gameManager.isRunning()){
             try {
                 gameManager.startGame();
-                
             } catch (InterruptedException ex) {
                 Logger.getLogger(DecoyPlay.class.getName()).log(Level.SEVERE, null, ex);
             }
