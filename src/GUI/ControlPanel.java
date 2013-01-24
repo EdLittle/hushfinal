@@ -13,7 +13,6 @@ package GUI;
 
 import Controllers.GameManager;
 import Controllers.ScoreManager;
-import Controllers.RoutesManager;
 import Controllers.SoundManager;
 import java.awt.CardLayout;
 import java.io.FileNotFoundException;
@@ -24,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.Icon;
 
 /**
  *
@@ -57,6 +57,7 @@ public class ControlPanel extends javax.swing.JPanel {
         jLabel4.setText("jLabel4");
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        setToolTipText("Home");
         setMinimumSize(new java.awt.Dimension(500, 75));
         setPreferredSize(new java.awt.Dimension(500, 75));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,7 +65,7 @@ public class ControlPanel extends javax.swing.JPanel {
         restart.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         restart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options.png"))); // NOI18N
-        restart.setToolTipText("Back");
+        restart.setToolTipText("Restart");
         restart.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         restart.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         restart.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -78,7 +79,7 @@ public class ControlPanel extends javax.swing.JPanel {
         });
         add(restart, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 50));
 
-        sounds.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/MD-sound.png"))); // NOI18N
+        sounds.setIcon(setSoundsIcon(Hush.soundManager.isActiveBgmusic()));
         sounds.setToolTipText("Mute");
         sounds.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         sounds.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,9 +93,13 @@ public class ControlPanel extends javax.swing.JPanel {
         add(sounds, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 0, -1, -1));
 
         home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/home.png"))); // NOI18N
+        home.setToolTipText("Home");
         home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 homeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                homeMouseEntered(evt);
             }
         });
         add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, -1, -1));
@@ -102,7 +107,7 @@ public class ControlPanel extends javax.swing.JPanel {
         reset.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         reset.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/enter.png"))); // NOI18N
-        reset.setToolTipText("Back");
+        reset.setToolTipText("Reset");
         reset.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         reset.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         reset.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -119,65 +124,77 @@ public class ControlPanel extends javax.swing.JPanel {
 
 private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restartMouseClicked
 // TODO add your handling code here:
+        System.out.println("Restart");        
+        System.out.println("State: loginPanel");
+        Hush.soundManager.playClickOff();
         newGame("loginCard");
 }//GEN-LAST:event_restartMouseClicked
 
-    private void restartMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restartMouseEntered
-        // TODO add your handling code here:
-        //Hush.soundManager.playBgmusic();
-    }//GEN-LAST:event_restartMouseEntered
-
-    private void soundsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_soundsMouseEntered
-        // TODO add your handling code here:
-        
-       try {
-            soundManager = new SoundManager();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(ControlPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(ControlPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(ControlPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ControlPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_soundsMouseEntered
-
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
         // TODO add your handling code here:
+        System.out.println("Home"); 
+        System.out.println("State: titlePage");
+        Hush.soundManager.playClickOff();       
         newGame("titleCard");
     }//GEN-LAST:event_homeMouseClicked
 
     private void soundsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_soundsMouseClicked
             // TODO add your handling code here:
-        
-            if (soundManager.isActiveBgmusic()){
-                System.out.println("Music off!");
-                soundManager.stopBgmusic();
+            if (Hush.soundManager.isActiveBgmusic()){
+                System.out.println("Music off!"); 
+                sounds.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/MD-volume-0.png"))); // NOI18N
+                Hush.soundManager.stopBgmusic();
             }
             else{                
                 System.out.println("Music on!");
-                soundManager.playBgmusic();
+                sounds.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/MD-sound.png"))); // NOI18N
+                Hush.soundManager.playBgmusic();
             }
         test++;
     }//GEN-LAST:event_soundsMouseClicked
 
     private void resetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseClicked
         // TODO add your handling code here:
-        newGame("playCard");
+        System.out.println("Reset");        
+        System.out.println("State: decoyPanel");
+        Hush.soundManager.playClickOff();
+        newGame("decoyPlay1");
     }//GEN-LAST:event_resetMouseClicked
 
     private void resetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_resetMouseEntered
-    private void newGame(String cardName){        
+
+    private void restartMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restartMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_restartMouseEntered
+
+    private void homeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homeMouseEntered
+
+    private void soundsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_soundsMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_soundsMouseEntered
+    
+    private Icon setSoundsIcon(boolean active){
+         if (active){
+            return new javax.swing.ImageIcon(getClass().getResource("/med/MD-sound.png")); // NOI18N
+         }
+         else{                
+            return new javax.swing.ImageIcon(getClass().getResource("/med/MD-volume-0.png")); // NOI18N
+         }
+    }
+    
+    private void newGame(String cardName){     
         hush = Hush.getHush();
         cardLayout = (CardLayout) hush.getCardLayout();
         cardLayout.show(hush.getContentPane(), cardName);
-       // RoutesManager.push("titleCard_routeManager");
         GameManager gameManager = hush.getDecoyPlay().getGameManager();
         gameManager.restartGame();
     }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel home;
     private javax.swing.JLabel jLabel4;

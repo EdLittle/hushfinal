@@ -29,11 +29,13 @@ public class SoundManager {
     public AudioInputStream button;
     public AudioInputStream bgmusic;    
     
+    /*
     public Clip toggleClip;
     public Clip switchClip;
     public Clip staplerClip;
     public Clip clickClip;
     public Clip click2Clip;
+    */
     public Clip clickOffClip;
     public Clip buttonClip;
     public Clip bgmusicClip;
@@ -43,15 +45,18 @@ public class SoundManager {
         //System.out.println(currentDir);
         //in = new FileInputStream("sounds/toggle.wav");
         //as = new AudioStream(in);
-        toggle = AudioSystem.getAudioInputStream(new File("sounds/button.wav").getAbsoluteFile());
+        
+        /*toggle = AudioSystem.getAudioInputStream(new File("sounds/button.wav").getAbsoluteFile());
         stapler = AudioSystem.getAudioInputStream(new File("sounds/stapling paper.wav").getAbsoluteFile());
         switch_ = AudioSystem.getAudioInputStream(new File("sounds/switch.wav").getAbsoluteFile());
         click = AudioSystem.getAudioInputStream(new File("sounds/click.wav").getAbsoluteFile());
         click2 = AudioSystem.getAudioInputStream(new File("sounds/click2.wav").getAbsoluteFile());
-        clickOff = AudioSystem.getAudioInputStream(new File("sounds/click off.wav").getAbsoluteFile());
         button = AudioSystem.getAudioInputStream(new File("sounds/button.wav").getAbsoluteFile());
-        bgmusic = AudioSystem.getAudioInputStream(new File("sounds/bgmusic.wav").getAbsoluteFile());
+       */
+        clickOff = AudioSystem.getAudioInputStream(new File("sounds/click off.wav").getAbsoluteFile());
+         bgmusic = AudioSystem.getAudioInputStream(new File("sounds/bgmusic.wav").getAbsoluteFile());
         
+        /*
         toggleClip = AudioSystem.getClip();
         toggleClip.open(toggle);
         
@@ -65,18 +70,20 @@ public class SoundManager {
         clickClip.open(click);
         
         click2Clip = AudioSystem.getClip();
-        click2Clip.open(click2);
+        click2Clip.open(click2
+        * 
+        buttonClip = AudioSystem.getClip();
+        buttonClip.open(button);
+        
+        */
         
         clickOffClip = AudioSystem.getClip();
         clickOffClip.open(clickOff);
         
-        buttonClip = AudioSystem.getClip();
-        buttonClip.open(button);
-        
         bgmusicClip = AudioSystem.getClip();
         bgmusicClip.open(bgmusic);
     }
-    
+    /*
     public void playToggle(){
         toggleClip.start();
         toggleClip.setFramePosition(0);
@@ -101,7 +108,7 @@ public class SoundManager {
         click2Clip.start();
         click2Clip.setFramePosition(0);
     }
-    
+    */
     public void playClickOff(){
         clickOffClip.start();
         clickOffClip.setFramePosition(0);
@@ -129,8 +136,9 @@ public class SoundManager {
     */
     
     public void stopBgmusic(){
-        bgmusicClip.stop();
-        bgmusicClip.setFramePosition(0);
+        //bgmusicClip.close();
+       bgmusicClip.stop();
+        //this.bgmusicClip.setFramePosition(0);
     }
     
     public boolean isActiveBgmusic(){

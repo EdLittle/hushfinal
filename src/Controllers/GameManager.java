@@ -52,8 +52,6 @@ public class GameManager {
     private JLabel displayLabel;
     private ScheduledExecutorService executor;
     private String colors[] = {"black", "blue", "green", "orange", "yellow", "red", "white"};
-    //private String colors[] = {"black", "black", "black", "black", "black", "white", "white"};
- //   private String shapes[] = {"circle", "square"};
     private String randomColors[] = {"", "", "", "", "" , "", ""};
     private String randomShapes[] = {"circle", "square"};
     private boolean running;
@@ -62,7 +60,6 @@ public class GameManager {
     private int score;
     private Vector colorResult;
     private Vector shapeResult;
-    //private boolean roundFinished;
     private Future gameTask;
     private SoundManager soundManager;
     private ScoreManager scoreManager;
@@ -101,7 +98,7 @@ public class GameManager {
         int i, j, k;
         running = true;
         
-        //for level
+        //for level        
         executor = Executors.newScheduledThreadPool(15);
         for(k = 0; k < 1; k++){
         
@@ -302,14 +299,12 @@ public class GameManager {
                                 correct = detector.isQuadPresent();
                             }
                             
-                            
                             if(correct) {
                                 System.out.println("Correct " + randomShapes[round-1]);                                               
                                 getFuture().cancel(true);
                                 //soundManager.playCorrect();
                                 scoreManager.addScore(randomShapes[round-1], level);
                             }
-                            
 
                             if((correct) || (tries == NUMBER_OF_TRIES)){
                                 getFuture().cancel(true);
@@ -322,7 +317,6 @@ public class GameManager {
                                     
                                     CardLayout cardLayout = (CardLayout) hush.getCardLayout();
                                     cardLayout.show(hush.getContentPane(), "scoreCard");
-                                    
                                     
                                     shapeResult = scoreManager.getRightShapes();
                                     Enumeration e = shapeResult.elements();
@@ -369,7 +363,6 @@ public class GameManager {
             System.out.println("random " + random);
             if(random == 0){
                 System.out.println("Correct!");
-                //roundFinished = true;
                 break;
             }
             Thread.sleep(1000);

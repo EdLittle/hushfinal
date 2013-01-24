@@ -10,7 +10,7 @@
  */
 package GUI;
 
-import Controllers.RoutesManager;
+import Controllers.SoundManager;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -22,6 +22,7 @@ import java.awt.FlowLayout;
 public class TitlePage extends javax.swing.JPanel {
     private static Color defaultFontColor = new Color(153, 153, 153);
     private Hush hush;
+    private SoundManager soundManager;
     
     /** Creates new form TitlePage */
     public TitlePage() {
@@ -213,7 +214,6 @@ private void optionsIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST
 // TODO add your handling code here:
     optionsIcon.setForeground(Color.black);
     optionsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options-hov.png")));
-    System.out.println("Database");
     //Hush.soundManager.playClick();
 }//GEN-LAST:event_optionsIconMouseEntered
 
@@ -238,7 +238,7 @@ private void aboutIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
 private void quitIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quitIconMouseClicked
 // TODO add your handling code here:
-    //Hush.soundManager.playToggle();
+    Hush.soundManager.playClickOff();
     System.exit(0);
 }//GEN-LAST:event_quitIconMouseClicked
 
@@ -260,8 +260,8 @@ private void playIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     hush = Hush.getHush();
     CardLayout cardLayout = (CardLayout) hush.getCardLayout();
     cardLayout.show(hush.getContentPane(), "loginCard");
-    RoutesManager.push("loginCard");
-    //Hush.soundManager.playToggle();
+    System.out.println("State: loginPanel");
+    Hush.soundManager.playClickOff();
 }//GEN-LAST:event_playIconMouseClicked
 
 private void aboutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutIconMouseClicked
@@ -269,13 +269,12 @@ private void aboutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:e
     hush = Hush.getHush();
     CardLayout cardLayout = (CardLayout) hush.getCardLayout();
     cardLayout.show(hush.getContentPane(), "aboutCard");
-    RoutesManager.push("aboutCard");
-    //Hush.soundManager.playToggle();
+    Hush.soundManager.playClickOff();
 }//GEN-LAST:event_aboutIconMouseClicked
 
     private void optionsIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseClicked
         // TODO add your handling code here:
-        //Hush.soundManager.playToggle();
+        Hush.soundManager.playClickOff();
     }//GEN-LAST:event_optionsIconMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

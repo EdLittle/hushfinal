@@ -35,7 +35,6 @@ public class LoginPanel extends javax.swing.JPanel {
     public void setNames(String[] users){
         this.users = users;
     }
-
     
     public void assemblePanels(){
         int counter = 0;
@@ -51,15 +50,11 @@ public class LoginPanel extends javax.swing.JPanel {
             if(counter < length){
                 namePanels[counter].setDisplayName(users[counter]);
                 cardLayout.show(panels[counter], "card3");
-                
             }
             else{
                 cardLayout.show(panels[counter], "card2");
-                
             }
-            
         }
-
         NamePanel.setStaticFields(new JPanel[]{nameHolder1, nameHolder2, nameHolder3, nameHolder4, nameHolder5, nameHolder6, nameHolder7, nameHolder8});
         FieldPanel.setStaticFields(new JPanel[]{nameHolder1, nameHolder2, nameHolder3, nameHolder4, nameHolder5, nameHolder6, nameHolder7, nameHolder8});
     }
