@@ -35,7 +35,6 @@ public class ControlPanel extends javax.swing.JPanel {
     public SoundManager soundManager;
     private CardLayout cardLayout;
     private int test = 0;
-    private String state ="";
     /** Creates new form ControlPanel */
     public ControlPanel() {
         initComponents();        
@@ -126,7 +125,7 @@ public class ControlPanel extends javax.swing.JPanel {
 
 private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restartMouseClicked
 // TODO add your handling code here:
-        System.out.println("Restart");        
+        System.out.println("Restart");       
         if (enableIcon(1)){
             newGame("loginCard");
         }
@@ -138,7 +137,7 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         // TODO add your handling code here:
         System.out.println("Home"); 
         
-        if (enableIcon(1))
+        if (enableIcon(2))
             newGame("titleCard"); 
         else {
             hush = Hush.getHush();
@@ -202,14 +201,9 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }
     */
     private void newGame(String cardName){     
-        System.out.println("State: " +  RoutesManager.currState());
-        Hush.soundManager.playClickOff();
-        RoutesManager.push(cardName);        
         String bogusCardName = RoutesManager.pop();
-        
         hush = Hush.getHush();
-        cardLayout = (CardLayout) hush.getCardLayout();        
-        cardLayout.show(hush.getContentPane(), cardName);
+        hush.navigate(cardName);
         GameManager gameManager = hush.getDecoyPlay().getGameManager();
         gameManager.restartGame();
     }
@@ -222,7 +216,7 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             return false;            
         }
         //restart
-        else if ((state == 2)&&(cardName.equalsIgnoreCase("aboutCard"))) {
+        else  if ((state == 2)&&(cardName.equalsIgnoreCase("aboutCard") || cardName.equalsIgnoreCase("loginCard") || cardName.equalsIgnoreCase("playCard"))) {
             return false;            
         }
         else 

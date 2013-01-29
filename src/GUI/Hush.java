@@ -143,6 +143,16 @@ public class Hush extends javax.swing.JFrame {
         return getContentPane().getLayout();
     }
     
+    public void navigate(String cardName){
+       System.out.println("State: " +  RoutesManager.currState() + " to " + cardName);
+       hush = Hush.getHush();
+       CardLayout cardLayout = (CardLayout) hush.getCardLayout();
+       cardLayout.show(hush.getContentPane(), cardName);
+       RoutesManager.push(cardName);
+       Hush.soundManager.playClickOff();
+    
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.TitlePage titlePage;
     // End of variables declaration//GEN-END:variables

@@ -25,6 +25,7 @@ import javax.swing.JPanel;
  * @author FREAK
  */
 public class NamePanel extends javax.swing.JPanel {
+    private Hush hush;
     int number;
     public static String[] users;
     static JPanel[] panels;
@@ -103,14 +104,8 @@ public class NamePanel extends javax.swing.JPanel {
         } catch (IOException ex) {
             Logger.getLogger(NamePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        Hush hush = Hush.getHush();
-        CardLayout cardLayout = (CardLayout) hush.getCardLayout();
-        cardLayout.show(hush.getContentPane(), "playCard");
-        
-        System.out.println("State: " +  RoutesManager.currState());
-        Hush.soundManager.playClickOff();
-        RoutesManager.push("playCard");   
+        hush = Hush.getHush();
+        hush.navigate("playCard");   
     
         try {
             hush.getDecoyPlay().startGame();

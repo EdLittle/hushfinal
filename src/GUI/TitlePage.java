@@ -260,27 +260,30 @@ private void quitIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
 
 private void playIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseClicked
 // TODO add your handling code here:
-    enterCard("loginCard");
+    hush = Hush.getHush();
+    hush.navigate("loginCard");
 }//GEN-LAST:event_playIconMouseClicked
 
 private void aboutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutIconMouseClicked
 // TODO add your handling code here:
-    enterCard("aboutCard");
+    hush = Hush.getHush();
+    hush.navigate("aboutCard");
 }//GEN-LAST:event_aboutIconMouseClicked
 
     private void optionsIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseClicked
         // TODO add your handling code here:
-        enterCard("aboutCard");
-    }//GEN-LAST:event_optionsIconMouseClicked
-
-    private void enterCard(String cardName){
         hush = Hush.getHush();
+        hush.navigate("aboutCard");
+    }//GEN-LAST:event_optionsIconMouseClicked
+/*
+    private void enterCard(String cardName){
         CardLayout cardLayout = (CardLayout) hush.getCardLayout();
         cardLayout.show(hush.getContentPane(), cardName);
         RoutesManager.push(cardName);
         System.out.println("State: " +  RoutesManager.currState() + " to" + cardName);
         Hush.soundManager.playClickOff();
     }
+    * */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel aboutIcon;
     private javax.swing.JPanel jPanel1;

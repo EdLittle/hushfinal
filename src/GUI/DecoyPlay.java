@@ -12,6 +12,8 @@ package GUI;
 
 import Controllers.CameraFeed;
 import Controllers.GameManager;
+import Controllers.RoutesManager;
+import java.awt.CardLayout;
 import java.awt.Graphics;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -27,7 +29,8 @@ public class DecoyPlay extends javax.swing.JPanel {
     //public GameplayManager gameplayManager;
     public GameManager gameManager;
     //private CameraCapture camera;
-    private CameraFeed camera;
+    private CameraFeed camera;    
+    private Hush hush;
     /** Creates new form DecoyPlay */
     public DecoyPlay() throws Exception{
         initComponents();
@@ -131,6 +134,8 @@ public class DecoyPlay extends javax.swing.JPanel {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         if(!gameManager.isRunning()){
             try {
+                //hush = Hush.getHush();
+                //hush.navigate("playCard");
                 gameManager.startGame();
             } catch (InterruptedException ex) {
                 Logger.getLogger(DecoyPlay.class.getName()).log(Level.SEVERE, null, ex);
