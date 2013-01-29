@@ -12,6 +12,7 @@ package GUI;
 
 import Controllers.ScoreManager;
 import Controllers.DatabaseManager;
+import Controllers.RoutesManager;
 import java.awt.CardLayout;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -89,7 +90,7 @@ public class NamePanel extends javax.swing.JPanel {
         //name.setText("");
         CardLayout cardLayout = (CardLayout) panels[this.number].getLayout();
         cardLayout.show(panels[number], "card2");
-        
+               
     }//GEN-LAST:event_buttonMouseClicked
 
     private void nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameMouseClicked
@@ -106,6 +107,11 @@ public class NamePanel extends javax.swing.JPanel {
         Hush hush = Hush.getHush();
         CardLayout cardLayout = (CardLayout) hush.getCardLayout();
         cardLayout.show(hush.getContentPane(), "playCard");
+        
+        System.out.println("State: " +  RoutesManager.currState());
+        Hush.soundManager.playClickOff();
+        RoutesManager.push("playCard");   
+    
         try {
             hush.getDecoyPlay().startGame();
         } catch (FileNotFoundException ex) {

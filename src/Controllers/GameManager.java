@@ -4,10 +4,7 @@
  */
 package Controllers;
 
-import GUI.DecoyPlay;
-import GUI.Hush;
-import GUI.ImagePanel;
-import GUI.ScoreSummary;
+import GUI.*;
 import ij.ImagePlus;
 import java.awt.image.BufferedImage;
 import java.util.Vector;
@@ -378,11 +375,13 @@ public class GameManager {
     
     public void restartGame(){
         //shut down game
-        this.running = false;
-        executor.shutdownNow();
+        //this.running = false;
+        if (running)
+            executor.shutdownNow();
         //score back to zero
         //right vectors should empty
         ScoreManager.reset();
+        System.out.println("New game!!!!!");
         
         //level goes back to zero
         level = 0;         

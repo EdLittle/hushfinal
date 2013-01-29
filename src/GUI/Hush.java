@@ -12,6 +12,7 @@ package GUI;
 
 import Controllers.SoundManager;
 import Controllers.DatabaseManager;
+import Controllers.RoutesManager;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.LayoutManager;
@@ -38,8 +39,10 @@ public class Hush extends javax.swing.JFrame {
     /** Creates new form Hush */
     public Hush() throws Exception{
         soundManager = new SoundManager();
-        System.out.println("State: titlePage");
-        Hush.soundManager.playBgmusic();
+        RoutesManager.push("titleCard");
+        System.out.println("State: " +  RoutesManager.currState());
+        
+        //Hush.soundManager.playBgmusic();
         initComponents();
         addOtherCards();
         DatabaseManager databaseManager = new DatabaseManager();
