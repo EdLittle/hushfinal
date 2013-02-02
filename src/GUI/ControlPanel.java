@@ -165,7 +165,12 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         // TODO add your handling code here:
         System.out.println("Reset");        
         if (enableIcon(1)){
-            newGame("playCard");
+            newGame("decoyCard");
+            try {
+                hush.getDecoyPlay().startGame();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ControlPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else            
             System.out.println("Cannot Reset");       
