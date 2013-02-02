@@ -163,6 +163,7 @@ public class GameManager {
                 }
             
             }, 13, TimeUnit.SECONDS);
+             
             executor.schedule(new Runnable(){
 
                 @Override
@@ -237,6 +238,7 @@ public class GameManager {
                                     System.out.println("Total Color Score: " + colorResult.size());
                                     round = 0;
                                     level++;
+                                    displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/nextlevel.png")));
                                     startGame();
                                 }
                                 //roundFinished = true;
