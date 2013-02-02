@@ -142,7 +142,7 @@ public class GameManager {
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/5.png")));                
                 }
             
-            }, 11, TimeUnit.SECONDS);
+            }, 10, TimeUnit.SECONDS);
              
              executor.schedule(new Runnable(){
 
@@ -152,7 +152,7 @@ public class GameManager {
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/4.png")));                
                 }
             
-            }, 12, TimeUnit.SECONDS);
+            }, 11, TimeUnit.SECONDS);
                          
              executor.schedule(new Runnable(){
 
@@ -162,8 +162,17 @@ public class GameManager {
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-green.png")));                
                 }
             
+            }, 12, TimeUnit.SECONDS);
+            
+            executor.schedule(new Runnable(){
+
+                @Override
+                public void run() {
+                    stopLight1.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-orange.png")));
+                    stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-orange.png")));
+                }
+            
             }, 13, TimeUnit.SECONDS);
-             
             executor.schedule(new Runnable(){
 
                 @Override
