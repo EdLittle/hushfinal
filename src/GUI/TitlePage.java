@@ -52,6 +52,7 @@ public class TitlePage extends javax.swing.JPanel {
         quitIcon = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(650, 550));
         setLayout(new java.awt.GridBagLayout());
 
@@ -81,10 +82,13 @@ public class TitlePage extends javax.swing.JPanel {
 
         add(jPanel1, new java.awt.GridBagConstraints());
 
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setMaximumSize(new java.awt.Dimension(580, 125));
         jPanel2.setMinimumSize(new java.awt.Dimension(580, 125));
         jPanel2.setPreferredSize(new java.awt.Dimension(580, 125));
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -181,6 +185,8 @@ public class TitlePage extends javax.swing.JPanel {
         });
         jPanel2.add(quitIcon);
 
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -200,81 +206,81 @@ public class TitlePage extends javax.swing.JPanel {
         add(jPanel2, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-private void playIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseEntered
+    private void quitIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quitIconMouseExited
 // TODO add your handling code here:
-    playIcon.setForeground(Color.black);
-    playIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/controls-alt-2-hov.png")));
-    //Hush.soundManager.playClick();
-}//GEN-LAST:event_playIconMouseEntered
+        quitIcon.setForeground(defaultFontColor);
+        quitIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/power-standby.png")));
+    }//GEN-LAST:event_quitIconMouseExited
 
-private void playIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseExited
+    private void quitIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quitIconMouseEntered
 // TODO add your handling code here:
-    playIcon.setForeground(defaultFontColor);
-    playIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/controls-alt-2.png")));
-}//GEN-LAST:event_playIconMouseExited
+        quitIcon.setForeground(Color.black);
+        quitIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/power-standby-hov.png")));
+        //Hush.soundManager.playClick();
+    }//GEN-LAST:event_quitIconMouseEntered
 
-private void optionsIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseEntered
+    private void quitIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quitIconMouseClicked
 // TODO add your handling code here:
-    optionsIcon.setForeground(Color.black);
-    optionsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options-hov.png")));
-    //Hush.soundManager.playClick();
-}//GEN-LAST:event_optionsIconMouseEntered
+        Hush.soundManager.playClickOff();
+        System.exit(0);
+    }//GEN-LAST:event_quitIconMouseClicked
 
-private void optionsIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseExited
+    private void aboutIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutIconMouseExited
 // TODO add your handling code here:
-    optionsIcon.setForeground(defaultFontColor);
-    optionsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options.png")));
-}//GEN-LAST:event_optionsIconMouseExited
+        aboutIcon.setForeground(defaultFontColor);
+        aboutIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/about.png")));
+    }//GEN-LAST:event_aboutIconMouseExited
 
-private void aboutIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutIconMouseEntered
+    private void aboutIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutIconMouseEntered
 // TODO add your handling code here:
-    aboutIcon.setForeground(Color.black);
-    aboutIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/about-hov.png")));
-    //Hush.soundManager.playClick();
-}//GEN-LAST:event_aboutIconMouseEntered
+        aboutIcon.setForeground(Color.black);
+        aboutIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/about-hov.png")));
+        //Hush.soundManager.playClick();
+    }//GEN-LAST:event_aboutIconMouseEntered
 
-private void aboutIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutIconMouseExited
+    private void aboutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutIconMouseClicked
 // TODO add your handling code here:
-    aboutIcon.setForeground(defaultFontColor);
-    aboutIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/about.png")));
-}//GEN-LAST:event_aboutIconMouseExited
+        hush = Hush.getHush();
+        hush.navigate("aboutCard");
+    }//GEN-LAST:event_aboutIconMouseClicked
 
-private void quitIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quitIconMouseClicked
+    private void optionsIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseExited
 // TODO add your handling code here:
-    Hush.soundManager.playClickOff();
-    System.exit(0);
-}//GEN-LAST:event_quitIconMouseClicked
+        optionsIcon.setForeground(defaultFontColor);
+        optionsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options.png")));
+    }//GEN-LAST:event_optionsIconMouseExited
 
-private void quitIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quitIconMouseEntered
+    private void optionsIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseEntered
 // TODO add your handling code here:
-    quitIcon.setForeground(Color.black);
-    quitIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/power-standby-hov.png")));
-    //Hush.soundManager.playClick();
-}//GEN-LAST:event_quitIconMouseEntered
-
-private void quitIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quitIconMouseExited
-// TODO add your handling code here:
-    quitIcon.setForeground(defaultFontColor);
-    quitIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/power-standby.png")));
-}//GEN-LAST:event_quitIconMouseExited
-
-private void playIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseClicked
-// TODO add your handling code here:
-    hush = Hush.getHush();
-    hush.navigate("loginCard");
-}//GEN-LAST:event_playIconMouseClicked
-
-private void aboutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutIconMouseClicked
-// TODO add your handling code here:
-    hush = Hush.getHush();
-    hush.navigate("aboutCard");
-}//GEN-LAST:event_aboutIconMouseClicked
+        optionsIcon.setForeground(Color.black);
+        optionsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options-hov.png")));
+        //Hush.soundManager.playClick();
+    }//GEN-LAST:event_optionsIconMouseEntered
 
     private void optionsIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseClicked
         // TODO add your handling code here:
         hush = Hush.getHush();
         hush.navigate("aboutCard");
     }//GEN-LAST:event_optionsIconMouseClicked
+
+    private void playIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseExited
+// TODO add your handling code here:
+        playIcon.setForeground(defaultFontColor);
+        playIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/controls-alt-2.png")));
+    }//GEN-LAST:event_playIconMouseExited
+
+    private void playIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseEntered
+// TODO add your handling code here:
+        playIcon.setForeground(Color.black);
+        playIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/controls-alt-2-hov.png")));
+        //Hush.soundManager.playClick();
+    }//GEN-LAST:event_playIconMouseEntered
+
+    private void playIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseClicked
+// TODO add your handling code here:
+        hush = Hush.getHush();
+        hush.navigate("loginCard");
+    }//GEN-LAST:event_playIconMouseClicked
 /*
     private void enterCard(String cardName){
         CardLayout cardLayout = (CardLayout) hush.getCardLayout();

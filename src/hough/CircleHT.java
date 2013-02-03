@@ -53,7 +53,7 @@ public class CircleHT implements PlugInFilter {
 
     public int setup(String arg, ImagePlus imp) {
         if (arg.equals("about")) {
-            showAbout();
+     //       showAbout();
             return DONE;
         }
         return DOES_8G+DOES_STACKS+SUPPORTS_MASKING;
@@ -77,39 +77,6 @@ public class CircleHT implements PlugInFilter {
         height = r.height;
         offset = ip.getWidth();
 
-        if( readParameters() ) { // Show a Dialog Window for user input of
-            // radius and maxCircles
-
-            houghTransform();
-
-            // Create image View for Hough Transform.
-            ImageProcessor newip = new ByteProcessor(width, height);
-            byte[] newpixels = (byte[])newip.getPixels();
-            createHoughPixels(newpixels);
-
-            // Create image View for Marked Circles.
-            ImageProcessor circlesip = new ByteProcessor(width, height);
-            byte[] circlespixels = (byte[])circlesip.getPixels();
-
-            // Mark the center of the found circles in a new image
-            if(useThreshold)
-                getCenterPointsByThreshold(threshold);
-
-        }
-    }
-
-    void showAbout() {
-        IJ.showMessage("About Circles_...",
-                       "This plugin finds n circles\n" +
-                       "using a basic HoughTransform operator\n." +
-                       "For better results apply an Edge Detector\n" +
-                       "filter and a binarizer before using this plugin\n"+
-                       "\nAuthor: Hemerson Pistori (pistori@ec.ucdb.br)"
-                      );
-    }
-
-    boolean readParameters() {
-
         radiusMin = 50;
         radiusMax = 200;
         radiusInc = 2;
@@ -117,25 +84,11 @@ public class CircleHT implements PlugInFilter {
         maxCircles = 0;
         threshold = 95;
         useThreshold = true;
-        return(true);
-    }
-
-    /** The parametric equation for a circle centered at (a,b) with
-        radius r is:
-
-    a = x - r*cos(theta)
-    b = y - r*sin(theta)
-
-    In order to speed calculations, we first construct a lookup
-    table (lut) containing the rcos(theta) and rsin(theta) values, for
-    theta varying from 0 to 2*PI with increments equal to
-    1/8*r. As of now, a fixed increment is being used for all
-    different radius (1/8*radiusMin). This should be corrected in
-    the future.
-
-    Return value = Number of angles for each radius
-       
-    */
+        
+        houghTransform();
+        getCenterPointsByThreshold(threshold);
+     }
+            
     private int buildLookUpTable() {
 
         int i = 0;
@@ -187,23 +140,111 @@ public class CircleHT implements PlugInFilter {
         }
     }
 
-    // Convert Values in Hough Space to an 8-Bit Image Space.
-    private void createHoughPixels (byte houghPixels[]) {
-        double d = -1D;
-        for(int j = 0; j < height; j++) {
-            for(int k = 0; k < width; k++)
-                if(houghValues[k][j][0] > d) {
-                    d = houghValues[k][j][0];
-                }
-        }
+    public Point nthMaxCenter (int i) {
+        return centerPoint[i];
+    }
 
-        for(int l = 0; l < height; l++) {
-            for(int i = 0; i < width; i++) {
-                houghPixels[i + l * width] = (byte) Math.round ((houghValues[i][l][0] * 255D) / d);
+    /** Search circles having values in the hough space higher than a threshold
+    @param threshold The threshold used to select the higher point of Hough Space
+    */
+    private void getCenterPointsByThreshold (int threshold) {
+
+        centerPoint = new Point[vectorMaxSize];
+        int xMax = 0;
+        int yMax = 0;
+        int countCircles = 0;
+
+        for(int radius = radiusMin;radius <= radiusMax;radius = radius+radiusInc) {
+            int indexR = (radius-radiusMin)/radiusInc;
+            for(int y = 0; y < height; y++) {
+                for(int x = 0; x < width; x++) {
+                    if(houghValues[x][y][indexR] > threshold) {
+                        if(countCircles < vectorMaxSize) {
+                            centerPoint[countCircles] = new Point (x, y);                      
+                          //  clearNeighbours(xMax,yMax,radius);
+                            ++countCircles;
+                             System.out.println("Found circle!!");
+                             break;
+       
+                        } else
+                            break;
+                    }
+                }
+            }
+        }
+        maxCircles = countCircles;
+    }
+
+
+    public boolean isDetected() {
+        if (maxCircles>0)
+                return true;
+        else    
+                return false;
+    }
+}
+     /** Clear, from the Hough Space, all the counter that are near (radius/2) a previously found circle C.
+        
+    @param x The x coordinate of the circle C found.
+    @param x The y coordinate of the circle C found.
+    @param x The radius of the circle C found.
+    
+    private void clearNeighbours(int x,int y, int radius) {
+
+        // The following code just clean the points around the center of the circle found.
+
+        double halfRadius = radius / 2.0F;
+	double halfSquared = halfRadius*halfRadius;
+
+        int y1 = (int)Math.floor ((double)y - halfRadius);
+        int y2 = (int)Math.ceil ((double)y + halfRadius) + 1;
+        int x1 = (int)Math.floor ((double)x - halfRadius);
+        int x2 = (int)Math.ceil ((double)x + halfRadius) + 1;
+
+        if(y1 < 0)
+            y1 = 0;
+        if(y2 > height)
+            y2 = height;
+        if(x1 < 0)
+            x1 = 0;
+        if(x2 > width)
+            x2 = width;
+
+        for(int r = radiusMin;r <= radiusMax;r = r+radiusInc) {
+            int indexR = (r-radiusMin)/radiusInc;
+            for(int i = y1; i < y2; i++) {
+                for(int j = x1; j < x2; j++) {	      	     
+                    if(Math.pow (j - x, 2D) + Math.pow (i - y, 2D) < halfSquared) {
+                        houghValues[j][i][indexR] = 0.0D;
+                    }
+                }
             }
         }
     }
-/*
+
+}
+
+
+*/
+            /* Create image View for Hough Transform.
+            ImageProcessor newip = new ByteProcessor(width, height);
+            byte[] newpixels = (byte[])newip.getPixels();
+            createHoughPixels(newpixels);
+
+            // Create image View for Marked Circles.
+        //    ImageProcessor circlesip = new ByteProcessor(width, height);
+          //  byte[] circlespixels = (byte[])circlesip.getPixels();
+
+            // Mark the center of the found circles in a new image
+         //   if(useThreshold)
+                
+
+     //   }
+    }
+    */
+
+   
+    /*
 	// Draw the circles found in the original image.
 	public void drawCircles(byte[] circlespixels) {
 		
@@ -270,7 +311,6 @@ public class CircleHT implements PlugInFilter {
 			}
 		}
 	}
-*/
     private boolean outOfBounds(int y,int x) {
         if(x >= width)
             return(true);
@@ -283,83 +323,55 @@ public class CircleHT implements PlugInFilter {
         return(false);
     }
 
-    public Point nthMaxCenter (int i) {
-        return centerPoint[i];
+*/
+
+
+/**
+    boolean readParameters() {
+
+        radiusMin = 50;
+        radiusMax = 200;
+        radiusInc = 2;
+        depth = ((radiusMax-radiusMin)/radiusInc)+1;
+        maxCircles = 0;
+        threshold = 95;
+        useThreshold = true;
+        return(true);
     }
 
-    /** Search circles having values in the hough space higher than a threshold
+     The parametric equation for a circle centered at (a,b) with
+        radius r is:
 
-    @param threshold The threshold used to select the higher point of Hough Space
+    a = x - r*cos(theta)
+    b = y - r*sin(theta)
+
+    In order to speed calculations, we first construct a lookup
+    table (lut) containing the rcos(theta) and rsin(theta) values, for
+    theta varying from 0 to 2*PI with increments equal to
+    1/8*r. As of now, a fixed increment is being used for all
+    different radius (1/8*radiusMin). This should be corrected in
+    the future.
+
+    Return value = Number of angles for each radius
+       
     */
-    private void getCenterPointsByThreshold (int threshold) {
 
-        centerPoint = new Point[vectorMaxSize];
-        int xMax = 0;
-        int yMax = 0;
-        int countCircles = 0;
 
-        for(int radius = radiusMin;radius <= radiusMax;radius = radius+radiusInc) {
-            int indexR = (radius-radiusMin)/radiusInc;
-            for(int y = 0; y < height; y++) {
-                for(int x = 0; x < width; x++) {
-                    if(houghValues[x][y][indexR] > threshold) {
-                        if(countCircles < vectorMaxSize) {
-                            centerPoint[countCircles] = new Point (x, y);
-                            clearNeighbours(xMax,yMax,radius);
-                            ++countCircles;
-                        } else
-                            break;
-                    }
+    /* Convert Values in Hough Space to an 8-Bit Image Space.
+    private void createHoughPixels (byte houghPixels[]) {
+        double d = -1D;
+        for(int j = 0; j < height; j++) {
+            for(int k = 0; k < width; k++)
+                if(houghValues[k][j][0] > d) {
+                    d = houghValues[k][j][0];
                 }
-            }
         }
-        maxCircles = countCircles;
-    }
 
-    /** Clear, from the Hough Space, all the counter that are near (radius/2) a previously found circle C.
-        
-    @param x The x coordinate of the circle C found.
-    @param x The y coordinate of the circle C found.
-    @param x The radius of the circle C found.
-    */
-    private void clearNeighbours(int x,int y, int radius) {
-
-        // The following code just clean the points around the center of the circle found.
-
-        double halfRadius = radius / 2.0F;
-	double halfSquared = halfRadius*halfRadius;
-
-        int y1 = (int)Math.floor ((double)y - halfRadius);
-        int y2 = (int)Math.ceil ((double)y + halfRadius) + 1;
-        int x1 = (int)Math.floor ((double)x - halfRadius);
-        int x2 = (int)Math.ceil ((double)x + halfRadius) + 1;
-
-        if(y1 < 0)
-            y1 = 0;
-        if(y2 > height)
-            y2 = height;
-        if(x1 < 0)
-            x1 = 0;
-        if(x2 > width)
-            x2 = width;
-
-        for(int r = radiusMin;r <= radiusMax;r = r+radiusInc) {
-            int indexR = (r-radiusMin)/radiusInc;
-            for(int i = y1; i < y2; i++) {
-                for(int j = x1; j < x2; j++) {	      	     
-                    if(Math.pow (j - x, 2D) + Math.pow (i - y, 2D) < halfSquared) {
-                        houghValues[j][i][indexR] = 0.0D;
-                    }
-                }
+        for(int l = 0; l < height; l++) {
+            for(int i = 0; i < width; i++) {
+                houghPixels[i + l * width] = (byte) Math.round ((houghValues[i][l][0] * 255D) / d);
             }
         }
     }
-
-    public boolean isDetected() {
-        if (maxCircles>0)
-                return true;
-        else    
-                return false;
-    }
-
-}
+    * 
+    */

@@ -61,6 +61,7 @@ public class NamePanel extends javax.swing.JPanel {
         name = new javax.swing.JLabel();
         button = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 204, 204));
         setMaximumSize(new java.awt.Dimension(250, 115));
         setMinimumSize(new java.awt.Dimension(250, 115));
         setPreferredSize(new java.awt.Dimension(250, 115));

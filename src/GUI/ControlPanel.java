@@ -57,6 +57,7 @@ public class ControlPanel extends javax.swing.JPanel {
 
         jLabel4.setText("jLabel4");
 
+        setBackground(new java.awt.Color(204, 204, 204));
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setToolTipText("Home");
         setMinimumSize(new java.awt.Dimension(500, 75));
