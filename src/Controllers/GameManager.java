@@ -75,7 +75,7 @@ public class GameManager {
         //executor = Executors.newScheduledThreadPool(15);
         running = false;
         round = 0;
-        level = 0;
+        level = 1;
         bandsAnalyzer = new BandsAnalyzer();
         scoreManager = new ScoreManager();       
         camera = decoyPlay.getCamera();
@@ -224,7 +224,6 @@ public class GameManager {
 
                             if((correct) || (tries == NUMBER_OF_TRIES)){
                                 getFuture().cancel(true);
-
                                 if(round < 7){
                                     startGame();
                                 } 

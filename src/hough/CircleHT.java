@@ -175,7 +175,6 @@ public class CircleHT implements PlugInFilter {
         maxCircles = countCircles;
     }
 
-
     public boolean isDetected() {
         if (maxCircles>0)
                 return true;

@@ -57,7 +57,6 @@ public class ControlPanel extends javax.swing.JPanel {
 
         jLabel4.setText("jLabel4");
 
-        setBackground(new java.awt.Color(204, 204, 204));
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setToolTipText("Home");
         setMinimumSize(new java.awt.Dimension(500, 75));
@@ -138,12 +137,13 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         // TODO add your handling code here:
         System.out.println("Home"); 
         
-        if (enableIcon(2))
-            newGame("titleCard"); 
-        else {
+        if (enableIcon(2)) {            
             hush = Hush.getHush();
             cardLayout = (CardLayout) hush.getCardLayout();        
             cardLayout.show(hush.getContentPane(), "titleCard");
+        }
+        else {            
+            newGame("titleCard"); 
         }    
     }//GEN-LAST:event_homeMouseClicked
 
@@ -166,7 +166,7 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         // TODO add your handling code here:
         System.out.println("Reset");        
         if (enableIcon(1)){
-            newGame("decoyCard");
+            newGame("playCard");
             try {
                 hush.getDecoyPlay().startGame();
             } catch (FileNotFoundException ex) {
@@ -221,10 +221,9 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         if ((state == 1)&&(cardName.equalsIgnoreCase("aboutCard") || cardName.equalsIgnoreCase("loginCard"))) {
             return false;            
         }
-        //restart
-        else  if ((state == 2)&&(cardName.equalsIgnoreCase("aboutCard") || cardName.equalsIgnoreCase("loginCard") || cardName.equalsIgnoreCase("playCard"))) {
+        //home
+        else  if ((state == 2)&&(cardName.equalsIgnoreCase("playCard")))
             return false;            
-        }
         else 
             return true;
     }
