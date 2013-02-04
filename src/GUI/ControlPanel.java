@@ -219,7 +219,7 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         
         //reset
         if ((state == 1)&&(cardName.equalsIgnoreCase("aboutCard") || cardName.equalsIgnoreCase("loginCard"))) {
-            return false;            
+           return false;            
         }
         //home
         else  if ((state == 2)&&(cardName.equalsIgnoreCase("playCard")))

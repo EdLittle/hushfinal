@@ -74,7 +74,7 @@ public class CircleHT implements PlugInFilter {
         offx = r.x;
         offy = r.y;
         width = r.width;
-        height = r.height;
+        height = r.height;                           
         offset = ip.getWidth();
 
         radiusMin = 50;
@@ -107,9 +107,13 @@ public class CircleHT implements PlugInFilter {
                     lut[0][i][indexR] = rcos;
                     lut[1][i][indexR] = rsin;
                     i++;
+                    
+                          //   System.out.println("lookup!");
                 }
             }
         }
+                         //    System.out.println("I: " + i);
+                
         return i;
     }
 
@@ -154,6 +158,7 @@ public class CircleHT implements PlugInFilter {
         int yMax = 0;
         int countCircles = 0;
 
+        Rihanna:
         for(int radius = radiusMin;radius <= radiusMax;radius = radius+radiusInc) {
             int indexR = (radius-radiusMin)/radiusInc;
             for(int y = 0; y < height; y++) {
@@ -161,11 +166,10 @@ public class CircleHT implements PlugInFilter {
                     if(houghValues[x][y][indexR] > threshold) {
                         if(countCircles < vectorMaxSize) {
                             centerPoint[countCircles] = new Point (x, y);                      
-                          //  clearNeighbours(xMax,yMax,radius);
+                           // clearNeighbours(xMax,yMax,radius);
                             ++countCircles;
                              System.out.println("Found circle!!");
-                             break;
-       
+                             break Rihanna;       
                         } else
                             break;
                     }
@@ -173,6 +177,8 @@ public class CircleHT implements PlugInFilter {
             }
         }
         maxCircles = countCircles;
+        System.out.println("circle! " + countCircles);
+                             
     }
 
     public boolean isDetected() {
@@ -181,13 +187,14 @@ public class CircleHT implements PlugInFilter {
         else    
                 return false;
     }
+    /*
 }
-     /** Clear, from the Hough Space, all the counter that are near (radius/2) a previously found circle C.
+     * Clear, from the Hough Space, all the counter that are near (radius/2) a previously found circle C.
         
     @param x The x coordinate of the circle C found.
     @param x The y coordinate of the circle C found.
     @param x The radius of the circle C found.
-    
+    */
     private void clearNeighbours(int x,int y, int radius) {
 
         // The following code just clean the points around the center of the circle found.
@@ -220,11 +227,11 @@ public class CircleHT implements PlugInFilter {
             }
         }
     }
-
+    
 }
 
 
-*/
+
             /* Create image View for Hough Transform.
             ImageProcessor newip = new ByteProcessor(width, height);
             byte[] newpixels = (byte[])newip.getPixels();
