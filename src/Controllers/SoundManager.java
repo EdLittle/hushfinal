@@ -81,7 +81,7 @@ public class SoundManager {
         clickOffClip.open(clickOff);
         
         bgmusicClip = AudioSystem.getClip();
-        bgmusicClip.open(bgmusic);
+        //bgmusicClip.open(bgmusic);
     }
     /*
     public void playToggle(){

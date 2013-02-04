@@ -67,6 +67,10 @@ public class CameraFeed extends Panel{
             
                 public void run(){
                     BufferedImage feed = getFeed();
+                    Graphics2D graph = feed.createGraphics();
+                    graph.setColor(Color.WHITE);
+                    graph.draw(new Rectangle(220, 25, 350, 250));
+                    
                     imgpanel.setImage(feed);
                 }
             }, 500, 83, TimeUnit.MILLISECONDS);

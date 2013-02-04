@@ -1,6 +1,5 @@
 package hough;
 
-
 import hough.LinearHT;
 import hough.LinearHT.HoughLine;
 import hough.Plugin_Hough_Linear_Ovlay;

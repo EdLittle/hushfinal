@@ -142,7 +142,7 @@ public class GameManager {
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/5.png")));                
                 }
             
-            }, 11, TimeUnit.SECONDS);
+            }, 10, TimeUnit.SECONDS);
              
              executor.schedule(new Runnable(){
 
@@ -152,7 +152,7 @@ public class GameManager {
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/4.png")));                
                 }
             
-            }, 12, TimeUnit.SECONDS);
+            }, 11, TimeUnit.SECONDS);
                          
              executor.schedule(new Runnable(){
 
@@ -162,28 +162,27 @@ public class GameManager {
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-green.png")));                
                 }
             
-            }, 13, TimeUnit.SECONDS);
+            }, 12, TimeUnit.SECONDS);
             
-             executor.schedule(new Runnable(){
+            executor.schedule(new Runnable(){
 
                 @Override
                 public void run() {
                     stopLight1.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-orange.png")));
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-orange.png")));
-                
                 }
             
-            }, 14, TimeUnit.SECONDS);
+            }, 13, TimeUnit.SECONDS);
             executor.schedule(new Runnable(){
 
                 @Override
                 public void run() {
                     stopLight1.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
-                
+                    displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/nextround.png")));
                 }
             
-            }, 15, TimeUnit.SECONDS);
+            }, 14, TimeUnit.SECONDS);
             
             //ASK FOR COLORS OR SHAPES
             if(level == 0){
@@ -247,6 +246,7 @@ public class GameManager {
                                     System.out.println("Total Color Score: " + colorResult.size());
                                     round = 0;
                                     level++;
+                                    displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/nextlevel.png")));
                                     startGame();
                                 }
                                 //roundFinished = true;
