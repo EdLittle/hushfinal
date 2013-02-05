@@ -134,8 +134,9 @@ public class DecoyPlay extends javax.swing.JPanel {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         if(!gameManager.isRunning()){
             try {
-                //hush = Hush.getHush();
-                //hush.navigate("playCard");                                   
+                hush = Hush.getHush();
+                Hush.soundManager.playClickOff();                                  
+                
                 gameManager.startGame();
             } catch (InterruptedException ex) {
                 Logger.getLogger(DecoyPlay.class.getName()).log(Level.SEVERE, null, ex);

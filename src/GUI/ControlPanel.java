@@ -141,6 +141,7 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             hush = Hush.getHush();
             cardLayout = (CardLayout) hush.getCardLayout();        
             cardLayout.show(hush.getContentPane(), "titleCard");
+            Hush.soundManager.playClickOff();
         }
         else {            
             newGame("titleCard"); 

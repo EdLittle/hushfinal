@@ -75,7 +75,7 @@ public class GameManager {
         //executor = Executors.newScheduledThreadPool(15);
         running = false;
         round = 0;
-        level = 1;
+        level = 0;
         bandsAnalyzer = new BandsAnalyzer();
         scoreManager = new ScoreManager();       
         camera = decoyPlay.getCamera();

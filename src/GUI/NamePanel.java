@@ -106,7 +106,7 @@ public class NamePanel extends javax.swing.JPanel {
         }
         hush = Hush.getHush();
         hush.navigate("playCard");   
-    
+ 
         try {
             hush.getDecoyPlay().startGame();
         } catch (FileNotFoundException ex) {

@@ -69,7 +69,7 @@ public class CameraFeed extends Panel{
                     BufferedImage feed = getFeed();
                     Graphics2D graph = feed.createGraphics();
                     graph.setColor(Color.WHITE);
-                    graph.draw(new Rectangle(220, 25, 350, 250));
+                    graph.draw(new Rectangle(220, 50, 350, 250));
                     
                     imgpanel.setImage(feed);
                 }
@@ -91,7 +91,7 @@ public class CameraFeed extends Panel{
         JFrame frame = new JFrame();
         frame.add(imagePanel);
         frame.isVisible();
-        return bf.getSubimage(220, 25, 350, 250);
+        return bf.getSubimage(220, 50, 350, 250);
     }
     
     public BufferedImage getFeed(){
