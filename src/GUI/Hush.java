@@ -24,8 +24,6 @@ import javax.swing.JFrame;
  */
 public class Hush extends javax.swing.JFrame {
 
-    //public static String mainMenuCard = "Main Menu";
-    //public static String loginCard = "Login";
     public static Hush hush;
     public static SoundManager soundManager;
     private GUI.PlayPanel playPanel;

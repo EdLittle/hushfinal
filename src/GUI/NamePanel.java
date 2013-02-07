@@ -88,7 +88,6 @@ public class NamePanel extends javax.swing.JPanel {
 
     private void buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMouseClicked
         // TODO add your handling code here:
-        //name.setText("");
         CardLayout cardLayout = (CardLayout) panels[this.number].getLayout();
         cardLayout.show(panels[number], "card2");
                
@@ -114,7 +113,6 @@ public class NamePanel extends javax.swing.JPanel {
         }
         hush.getDecoyPlay().getCamera().startFeed();
         ScoreManager.setUsername(this.name.getText());
-        //new GameplayManager(1);
     }//GEN-LAST:event_nameMouseClicked
     
     public void displayName(){

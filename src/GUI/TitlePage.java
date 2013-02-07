@@ -216,7 +216,6 @@ public class TitlePage extends javax.swing.JPanel {
 // TODO add your handling code here:
         quitIcon.setForeground(Color.black);
         quitIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/power-standby-hov.png")));
-        //Hush.soundManager.playClick();
     }//GEN-LAST:event_quitIconMouseEntered
 
     private void quitIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quitIconMouseClicked
@@ -235,7 +234,6 @@ public class TitlePage extends javax.swing.JPanel {
 // TODO add your handling code here:
         aboutIcon.setForeground(Color.black);
         aboutIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/about-hov.png")));
-        //Hush.soundManager.playClick();
     }//GEN-LAST:event_aboutIconMouseEntered
 
     private void aboutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutIconMouseClicked
@@ -254,7 +252,6 @@ public class TitlePage extends javax.swing.JPanel {
 // TODO add your handling code here:
         optionsIcon.setForeground(Color.black);
         optionsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options-hov.png")));
-        //Hush.soundManager.playClick();
     }//GEN-LAST:event_optionsIconMouseEntered
 
     private void optionsIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseClicked
@@ -273,23 +270,15 @@ public class TitlePage extends javax.swing.JPanel {
 // TODO add your handling code here:
         playIcon.setForeground(Color.black);
         playIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/controls-alt-2-hov.png")));
-        //Hush.soundManager.playClick();
     }//GEN-LAST:event_playIconMouseEntered
 
     private void playIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseClicked
 // TODO add your handling code here:
         hush = Hush.getHush();
+      // Hush.soundManager.playBgmusic();
         hush.navigate("loginCard");
     }//GEN-LAST:event_playIconMouseClicked
-/*
-    private void enterCard(String cardName){
-        CardLayout cardLayout = (CardLayout) hush.getCardLayout();
-        cardLayout.show(hush.getContentPane(), cardName);
-        RoutesManager.push(cardName);
-        System.out.println("State: " +  RoutesManager.currState() + " to" + cardName);
-        Hush.soundManager.playClickOff();
-    }
-    * */
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel aboutIcon;
     private javax.swing.JPanel jPanel1;

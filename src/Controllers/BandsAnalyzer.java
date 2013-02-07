@@ -15,8 +15,6 @@ import java.awt.image.BufferedImage;
  * @author FREAK
  */
 public class BandsAnalyzer extends Thread{
-    //private BandsPanel bandsPanel;
-    //private JMFCapture camera;
     private BandManager bandManagers[];
     
     private final Color RED = new Color(180, 20, 23);
@@ -31,7 +29,6 @@ public class BandsAnalyzer extends Thread{
     private int bandIdx, blobIdx;
     
     public BandsAnalyzer(){
-        //this.bandsPanel = bandsPanel;
         bandManagers = new BandManager[7];
         
         bandManagers[0] = new BandManager("red", RED);
@@ -43,6 +40,11 @@ public class BandsAnalyzer extends Thread{
         bandManagers[6] = new BandManager("black", BLACK);
         
     }
+    
+    /*
+     * get the RGB equivalent of rendered image
+     * 
+     */
     public String analyzeImage(BufferedImage im){
         if (im == null){
             System.out.println("There is no image");
@@ -82,6 +84,9 @@ public class BandsAnalyzer extends Thread{
         return "";
     }
     
+    /*
+     * populating blobs for color detection
+     */
     private boolean addPointToBand(int bandID, int x, int y){
         boolean madeBigBlob = false;
         
@@ -95,6 +100,9 @@ public class BandsAnalyzer extends Thread{
         return madeBigBlob;
     }
     
+    /*
+     * identify the detected color
+     */
     private int isBandColor(int pixel){
         int red = (pixel>>16)&255;
         int green = (pixel>>8)&255;

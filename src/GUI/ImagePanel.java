@@ -19,7 +19,6 @@ public class ImagePanel extends javax.swing.JPanel {
      * Creates new form ImagePanel
      */
     public ImagePanel(){
-            //setLayout(null);
             setSize(320,240);
         }
         public void setImage(BufferedImage img){

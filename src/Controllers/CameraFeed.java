@@ -27,16 +27,18 @@ public class CameraFeed extends Panel{
     public static Player player;
     public CaptureDeviceInfo di = null;
     public MediaLocator ml=null;
-    //public JButton capture=null;
     public Buffer buf=null;
     public Image img=null;
     public VideoFormat vf=null;
     public BufferToImage btoi=null;
     public ImagePanel imgpanel=null;
     private Future gameTask; 
-    //public int capturenumber=0;
     private ScheduledExecutorService executor;
     
+    
+    /*
+     * set up panel for captured image
+     */
     public CameraFeed(){
         
         setLayout(new BorderLayout());
@@ -61,6 +63,9 @@ public class CameraFeed extends Panel{
         player.deallocate();
     }
     
+    /*
+     * set bounds
+     */
     public void startFeed(){
         imgpanel.setBackground(Color.CYAN);
         executor.scheduleAtFixedRate(new Runnable(){
@@ -76,6 +81,9 @@ public class CameraFeed extends Panel{
             }, 500, 83, TimeUnit.MILLISECONDS);
     }
     
+    /*
+     * capture image
+     */
     public BufferedImage grabImage(){
         FrameGrabbingControl fgc = (FrameGrabbingControl) player.getControl("javax.media.control.FrameGrabbingControl");
         buf  = fgc.grabFrame();
@@ -83,9 +91,6 @@ public class CameraFeed extends Panel{
         img = btoi.createImage(buf);
         BufferedImage bf = (BufferedImage)img;
         
-        //Dimension
-        //bf.getSubimage(80, 80, 350, 200);      
-        //bf.getSubimage(230, 190, 175, 100);
         ImagePanel imagePanel = new ImagePanel();
         imagePanel.setImage(bf);
         JFrame frame = new JFrame();

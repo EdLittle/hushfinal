@@ -140,8 +140,7 @@ public class GameTask implements Runnable{
     }
    
     private void detectColor(){
-//        System.out.println("BaekHyun");
-        
+                
     }
     
     public void setFinished(boolean isFinished){

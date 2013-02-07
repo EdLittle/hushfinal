@@ -118,7 +118,6 @@ public class FieldPanel extends javax.swing.JPanel {
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
         // TODO add your handling code here:
-        //Hush.soundManager.playClick();
     }//GEN-LAST:event_jLabel1MouseEntered
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
