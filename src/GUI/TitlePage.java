@@ -260,7 +260,7 @@ public class TitlePage extends javax.swing.JPanel {
     private void optionsIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseClicked
         // TODO add your handling code here:
         hush = Hush.getHush();
-        hush.navigate("aboutCard");
+        hush.navigate("hallCard");
     }//GEN-LAST:event_optionsIconMouseClicked
 
     private void playIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseExited
