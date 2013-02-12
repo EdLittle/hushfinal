@@ -59,6 +59,7 @@ public class HallOfUsers extends javax.swing.JPanel {
         
         for(Object name : gold_scorers){
             gold_list.add((String) name);
+            System.out.println("JHGuti");
         }
         
         for(Object name : silver_scorers){
@@ -81,18 +82,23 @@ public class HallOfUsers extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        label1 = new java.awt.Label();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel10 = new javax.swing.JPanel();
         gold_list = new java.awt.List();
+        jLabel1 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         silver_list = new java.awt.List();
+        label2 = new java.awt.Label();
         jPanel12 = new javax.swing.JPanel();
         bronze_list = new java.awt.List();
+        label3 = new java.awt.Label();
         jPanel13 = new javax.swing.JPanel();
         wood_list = new java.awt.List();
+        label4 = new java.awt.Label();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -120,17 +126,12 @@ public class HallOfUsers extends javax.swing.JPanel {
         add(jPanel1, gridBagConstraints);
 
         jPanel2.setMinimumSize(new java.awt.Dimension(500, 75));
+        jPanel2.setLayout(new java.awt.GridLayout());
 
-        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 500, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 75, Short.MAX_VALUE)
-        );
+        label1.setAlignment(1);
+        label1.setFont(new java.awt.Font("Lucida Grande", 0, 48)); // NOI18N
+        label1.setText("HALL OF SCORES");
+        jPanel2.add(label1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -182,42 +183,54 @@ public class HallOfUsers extends javax.swing.JPanel {
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(479, 354));
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(479, 354));
 
-        jPanel10.setBackground(new java.awt.Color(0, 0, 51));
-        jPanel10.setLayout(new java.awt.GridLayout());
+        jPanel10.setLayout(new java.awt.BorderLayout());
 
+        gold_list.setBackground(new java.awt.Color(238, 238, 238));
         gold_list.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gold_listActionPerformed(evt);
             }
         });
-        jPanel10.add(gold_list);
+        jPanel10.add(gold_list, java.awt.BorderLayout.CENTER);
+
+        jLabel1.setText("People who garnered 8 stars and up");
+        jPanel10.add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
         jTabbedPane1.addTab("Gold", jPanel10);
 
         jPanel11.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel11.setLayout(new java.awt.GridLayout(1, 1));
+        jPanel11.setLayout(new java.awt.BorderLayout());
 
-        silver_list.setMinimumSize(new java.awt.Dimension(479, 354));
-        silver_list.setPreferredSize(new java.awt.Dimension(479, 354));
-        jPanel11.add(silver_list);
+        silver_list.setBackground(new java.awt.Color(238, 238, 238));
+        jPanel11.add(silver_list, java.awt.BorderLayout.CENTER);
+
+        label2.setBackground(new java.awt.Color(238, 238, 238));
+        label2.setText("People who garnered 6-7 stars");
+        jPanel11.add(label2, java.awt.BorderLayout.PAGE_START);
 
         jTabbedPane1.addTab("Silver", jPanel11);
 
         jPanel12.setBackground(new java.awt.Color(51, 0, 0));
-        jPanel12.setLayout(new java.awt.GridLayout());
+        jPanel12.setLayout(new java.awt.BorderLayout());
 
-        bronze_list.setMinimumSize(new java.awt.Dimension(479, 354));
-        bronze_list.setPreferredSize(new java.awt.Dimension(479, 354));
-        jPanel12.add(bronze_list);
+        bronze_list.setBackground(new java.awt.Color(238, 238, 238));
+        jPanel12.add(bronze_list, java.awt.BorderLayout.CENTER);
+
+        label3.setBackground(new java.awt.Color(238, 238, 238));
+        label3.setText("People who garnered 4-6 stars");
+        jPanel12.add(label3, java.awt.BorderLayout.PAGE_START);
 
         jTabbedPane1.addTab("Bronze", jPanel12);
 
         jPanel13.setBackground(new java.awt.Color(51, 0, 51));
-        jPanel13.setLayout(new java.awt.GridLayout());
+        jPanel13.setLayout(new java.awt.BorderLayout());
 
-        wood_list.setMinimumSize(new java.awt.Dimension(479, 354));
-        wood_list.setPreferredSize(new java.awt.Dimension(479, 354));
-        jPanel13.add(wood_list);
+        wood_list.setBackground(new java.awt.Color(238, 238, 238));
+        jPanel13.add(wood_list, java.awt.BorderLayout.CENTER);
+
+        label4.setBackground(new java.awt.Color(238, 238, 238));
+        label4.setText("People who garnered less than 4 stars");
+        jPanel13.add(label4, java.awt.BorderLayout.PAGE_START);
 
         jTabbedPane1.addTab("Wood", jPanel13);
 
@@ -266,7 +279,7 @@ public class HallOfUsers extends javax.swing.JPanel {
 
         jPanel8.setMinimumSize(new java.awt.Dimension(500, 75));
         jPanel8.setSize(new java.awt.Dimension(75, 75));
-        jPanel8.setLayout(new java.awt.GridLayout());
+        jPanel8.setLayout(new java.awt.GridLayout(1, 0));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -299,6 +312,7 @@ public class HallOfUsers extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.List bronze_list;
     private java.awt.List gold_list;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -313,6 +327,10 @@ public class HallOfUsers extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private java.awt.Label label1;
+    private java.awt.Label label2;
+    private java.awt.Label label3;
+    private java.awt.Label label4;
     private java.awt.List silver_list;
     private java.awt.List wood_list;
     // End of variables declaration//GEN-END:variables

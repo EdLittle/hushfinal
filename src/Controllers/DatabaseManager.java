@@ -70,9 +70,6 @@ public class DatabaseManager {
     }
     
     public static void setUsernames(String[] usernames) throws FileNotFoundException, IOException{
-        for(int i = 0; i < 8; i++){
-            System.out.println(usernames[i]);
-        }
         storeNames(usernames);
     }
 }
