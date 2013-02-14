@@ -34,6 +34,10 @@ public class ScoreManager {
     
     // add string addScore(String item, int level)
     //public static void addScore() throws IOException{
+    
+    public ScoreManager(){
+        
+    }
     public static void addScore(String item, int level) throws IOException{
         
         giveStar(score);
@@ -87,21 +91,29 @@ public class ScoreManager {
        return rightShapes;
     }
     
-    public static int getCategory(){
+    public static int getCategory(int currScore){
+       score = currScore;
        int category = 3;
+       
+       //Gold = categ 0
        if (score>=8){
            category = 0;
        }
-       else if ((score<8)||(score>=6)){
+       
+       //Silver = categ 1
+       else if ((score<8)&&(score>=6)){
            category = 1;
        }
-       else if((score<6)||(score>=4)){
+       
+       //Bronze = categ 2
+       else if((score<6)&&(score>=4)){
            category = 2;
        }
+       
+       //Wood = categ 3
        else {
            category = 3;
        }
-       System.out.println("Scorela: " + score + ";    Categla: " + category);
        return category;
     }
     

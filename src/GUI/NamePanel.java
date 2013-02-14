@@ -16,6 +16,7 @@ import Controllers.RoutesManager;
 import java.awt.CardLayout;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -27,7 +28,7 @@ import javax.swing.JPanel;
 public class NamePanel extends javax.swing.JPanel {
     private Hush hush;
     int number;
-    public static String[] users;
+    static ArrayList<String> usersList = new ArrayList<String>();
     static JPanel[] panels;
     
     
@@ -94,15 +95,14 @@ public class NamePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonMouseClicked
 
     private void nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameMouseClicked
-        // TODO add your handling code here:
-        users = LoginPanel.gatherNames();
         try {
-            DatabaseManager.setUsernames(users);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(NamePanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+            // TODO add your handling code here:
+            usersList = DatabaseManager.getUsersList();
+            DatabaseManager.storeNames(usersList);
+        } catch (Exception ex) {
             Logger.getLogger(NamePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
         hush = Hush.getHush();
         hush.navigate("playCard");   
  

@@ -27,7 +27,7 @@ public class ScoreSummary extends javax.swing.JPanel {
     private Vector rightShapes = new Vector();
     private String[] msgGreeting = {"Excellent work", "Good job", "Nice playing", "Hi"};
     private String[] starCategories = {"GOLD", "SILVER", "BRONZE", "WOOD"};
-    
+    private PlayersStat playersStat;
     /**
      * Enumerate all right colors and shapes after
      * under the star.
@@ -39,20 +39,22 @@ public class ScoreSummary extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void setMessage (){
+    public void setMessage () throws Exception{
         System.out.println("For here");
         this.rightColors = ScoreManager.getRightColors();
         this.rightShapes = ScoreManager.getRightShapes();
         this.username = ScoreManager.getUsername();
         this.score = ScoreManager.getScore();
-        this.greeting = msgGreeting[ScoreManager.getCategory()];
-        this.categ = starCategories[ScoreManager.getCategory()];
-        System.out.println("Score: " + ScoreManager.getScore() + ";    Categ: " + categ + ";   User: " + username);
+        this.greeting = msgGreeting[ScoreManager.getCategory(score)];
+        this.categ = starCategories[ScoreManager.getCategory(score)];
+        System.out.println("Score: " + ScoreManager.getScore() + ";    Categ: " + ScoreManager.getCategory(score) + ";   User: " + username);
         correctAns();
         this.msg.setText(greeting + ", " + username + "!"); 
         this.msg2.setText("You now have " + categ + " badge.");
 
         this.repaint();
+        
+        PlayersStat.gameOver();
     }
     
     public void correctAns(){

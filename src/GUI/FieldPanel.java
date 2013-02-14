@@ -109,7 +109,7 @@ public class FieldPanel extends javax.swing.JPanel {
         if(keyCode == 10){
             
             newUsername = jTextField1.getText();
-            LoginPanel.setUsername(this.number, newUsername);
+            LoginPanel.setUsername(newUsername, this.number);
             CardLayout cardLayout = (CardLayout)panels[this.number].getLayout();
             cardLayout.show(panels[this.number], "card3");
         }

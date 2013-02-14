@@ -10,8 +10,12 @@
  */
 package GUI;
 
+import Controllers.DatabaseManager;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -20,7 +24,7 @@ import javax.swing.JPanel;
  * @author FREAK
  */
 public class LoginPanel extends javax.swing.JPanel {
-    private String[] users;
+    static ArrayList<String> usersList;
     public static LoginPanel loginPanel;
     public JPanel[] panels;
     public static NamePanel[] namePanels;
@@ -32,13 +36,14 @@ public class LoginPanel extends javax.swing.JPanel {
         loginPanel = this;
     }
     
-    public void setNames(String[] users){
-        this.users = users;
+    public void setNames(ArrayList users){
+        usersList = new ArrayList<String>();
+        this.usersList = users;
     }
     
     public void assemblePanels(){
         int counter = 0;
-        int length = users.length;
+        int length = usersList.size();
         
         panels = new JPanel[]{nameHolder1, nameHolder2, nameHolder3, nameHolder4, nameHolder5, nameHolder6, nameHolder7, nameHolder8};
         namePanels = new NamePanel[]{namePanel1, namePanel2, namePanel3, namePanel4, namePanel5, namePanel6, namePanel7, namePanel8};
@@ -48,7 +53,7 @@ public class LoginPanel extends javax.swing.JPanel {
             CardLayout cardLayout = (CardLayout) panels[counter].getLayout();
             
             if(counter < length){
-                namePanels[counter].setDisplayName(users[counter]);
+                namePanels[counter].setDisplayName(usersList.get(counter));
                 cardLayout.show(panels[counter], "card3");
             }
             else{
@@ -59,15 +64,20 @@ public class LoginPanel extends javax.swing.JPanel {
         FieldPanel.setStaticFields(new JPanel[]{nameHolder1, nameHolder2, nameHolder3, nameHolder4, nameHolder5, nameHolder6, nameHolder7, nameHolder8});
     }
     
-    public static void setUsername(int number, String newUsername){
+    public static void setUsername(String newUsername, int number){
         namePanels[number].setDisplayName(newUsername);
+        try {
+            DatabaseManager.updateUsername(newUsername);
+        } catch (Exception ex) {
+            Logger.getLogger(LoginPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public static LoginPanel getLoginPanel(){
         return loginPanel;
     }
-    
-    public static String[] gatherNames(){
+    /*
+    public static void gatherNames(){
         String[] names = {"", "", "", "", "", "", "", ""};
         
         int counter =0;
@@ -78,9 +88,8 @@ public class LoginPanel extends javax.swing.JPanel {
         for(counter = 0; counter < 8; counter++){
             System.out.println(names[counter]);
         }
-        
-        return names;
     }
+    */
     
     /** This method is called from within the constructor to
      * initialize the form.

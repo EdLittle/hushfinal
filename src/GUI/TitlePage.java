@@ -15,6 +15,8 @@ import Controllers.SoundManager;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,6 +27,7 @@ public class TitlePage extends javax.swing.JPanel {
     private Hush hush;
     private SoundManager soundManager;
     private ControlPanel controlPanel;
+    private GUI.PlayersStat playersStat;
     
     /** Creates new form TitlePage */
     public TitlePage() {
@@ -47,7 +50,7 @@ public class TitlePage extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         playIcon = new javax.swing.JLabel();
-        optionsIcon = new javax.swing.JLabel();
+        scoresIcon = new javax.swing.JLabel();
         aboutIcon = new javax.swing.JLabel();
         quitIcon = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -124,25 +127,25 @@ public class TitlePage extends javax.swing.JPanel {
         });
         jPanel2.add(playIcon);
 
-        optionsIcon.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        optionsIcon.setForeground(new java.awt.Color(153, 153, 153));
-        optionsIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        optionsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options.png"))); // NOI18N
-        optionsIcon.setText("OPTIONS");
-        optionsIcon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        optionsIcon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        optionsIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+        scoresIcon.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        scoresIcon.setForeground(new java.awt.Color(153, 153, 153));
+        scoresIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoresIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/medal.png"))); // NOI18N
+        scoresIcon.setText("SCORES");
+        scoresIcon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        scoresIcon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        scoresIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                optionsIconMouseClicked(evt);
+                scoresIconMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                optionsIconMouseEntered(evt);
+                scoresIconMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                optionsIconMouseExited(evt);
+                scoresIconMouseExited(evt);
             }
         });
-        jPanel2.add(optionsIcon);
+        jPanel2.add(scoresIcon);
 
         aboutIcon.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         aboutIcon.setForeground(new java.awt.Color(153, 153, 153));
@@ -242,23 +245,29 @@ public class TitlePage extends javax.swing.JPanel {
         hush.navigate("aboutCard");
     }//GEN-LAST:event_aboutIconMouseClicked
 
-    private void optionsIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseExited
+    private void scoresIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scoresIconMouseExited
 // TODO add your handling code here:
-        optionsIcon.setForeground(defaultFontColor);
-        optionsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options.png")));
-    }//GEN-LAST:event_optionsIconMouseExited
+        scoresIcon.setForeground(defaultFontColor);
+        scoresIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/medal.png")));
+    }//GEN-LAST:event_scoresIconMouseExited
 
-    private void optionsIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseEntered
+    private void scoresIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scoresIconMouseEntered
 // TODO add your handling code here:
-        optionsIcon.setForeground(Color.black);
-        optionsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options-hov.png")));
-    }//GEN-LAST:event_optionsIconMouseEntered
+        scoresIcon.setForeground(Color.black);
+        scoresIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/medal-alt.png")));
+    }//GEN-LAST:event_scoresIconMouseEntered
 
-    private void optionsIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsIconMouseClicked
+    private void scoresIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scoresIconMouseClicked
         // TODO add your handling code here:
         hush = Hush.getHush();
-        hush.navigate("aboutCard");
-    }//GEN-LAST:event_optionsIconMouseClicked
+        hush.navigate("playersStatCard");
+        try {
+            playersStat = new PlayersStat();             
+            playersStat.updateStat();
+        } catch (Exception ex) {
+            Logger.getLogger(TitlePage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_scoresIconMouseClicked
 
     private void playIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseExited
 // TODO add your handling code here:
@@ -285,9 +294,9 @@ public class TitlePage extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JLabel optionsIcon;
     private javax.swing.JLabel playIcon;
     private javax.swing.JLabel quitIcon;
+    private javax.swing.JLabel scoresIcon;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

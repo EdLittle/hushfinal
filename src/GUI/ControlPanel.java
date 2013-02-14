@@ -211,9 +211,9 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     
     private boolean enableIcon(int state){     
         String cardName = RoutesManager.currState();
-        
+       
         //reset
-        if ((state == 1)&&(cardName.equalsIgnoreCase("aboutCard") || cardName.equalsIgnoreCase("loginCard"))) {
+        if ((state == 1)&&((cardName.equalsIgnoreCase("aboutCard")) || (cardName.equalsIgnoreCase("loginCard")) || (cardName.equalsIgnoreCase("playersStatCard")))) {
            return false;            
         }
         //home

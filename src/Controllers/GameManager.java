@@ -73,7 +73,7 @@ public class GameManager {
         displayLabel = decoyPlay.getJLabel1();        
         running = false;
         round = 0;
-        level = 1;
+        level = 0;
         bandsAnalyzer = new BandsAnalyzer();
         scoreManager = new ScoreManager();       
         camera = decoyPlay.getCamera();
@@ -179,6 +179,8 @@ public class GameManager {
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
                     if (!((level==1)&&(round==2)))
                         displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/nextround.png")));
+                   else
+                        displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/done.png")));             
                 }
             
             }, 14, TimeUnit.SECONDS);
