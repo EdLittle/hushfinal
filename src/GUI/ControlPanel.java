@@ -34,10 +34,10 @@ public class ControlPanel extends javax.swing.JPanel {
     private Hush hush;
     public SoundManager soundManager;
     private CardLayout cardLayout;
-    private int test = 0;
+    
     /** Creates new form ControlPanel */
     public ControlPanel() {
-        initComponents();        
+        initComponents();     
     }
 
     /** This method is called from within the constructor to
@@ -141,6 +141,7 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             hush = Hush.getHush();
             cardLayout = (CardLayout) hush.getCardLayout();        
             cardLayout.show(hush.getContentPane(), "titleCard");
+            Hush.soundManager.playClickOff();
         }
         else {            
             newGame("titleCard"); 
@@ -159,7 +160,6 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 sounds.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/MD-sound.png"))); // NOI18N
                 Hush.soundManager.playBgmusic();
             }
-        test++;
     }//GEN-LAST:event_soundsMouseClicked
 
     private void resetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseClicked
@@ -199,13 +199,8 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
          }
          else{                
             return new javax.swing.ImageIcon(getClass().getResource("/med/MD-volume-0.png")); // NOI18N
-         }
-    }
-    /*
-    private boolean enableNewGame(){
-        cardLayout.toString())
-    }
-    */
+         }      
+    }   
     private void newGame(String cardName){     
         String bogusCardName = RoutesManager.pop();
         hush = Hush.getHush();
@@ -216,9 +211,9 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     
     private boolean enableIcon(int state){     
         String cardName = RoutesManager.currState();
-        
+       
         //reset
-        if ((state == 1)&&(cardName.equalsIgnoreCase("aboutCard") || cardName.equalsIgnoreCase("loginCard"))) {
+        if ((state == 1)&&((cardName.equalsIgnoreCase("aboutCard")) || (cardName.equalsIgnoreCase("loginCard")) || (cardName.equalsIgnoreCase("hallCard")))) {
            return false;            
         }
         //home

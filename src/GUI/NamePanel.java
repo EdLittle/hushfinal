@@ -16,6 +16,7 @@ import Controllers.RoutesManager;
 import java.awt.CardLayout;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -27,7 +28,7 @@ import javax.swing.JPanel;
 public class NamePanel extends javax.swing.JPanel {
     private Hush hush;
     int number;
-    public static String[] users;
+    static ArrayList<String> usersList = new ArrayList<String>();
     static JPanel[] panels;
     
     
@@ -88,25 +89,23 @@ public class NamePanel extends javax.swing.JPanel {
 
     private void buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMouseClicked
         // TODO add your handling code here:
-        //name.setText("");
         CardLayout cardLayout = (CardLayout) panels[this.number].getLayout();
         cardLayout.show(panels[number], "card2");
                
     }//GEN-LAST:event_buttonMouseClicked
 
     private void nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameMouseClicked
-        // TODO add your handling code here:
-        users = LoginPanel.gatherNames();
         try {
-            DatabaseManager.setUsernames(users);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(NamePanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+            // TODO add your handling code here:
+            usersList = DatabaseManager.getUsersList();
+            DatabaseManager.storeNames(usersList);
+        } catch (Exception ex) {
             Logger.getLogger(NamePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
         hush = Hush.getHush();
         hush.navigate("playCard");   
-    
+ 
         try {
             hush.getDecoyPlay().startGame();
         } catch (FileNotFoundException ex) {
@@ -114,7 +113,6 @@ public class NamePanel extends javax.swing.JPanel {
         }
         hush.getDecoyPlay().getCamera().startFeed();
         ScoreManager.setUsername(this.name.getText());
-        //new GameplayManager(1);
     }//GEN-LAST:event_nameMouseClicked
     
     public void displayName(){

@@ -28,26 +28,15 @@ import javax.swing.JPanel;
 public class DecoyPlay extends javax.swing.JPanel {
     //public GameplayManager gameplayManager;
     public GameManager gameManager;
-    //private CameraCapture camera;
     private CameraFeed camera;    
     private Hush hush;
+    
     /** Creates new form DecoyPlay */
     public DecoyPlay() throws Exception{
         initComponents();
-        //camera = new CameraCapture();
         camera = new CameraFeed();
         jPanel2.add(camera);
-        //jPanel2.repaint();
-    }
-    
-    //public ImagePanel getImagePanel1(){
-        //return imagePanel1;
-    //}
-
-    //public CameraCapture getCamera(){
-        //return camera;
-    //}
-    
+    }    
     public CameraFeed getCamera(){
         return camera;
     }
@@ -65,13 +54,13 @@ public class DecoyPlay extends javax.swing.JPanel {
     }
     
     public void startGame() throws FileNotFoundException{
-        //gameplayManager = new GameplayManager(1);
         gameManager = new GameManager();
     }
     
     public GameManager getGameManager(){
         return gameManager;
     }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -134,8 +123,9 @@ public class DecoyPlay extends javax.swing.JPanel {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         if(!gameManager.isRunning()){
             try {
-                //hush = Hush.getHush();
-                //hush.navigate("playCard");                                   
+                hush = Hush.getHush();
+                Hush.soundManager.playClickOff();                                  
+                
                 gameManager.startGame();
             } catch (InterruptedException ex) {
                 Logger.getLogger(DecoyPlay.class.getName()).log(Level.SEVERE, null, ex);

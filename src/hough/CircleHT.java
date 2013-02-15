@@ -108,11 +108,9 @@ public class CircleHT implements PlugInFilter {
                     lut[1][i][indexR] = rsin;
                     i++;
                     
-                          //   System.out.println("lookup!");
                 }
             }
         }
-                         //    System.out.println("I: " + i);
                 
         return i;
     }
@@ -144,9 +142,6 @@ public class CircleHT implements PlugInFilter {
         }
     }
 
-    public Point nthMaxCenter (int i) {
-        return centerPoint[i];
-    }
 
     /** Search circles having values in the hough space higher than a threshold
     @param threshold The threshold used to select the higher point of Hough Space
@@ -158,7 +153,7 @@ public class CircleHT implements PlugInFilter {
         int yMax = 0;
         int countCircles = 0;
 
-        Rihanna:
+        detectCircle:
         for(int radius = radiusMin;radius <= radiusMax;radius = radius+radiusInc) {
             int indexR = (radius-radiusMin)/radiusInc;
             for(int y = 0; y < height; y++) {
@@ -169,7 +164,7 @@ public class CircleHT implements PlugInFilter {
                            // clearNeighbours(xMax,yMax,radius);
                             ++countCircles;
                              System.out.println("Found circle!!");
-                             break Rihanna;       
+                             break detectCircle;       
                         } else
                             break;
                     }
@@ -187,14 +182,14 @@ public class CircleHT implements PlugInFilter {
         else    
                 return false;
     }
-    /*
-}
+   
+} /*
      * Clear, from the Hough Space, all the counter that are near (radius/2) a previously found circle C.
         
     @param x The x coordinate of the circle C found.
     @param x The y coordinate of the circle C found.
     @param x The radius of the circle C found.
-    */
+    
     private void clearNeighbours(int x,int y, int radius) {
 
         // The following code just clean the points around the center of the circle found.
@@ -228,8 +223,7 @@ public class CircleHT implements PlugInFilter {
         }
     }
     
-}
-
+}*/
 
 
             /* Create image View for Hough Transform.

@@ -6,7 +6,6 @@
 /*
  * BandsPanel.java
  *
- * Created on Mar 2, 2012, 1:21:10 AM
  */
 package GUI;
 
@@ -22,7 +21,6 @@ public class BandsPanel extends javax.swing.JPanel {
     /** Creates new form BandsPanel */
     public BandsPanel() {
         initComponents();
-        //bandsAnalyzer = new BandsAnalyzer(this);
         bandsAnalyzer.start();
     }
 

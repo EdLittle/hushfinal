@@ -62,31 +62,11 @@ public class GameplayManager implements Runnable{
     public void startGame() throws InterruptedException{
         running = true;
         int round;
-        //singleRound();
         
-        for(int i = 0; i < 7; i++){
-            //playTask1.setFinished(false);
-            //singleRound();
-            /*while(true){
-                if(playTask1.isFinished())break;
-            }
-            System.out.println("I cant baby dont stop this");
-            */
+        for(int i = 0; i < 7; i++){         
             long startTime = System.currentTimeMillis();
             System.out.println("TIME IS" + startTime);
-            //while(true){
-            
-            //}
         }
-        /*
-         * scheduledFuture = executor.schedule
-        timer.schedule(new GameTask("Red"), 1000);
-        timer.schedule(new GameTask("Yellow"), 2000);
-        timer.schedule(new GameTask("Green"), 3000);
-        timer.schedule(new GameTask("Detect Color"), 4000);
-        timer.schedule(new GameTask("testing"), 5000, 1000);
-        timer.schedule(new GameTask("Cancel"), 10000);
-        */
         running = false;
     }
     
@@ -100,17 +80,7 @@ public class GameplayManager implements Runnable{
         executor.schedule(guiTask, 3, TimeUnit.SECONDS);
         executor.schedule(guiTask, 4, TimeUnit.SECONDS);
         executor.schedule(playTask1, 4, TimeUnit.SECONDS);
-        //executor.schedule(new GameTask("Color Level"), 4, TimeUnit.SECONDS);
         
-        //Thread.sleep(3000);
-        /*Calendar calendar = new GregorianCalendar();
-        int endOfRound = calendar.get(Calendar.SECOND);
-        
-        do{
-            
-        }while(calendar.get(Calendar.SECOND) != endOfRound);
-        System.out.println("Woot");
-        */    
     }
     
     private void setRandomColors(){
@@ -120,8 +90,6 @@ public class GameplayManager implements Runnable{
         order = (Integer[])randomPermutation.toArray(new Integer[0]);
         for (int i = 0; i < 7; i++){
             randomColors[i] = colors[(int)order[i]];
-            //randomColors[i] = colors[randomPermutation.elementAt(i)];
-            //System.out.println(randomColors[i]);
         }
     }
     
@@ -139,7 +107,6 @@ public class GameplayManager implements Runnable{
                 rand = (int)(Math.random()*100) % 7;
             }while(randomPermutation.contains(rand));
             randomPermutation.add((int)rand);
-            //System.out.println("Random Number " + rand);
         }
         
         return randomPermutation;

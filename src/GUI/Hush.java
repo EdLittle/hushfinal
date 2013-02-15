@@ -16,6 +16,7 @@ import Controllers.RoutesManager;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.LayoutManager;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 
 /**
@@ -24,13 +25,14 @@ import javax.swing.JFrame;
  */
 public class Hush extends javax.swing.JFrame {
 
-    //public static String mainMenuCard = "Main Menu";
-    //public static String loginCard = "Login";
     public static Hush hush;
     public static SoundManager soundManager;
     private GUI.PlayPanel playPanel;
     private GUI.About aboutPanel;
-    private String[] users;
+    private GUI.PlayersStat playersStat;
+    static ArrayList<String> usersList;
+    static ArrayList<Integer> scoresList;
+    private int[] scores;
     private GUI.LoginPanel loginPanel;
     private GUI.ScoreSummary scoreSummaryPanel;
     private HallOfUsers hallPanel;
@@ -40,6 +42,8 @@ public class Hush extends javax.swing.JFrame {
     /** Creates new form Hush */
     public Hush() throws Exception{
         soundManager = new SoundManager();
+        usersList = new ArrayList<String>();
+        scoresList = new ArrayList<Integer>();
         RoutesManager.push("titleCard");
         System.out.println("State: " +  RoutesManager.currState());
         
@@ -47,14 +51,15 @@ public class Hush extends javax.swing.JFrame {
         initComponents();
         addOtherCards();
         DatabaseManager databaseManager = new DatabaseManager();
-        users = databaseManager.getNames();
+        usersList = databaseManager.getNames();
+        scoresList = databaseManager.getScores();
         
-        int length = users.length;
+        int length = usersList.size();
         for(int counter = 0 ; counter < length; counter++){
-            System.out.println(counter + " " + users[counter]);
+            System.out.println(counter + " " + usersList.get(counter));
         }
         
-        loginPanel.setNames(users);
+        loginPanel.setNames(usersList);
         loginPanel.assemblePanels();
     }
 
@@ -84,6 +89,9 @@ public class Hush extends javax.swing.JFrame {
         
         aboutPanel = new GUI.About();
         getContentPane().add(aboutPanel, "aboutCard");
+        
+     //   playersStat = new GUI.PlayersStat();
+     //   getContentPane().add(playersStat, "playersStatCard");
         
         playPanel = new GUI.PlayPanel();
         getContentPane().add(playPanel, "playCard");

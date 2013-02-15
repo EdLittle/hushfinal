@@ -109,7 +109,7 @@ public class FieldPanel extends javax.swing.JPanel {
         if(keyCode == 10){
             
             newUsername = jTextField1.getText();
-            LoginPanel.setUsername(this.number, newUsername);
+            LoginPanel.setUsername(newUsername, this.number);
             CardLayout cardLayout = (CardLayout)panels[this.number].getLayout();
             cardLayout.show(panels[this.number], "card3");
         }
@@ -118,7 +118,6 @@ public class FieldPanel extends javax.swing.JPanel {
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
         // TODO add your handling code here:
-        //Hush.soundManager.playClick();
     }//GEN-LAST:event_jLabel1MouseEntered
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

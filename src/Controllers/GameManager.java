@@ -54,7 +54,6 @@ public class GameManager {
     private boolean running;
     private int round;
     private int level;
-    private int score;
     private Vector colorResult;
     private Vector shapeResult;
     private Future gameTask;
@@ -71,11 +70,10 @@ public class GameManager {
         scoreSummary = hush.getScoreSummary();
         stopLight1 = decoyPlay.getStopLight1();
         stopLight2 = decoyPlay.getStopLight2();
-        displayLabel = decoyPlay.getJLabel1();
-        //executor = Executors.newScheduledThreadPool(15);
+        displayLabel = decoyPlay.getJLabel1();        
         running = false;
         round = 0;
-        level = 1;
+        level = 0;
         bandsAnalyzer = new BandsAnalyzer();
         scoreManager = new ScoreManager();       
         camera = decoyPlay.getCamera();
@@ -179,7 +177,10 @@ public class GameManager {
                 public void run() {
                     stopLight1.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
-                    displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/nextround.png")));
+                    if (!((level==1)&&(round==2)))
+                        displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/nextround.png")));
+                   else
+                        displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/done.png")));             
                 }
             
             }, 14, TimeUnit.SECONDS);
@@ -217,7 +218,7 @@ public class GameManager {
                             
                             if(correct) {                                
                                 getFuture().cancel(true);
-                                //soundManager.playCorrect();
+                                soundManager.playCorrectAns();
                                 scoreManager.addScore(detectedColor, level);
                             }
 
@@ -249,7 +250,6 @@ public class GameManager {
                                     displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/nextlevel.png")));
                                     startGame();
                                 }
-                                //roundFinished = true;
                             }
                             else{
                                 tries++;
@@ -274,11 +274,12 @@ public class GameManager {
                             
                             System.out.println("Detecting for...." + randomShapes[round-1]);
                             
-                            boolean correct = false;                            
+                            boolean correct = false;   
+                            
                             //CIRCLE
+                            //pic.show();
                             if (round == 1) {
-                                ImagePlus pic = new ImagePlus(null, camera.grabImage());
-                                //pic.show();
+                                ImagePlus pic = new ImagePlus(null, camera.grabImage());                                
                                 circleDetector = new CircleHT();
                                 circleDetector.processImage(pic);
                                 correct = circleDetector.isDetected();
@@ -286,11 +287,11 @@ public class GameManager {
                             }
                             
                             //SQUARE
+                            //pic.show();
                             else if(round == 2) {
                                 DetectQuadrilateral detector = new DetectQuadrilateral();
                                 ImagePlus pic = new ImagePlus(null, camera.grabImage());
-                                detector.processImagePlus(pic);
-                              //  pic.show();
+                                detector.processImagePlus(pic);                              
                                 detector.processLines();
                                 correct = detector.isQuadPresent();
                             }
@@ -298,7 +299,7 @@ public class GameManager {
                             if(correct) {
                                 System.out.println("Correct " + randomShapes[round-1]);                                               
                                 getFuture().cancel(true);
-                                //soundManager.playCorrect();
+                                soundManager.playCorrectAns();
                                 scoreManager.addScore(randomShapes[round-1], level);
                             }
 
@@ -398,9 +399,7 @@ public class GameManager {
         
         order = (Integer[])randomPermutation.toArray(new Integer[0]);
         for (int i = 0; i < 7; i++){
-            randomColors[i] = colors[(int)order[i]];            
-            //randomColors[i] = colors[randomPermutation.elementAt(i)];
-            //System.out.println(randomColors[i]);
+            randomColors[i] = colors[(int)order[i]];       
         }
     }
     
@@ -414,7 +413,6 @@ public class GameManager {
                 rand = (int)(Math.random()*100) % 7;
             }while(randomPermutation.contains(rand));
             randomPermutation.add((int)rand);
-            //System.out.println("Random Number " + rand);
         }
         
         return randomPermutation;
