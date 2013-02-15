@@ -27,7 +27,7 @@ public class TitlePage extends javax.swing.JPanel {
     private Hush hush;
     private SoundManager soundManager;
     private ControlPanel controlPanel;
-    private GUI.PlayersStat playersStat;
+    private GUI.HallOfUsers hallOfUsers;
     
     /** Creates new form TitlePage */
     public TitlePage() {
@@ -260,10 +260,9 @@ public class TitlePage extends javax.swing.JPanel {
     private void scoresIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scoresIconMouseClicked
         // TODO add your handling code here:
         hush = Hush.getHush();
-        hush.navigate("playersStatCard");
+        hush.navigate("hallCard");
         try {
-            playersStat = new PlayersStat();             
-            playersStat.updateStat();
+            hallOfUsers = new HallOfUsers();  
         } catch (Exception ex) {
             Logger.getLogger(TitlePage.class.getName()).log(Level.SEVERE, null, ex);
         }

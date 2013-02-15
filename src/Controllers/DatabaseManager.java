@@ -198,7 +198,5 @@ public class DatabaseManager {
         for(int i = 0; i < usernames.size(); i++){
             System.out.println(usernames.get(i));
         }
-        
-        storeNames(usernames);
     }
 }

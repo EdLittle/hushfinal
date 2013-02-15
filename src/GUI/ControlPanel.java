@@ -213,7 +213,7 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         String cardName = RoutesManager.currState();
        
         //reset
-        if ((state == 1)&&((cardName.equalsIgnoreCase("aboutCard")) || (cardName.equalsIgnoreCase("loginCard")) || (cardName.equalsIgnoreCase("playersStatCard")))) {
+        if ((state == 1)&&((cardName.equalsIgnoreCase("aboutCard")) || (cardName.equalsIgnoreCase("loginCard")) || (cardName.equalsIgnoreCase("hallCard")))) {
            return false;            
         }
         //home
