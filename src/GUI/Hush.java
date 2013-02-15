@@ -49,10 +49,11 @@ public class Hush extends javax.swing.JFrame {
         
         //Hush.soundManager.playBgmusic();
         initComponents();
-        addOtherCards();
         DatabaseManager databaseManager = new DatabaseManager();
         usersList = databaseManager.getNames();
         scoresList = databaseManager.getScores();
+        
+        addOtherCards();
         
         int length = usersList.size();
         for(int counter = 0 ; counter < length; counter++){
@@ -163,6 +164,10 @@ public class Hush extends javax.swing.JFrame {
        RoutesManager.push(cardName);
        Hush.soundManager.playClickOff();
     
+    }
+    
+    public HallOfUsers getHallOfUsers(){
+    return hallPanel;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

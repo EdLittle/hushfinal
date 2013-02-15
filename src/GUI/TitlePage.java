@@ -261,8 +261,10 @@ public class TitlePage extends javax.swing.JPanel {
         // TODO add your handling code here:
         hush = Hush.getHush();
         hush.navigate("hallCard");
+    //    hallOfUsers = hush.getHallOfUsers();
         try {
             hallOfUsers = new HallOfUsers();  
+       //     hallOfUsers.initVectors();
         } catch (Exception ex) {
             Logger.getLogger(TitlePage.class.getName()).log(Level.SEVERE, null, ex);
         }
