@@ -36,7 +36,7 @@ public class Hush extends javax.swing.JFrame {
     private GUI.LoginPanel loginPanel;
     private GUI.ScoreSummary scoreSummaryPanel;
     private HallOfUsers hallPanel;
-    
+    private DatabaseManager databaseManager;
     //public static CardLayout cardlayout;
 
     /** Creates new form Hush */
@@ -45,13 +45,14 @@ public class Hush extends javax.swing.JFrame {
         usersList = new ArrayList<String>();
         scoresList = new ArrayList<Integer>();
         RoutesManager.push("titleCard");
-        System.out.println("State: " +  RoutesManager.currState());
+        
+        databaseManager = new DatabaseManager();
+        DatabaseManager.categorizeScores();
+        usersList = DatabaseManager.getNames();
+        scoresList = DatabaseManager.getScores();
         
         //Hush.soundManager.playBgmusic();
         initComponents();
-        DatabaseManager databaseManager = new DatabaseManager();
-        usersList = databaseManager.getNames();
-        scoresList = databaseManager.getScores();
         
         addOtherCards();
         
@@ -167,7 +168,11 @@ public class Hush extends javax.swing.JFrame {
     }
     
     public HallOfUsers getHallOfUsers(){
-    return hallPanel;
+        return hallPanel;
+    }
+    
+    public DatabaseManager getDatabaseManager(){
+        return databaseManager;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

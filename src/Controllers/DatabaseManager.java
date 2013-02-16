@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,11 +36,19 @@ public class DatabaseManager {
     static String[] usernames = null;
     static String[] scoresString = null;
     static Hashtable<String, Integer> scoresTable = new Hashtable<String, Integer>();
+    static Vector gold_scorers;
+    static Vector silver_scorers;
+    static Vector bronze_scorers;
+    static Vector wood_scorers;
     
     public DatabaseManager() throws Exception{
         usersFile = new File("data/usernames.txt");
         scoresFile = new File("data/scores.txt");
-       
+        gold_scorers = new Vector();
+        silver_scorers = new Vector();
+        bronze_scorers = new Vector();
+        wood_scorers = new Vector();
+        
         if((!usersFile.exists())&&(!scoresFile.exists())){
             try {
                 usersFile.createNewFile();
@@ -49,7 +58,6 @@ public class DatabaseManager {
             }
         }
     }
-    
     
     public static BufferedReader readFile(String filename) throws Exception{
         FileInputStream fiStream = new FileInputStream(filename);
@@ -74,6 +82,27 @@ public class DatabaseManager {
                 bw.flush();
                 bw.close();
             storeScores(usernameInput, 0);
+        }
+    }
+    
+    public static void categorizeScores(){
+        for (int x=0; x < scoresList.size(); x++){
+           if (ScoreManager.getCategory(scoresList.get(x)) == 0){  
+                System.out.println("Gold: " + usersList.get(x));
+                gold_scorers.add(usersList.get(x));        
+           }
+           else if (ScoreManager.getCategory(scoresList.get(x)) == 1){
+                System.out.println("sILVER: " + usersList.get(x));
+                silver_scorers.add(usersList.get(x));               
+           }
+           else if (ScoreManager.getCategory(scoresList.get(x)) == 2){
+                System.out.println("BRO: " + usersList.get(x));
+                bronze_scorers.add(usersList.get(x));               
+           }
+           else {    
+                System.out.println("WOOD: " + usersList.get(x));
+                wood_scorers.add(usersList.get(x));               
+           }
         }
     }
     
@@ -161,20 +190,7 @@ public class DatabaseManager {
        
        
         scoresList.set(counter, score);
-       // scoresString[scoresString.length] = score;
-       // System.out.println("ScoreString end: " + scoresString[counter]);
-        
-      //  scoresString[counter-1] = String.valueOf(score);
-      //  System.out.println("PLayer: " + usernames[counter] + " == " + scoresString[counter]);
-        
-    /*    System.out.println("----Store scores: " + scoresString[0]);
-        
-        for (int x=0; x<scoresList.size(); x++){
-            System.out.println("Copy score: " + String.valueOf(scoresList.get(x)));
-            scoresString[x] = String.valueOf(scoresList.get(x));
-        }
-        */
-       System.out.println("ScoreString size: " + scoresString.length);
+        System.out.println("ScoreString size: " + scoresString.length);
         
         BufferedWriter bw = new BufferedWriter(new FileWriter(scoresFile, false));
   
@@ -198,5 +214,21 @@ public class DatabaseManager {
         for(int i = 0; i < usernames.size(); i++){
             System.out.println(usernames.get(i));
         }
+    }
+    
+    public static Vector getGoldScorers(){
+        return gold_scorers;
+    }
+    
+    public static Vector getSilverScorers(){
+        return silver_scorers;
+    }
+    
+    public static Vector getBronzeScorers(){
+        return bronze_scorers;
+    }
+    
+    public static Vector getWoodScorers(){
+        return wood_scorers;
     }
 }
