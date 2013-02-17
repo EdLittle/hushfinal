@@ -31,8 +31,6 @@ public class HallOfUsers extends javax.swing.JPanel {
     public HallOfUsers() throws Exception {
         initComponents();
         hush = Hush.getHush();
-        if (hush == null)
-            System.err.println("Error");
         jPanel8.add(new GUI.ControlPanel());
         initVectors();
     }
@@ -58,25 +56,7 @@ public class HallOfUsers extends javax.swing.JPanel {
         silver_scorers = DatabaseManager.getSilverScorers();
         bronze_scorers = DatabaseManager.getBronzeScorers();
         wood_scorers = DatabaseManager.getWoodScorers();
-        /*
-        for (int x=0; x < scores.size(); x++){
-           if (ScoreManager.getCategory(scores.get(x)) == 0){  
-                System.out.println("Gold: " + users.get(x));
-                gold_scorers.add(users.get(x));        
-           }
-           else if (ScoreManager.getCategory(scores.get(x)) == 1){
-                System.out.println("sILVER: " + users.get(x));
-                silver_scorers.add(users.get(x));               
-           }
-           else if (ScoreManager.getCategory(scores.get(x)) == 2){
-                System.out.println("BRO: " + users.get(x));
-                bronze_scorers.add(users.get(x));               
-           }
-           else {    
-                System.out.println("WOOD: " + users.get(x));
-                wood_scorers.add(users.get(x));               
-           }
-        }*/
+        
         displayAll();
         for(int x=0; x<gold_scorers.size(); x++){
             System.out.println("index of: " + gold_scorers.indexOf("Beyonce"));
@@ -97,10 +77,8 @@ public class HallOfUsers extends javax.swing.JPanel {
             wood_list.add((String) name);
         }
         jPanel10.add(gold_list, BorderLayout.CENTER);
-        }
-     
+    }
     
-       
     public void displayAll(){
         
        System.out.println("Gold: " + gold_scorers.toString());
@@ -118,8 +96,15 @@ public class HallOfUsers extends javax.swing.JPanel {
         bronze_scorers.clear();
         wood_scorers.clear();
               
-        System.out.println("ScoreSize: " + users.size() + " " + scores.size());
-       for (int x=0; x<scores.size(); x++){
+        //System.out.println("ScoreSize: " + users.size() + " " + scores.size());
+        DatabaseManager.categorizeScores();
+        
+        gold_scorers = DatabaseManager.getGoldScorers();
+        silver_scorers = DatabaseManager.getSilverScorers();
+        bronze_scorers = DatabaseManager.getBronzeScorers();
+        wood_scorers = DatabaseManager.getWoodScorers();
+        
+        for (int x=0; x<scores.size(); x++){
            if (ScoreManager.getCategory(scores.get(x)) == 0){
                gold_scorers.add(users.get(x));               
            }
@@ -133,35 +118,30 @@ public class HallOfUsers extends javax.swing.JPanel {
                wood_scorers.add(users.get(x));               
            }
        }
-       displayAll();
+       //displayAll();
        
     }
      
-    
     public Vector getGold(){
         return gold_scorers;
     }
+    
     public Vector getSilver(){
         return silver_scorers;
     }
+    
     public Vector getBronze(){
         return bronze_scorers;
     }
+    
     public Vector getWood(){
         return wood_scorers;
     }
     
     public static void gameOver() throws Exception{
        DatabaseManager.storeScores(ScoreManager.getUsername(), ScoreManager.getScore());
-       
-  //     scoresTable = DatabaseManager.getTable();
-  //      System.out.println("TABLE: \n" + scoresTable.toString());
-  
     }
 
-    
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

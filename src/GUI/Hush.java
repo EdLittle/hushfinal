@@ -92,9 +92,6 @@ public class Hush extends javax.swing.JFrame {
         aboutPanel = new GUI.About();
         getContentPane().add(aboutPanel, "aboutCard");
         
-     //   playersStat = new GUI.PlayersStat();
-     //   getContentPane().add(playersStat, "playersStatCard");
-        
         playPanel = new GUI.PlayPanel();
         getContentPane().add(playPanel, "playCard");
         

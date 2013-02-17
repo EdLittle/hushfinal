@@ -252,7 +252,7 @@ public class TitlePage extends javax.swing.JPanel {
     }//GEN-LAST:event_scoresIconMouseExited
 
     private void scoresIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scoresIconMouseEntered
-// TODO add your handling code here:
+    // TODO add your handling code here:
         scoresIcon.setForeground(Color.black);
         scoresIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/medal-alt.png")));
     }//GEN-LAST:event_scoresIconMouseEntered
@@ -261,10 +261,15 @@ public class TitlePage extends javax.swing.JPanel {
         // TODO add your handling code here:
         hush = Hush.getHush();
         hush.navigate("hallCard");
-    //    hallOfUsers = hush.getHallOfUsers();
+        //    hallOfUsers = hush.getHallOfUsers();
         try {
-            hallOfUsers = new HallOfUsers();  
-       //     hallOfUsers.initVectors();
+            if (hallOfUsers == null){
+                hallOfUsers = new HallOfUsers();
+            }
+            else{ 
+                hallOfUsers.updateStat();
+                //hallOfUsers = new HallOfUsers();  
+            }
         } catch (Exception ex) {
             Logger.getLogger(TitlePage.class.getName()).log(Level.SEVERE, null, ex);
         }
