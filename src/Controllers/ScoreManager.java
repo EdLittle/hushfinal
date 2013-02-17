@@ -68,7 +68,7 @@ public class ScoreManager {
     }
 
     public static int getScore(){
-        return score;
+        return (colorScore + shapeScore);
     }
     
     public static String getUsername(){

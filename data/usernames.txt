@@ -13,3 +13,6 @@ cbtl
 afgiu
 Dahlia
 Carmen
+CB
+Taco
+Lala
