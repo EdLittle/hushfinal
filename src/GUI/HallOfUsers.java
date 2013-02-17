@@ -118,10 +118,9 @@ public class HallOfUsers extends javax.swing.JPanel {
                wood_scorers.add(users.get(x));               
            }
        }
-       //displayAll();
-       
+       //displayAll();  
     }
-     
+    
     public Vector getGold(){
         return gold_scorers;
     }
