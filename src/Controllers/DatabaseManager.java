@@ -86,6 +86,7 @@ public class DatabaseManager {
     }
     
     public static void categorizeScores(){
+        
         for (int x=0; x < scoresList.size(); x++){
            if (ScoreManager.getCategory(scoresList.get(x)) == 0){  
                 System.out.println("Gold: " + usersList.get(x));
@@ -147,7 +148,17 @@ public class DatabaseManager {
     
     public static ArrayList getUsersList() throws Exception{
         
-        System.out.println("get list: " + usersList.size()) ;
+        System.out.println("get list: " + usersList.size() + " get unames: " + usernames.length) ;
+        System.out.println("usersList: " + usersList.toString()) ;
+        System.out.println("unames: " + usernames.toString()) ;
+      /*  
+        if(usernames.length!=usersList.size()){
+            for (int x=usersList.size(); x<usernames.length; x++){
+                System.out.println("Add " + usernames[x] + " to " + usersList.size());
+                usersList.add(usernames[x]);
+            }
+        }
+        * */
         return usersList;
     }
     public static ArrayList getScoresList() throws Exception{
@@ -185,11 +196,12 @@ public class DatabaseManager {
          counter = usersList.indexOf(user);
        
         System.out.println("User: " + user);
-        System.out.println("score: " + score);
+        System.out.println("prevScore: " + scoresList.get(counter));
+        System.out.println("currScore: " + score);
         System.out.println("index: " + counter);
        
-       
-        scoresList.set(counter, score);
+       if(score>scoresList.get(counter))
+            scoresList.set(counter, score);
         System.out.println("ScoreString size: " + scoresString.length);
         
         BufferedWriter bw = new BufferedWriter(new FileWriter(scoresFile, false));

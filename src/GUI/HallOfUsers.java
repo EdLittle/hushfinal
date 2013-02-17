@@ -88,7 +88,7 @@ public class HallOfUsers extends javax.swing.JPanel {
     }
     
      public void updateStat()throws Exception{
-             
+        
         users = DatabaseManager.getUsersList();
         scores = DatabaseManager.getScoresList();
         gold_scorers.clear();
@@ -98,28 +98,45 @@ public class HallOfUsers extends javax.swing.JPanel {
               
         //System.out.println("ScoreSize: " + users.size() + " " + scores.size());
         DatabaseManager.categorizeScores();
-        
+             System.out.println("UPDATED!");
+       
         gold_scorers = DatabaseManager.getGoldScorers();
         silver_scorers = DatabaseManager.getSilverScorers();
         bronze_scorers = DatabaseManager.getBronzeScorers();
         wood_scorers = DatabaseManager.getWoodScorers();
+        displayAll();
         
-        for (int x=0; x<scores.size(); x++){
-           if (ScoreManager.getCategory(scores.get(x)) == 0){
-               gold_scorers.add(users.get(x));               
-           }
-           else if (ScoreManager.getCategory(scores.get(x)) == 1){
-               silver_scorers.add(users.get(x));               
-           }
-           else if (ScoreManager.getCategory(scores.get(x)) == 2){
-               bronze_scorers.add(users.get(x));               
-           }
-           else {
-               wood_scorers.add(users.get(x));               
-           }
-       }
-       //displayAll();
+        
+        for(int x=0; x<gold_scorers.size(); x++){
+            System.out.println("index of: " + gold_scorers.indexOf("Beyonce"));
+        }
+        
+       System.out.println("UPDATED users: " + users.toString());
+       System.out.println("UPDATED scores: " + scores.toString());
        
+        gold_list.removeAll();
+        silver_list.removeAll();
+        bronze_list.removeAll();
+        wood_list.removeAll();
+
+        for(Object name : gold_scorers){            
+            gold_list.add((String) name);
+            System.out.println("Here");
+        }
+        for(Object name : silver_scorers){
+            silver_list.add((String) name);
+        }
+
+        for(Object name : bronze_scorers){
+            bronze_list.add((String) name);
+        }
+
+        for(Object name : wood_scorers){
+            wood_list.add((String) name);
+        System.out.println("Rih");
+        }
+       //displayAll();
+        wood_list.add("hi");
     }
      
     public Vector getGold(){
@@ -139,7 +156,7 @@ public class HallOfUsers extends javax.swing.JPanel {
     }
     
     public static void gameOver() throws Exception{
-       DatabaseManager.storeScores(ScoreManager.getUsername(), ScoreManager.getScore());
+        DatabaseManager.storeScores(ScoreManager.getUsername(), ScoreManager.getScore());
     }
 
     @SuppressWarnings("unchecked")

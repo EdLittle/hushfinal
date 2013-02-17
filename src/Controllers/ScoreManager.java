@@ -92,21 +92,21 @@ public class ScoreManager {
     }
     
     public static int getCategory(int currScore){
-       score = currScore;
+     //  score = currScore;
        int category = 3;
        
        //Gold = categ 0
-       if (score>=8){
+       if (currScore>=8){
            category = 0;
        }
        
        //Silver = categ 1
-       else if ((score<8)&&(score>=6)){
+       else if ((currScore<8)&&(currScore>=6)){
            category = 1;
        }
        
        //Bronze = categ 2
-       else if((score<6)&&(score>=4)){
+       else if((currScore<6)&&(currScore>=4)){
            category = 2;
        }
        

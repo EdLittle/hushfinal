@@ -54,7 +54,7 @@ public class ScoreSummary extends javax.swing.JPanel {
 
         this.repaint();
         
-        PlayersStat.gameOver();
+        HallOfUsers.gameOver();
     }
     
     public void correctAns(){
