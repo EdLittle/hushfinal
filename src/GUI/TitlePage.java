@@ -261,7 +261,7 @@ public class TitlePage extends javax.swing.JPanel {
         // TODO add your handling code here:
         hush = Hush.getHush();
         hush.navigate("hallCard");
-        //    hallOfUsers = hush.getHallOfUsers();
+        hallOfUsers = hush.getHallOfUsers();
         try {
             if (hallOfUsers == null){
                 hallOfUsers = new HallOfUsers();

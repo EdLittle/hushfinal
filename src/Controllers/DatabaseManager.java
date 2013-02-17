@@ -68,10 +68,16 @@ public class DatabaseManager {
     
     public static void updateUsername(String usernameInput) throws Exception{
         if (!usersList.contains(usernameInput)){
+            
     //        System.out.println("New player: " + usernameInput + " at " + usernames[usernames.length]);
             System.out.println("New player: " + usernameInput + " at " + (usersList.size()));
             System.out.println("New score: 0 at " + (scoresList.size()));
             usersList.add(usernameInput);
+            
+            usernames = new String[usersList.size()];
+            for (int x=0; x<usersList.size(); x++){
+                usernames[x] = usersList.get(x);
+            }
             scoresList.add(0);
              System.out.println("useres size: " + usersList.size() + " scoresList size: " + scoresList.size());
            
@@ -118,6 +124,7 @@ public class DatabaseManager {
                 
         System.out.println("get names: " + usernames.length) ;
         //convert usernames to ArrayList????
+        
         for (int x=0; x<usernames.length; x++){  
             usersList.add(x, usernames[x]);
           //  scoresTable.put(usernames[x], scoresList[x]);
