@@ -27,7 +27,7 @@ public class ScoreSummary extends javax.swing.JPanel {
     private Vector rightShapes = new Vector();
     private String[] msgGreeting = {"Excellent work", "Good job", "Nice playing", "Hi"};
     private String[] starCategories = {"GOLD", "SILVER", "BRONZE", "WOOD"};
-    private PlayersStat playersStat;
+ 
     /**
      * Enumerate all right colors and shapes after
      * under the star.

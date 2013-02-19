@@ -29,7 +29,7 @@ public class Hush extends javax.swing.JFrame {
     public static SoundManager soundManager;
     private GUI.PlayPanel playPanel;
     private GUI.About aboutPanel;
-    private GUI.PlayersStat playersStat;
+ 
     static ArrayList<String> usersList;
     static ArrayList<Integer> scoresList;
     private int[] scores;
