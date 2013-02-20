@@ -27,12 +27,13 @@ public class TitlePage extends javax.swing.JPanel {
     private Hush hush;
     private SoundManager soundManager;
     private ControlPanel controlPanel;
+    private GUI.About aboutPanel;
     private GUI.HallOfUsers hallOfUsers;
     
     /** Creates new form TitlePage */
     public TitlePage() {
         initComponents();
-        controlPanel = new ControlPanel();   
+        controlPanel = new ControlPanel();
     }
     
     /** This method is called from within the constructor to
@@ -242,7 +243,19 @@ public class TitlePage extends javax.swing.JPanel {
     private void aboutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutIconMouseClicked
 // TODO add your handling code here:
         hush = Hush.getHush();
+        aboutPanel = hush.getAboutPanel();
+        ControlPanel controlPanel = aboutPanel.controlPanel;
+        if(controlPanel == null){
+            System.out.println("Ooh");
+        }
+        //aboutPanel.addControlPanel();
+        controlPanel = aboutPanel.controlPanel;
+        if(controlPanel == null){
+            System.out.println("Yeah");
+        }
         hush.navigate("aboutCard");
+        
+        
     }//GEN-LAST:event_aboutIconMouseClicked
 
     private void scoresIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scoresIconMouseExited
@@ -268,7 +281,6 @@ public class TitlePage extends javax.swing.JPanel {
             }
             else{ 
                 hallOfUsers.updateStat();
-                //hallOfUsers = new HallOfUsers();  
             }
         } catch (Exception ex) {
             Logger.getLogger(TitlePage.class.getName()).log(Level.SEVERE, null, ex);
@@ -290,10 +302,14 @@ public class TitlePage extends javax.swing.JPanel {
     private void playIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseClicked
 // TODO add your handling code here:
         hush = Hush.getHush();
-      // Hush.soundManager.playBgmusic();
+//        Hush.soundManager.playBgmusic();
         hush.navigate("loginCard");
     }//GEN-LAST:event_playIconMouseClicked
 
+    public ControlPanel getControlPanel(){
+        return this.controlPanel;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel aboutIcon;
     private javax.swing.JPanel jPanel1;

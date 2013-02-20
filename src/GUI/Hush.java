@@ -27,6 +27,7 @@ public class Hush extends javax.swing.JFrame {
 
     public static Hush hush;
     public static SoundManager soundManager;
+    //private static GUI.ControlPanel controlPanel = new GUI.ControlPanel();
     private GUI.PlayPanel playPanel;
     private GUI.About aboutPanel;
  
@@ -34,6 +35,7 @@ public class Hush extends javax.swing.JFrame {
     static ArrayList<Integer> scoresList;
     private int[] scores;
     private GUI.LoginPanel loginPanel;
+    private static boolean activeBG = false;
     private GUI.ScoreSummary scoreSummaryPanel;
     private HallOfUsers hallPanel;
     private DatabaseManager databaseManager;
@@ -41,6 +43,8 @@ public class Hush extends javax.swing.JFrame {
 
     /** Creates new form Hush */
     public Hush() throws Exception{
+        
+        
         soundManager = new SoundManager();
         usersList = new ArrayList<String>();
         scoresList = new ArrayList<Integer>();
@@ -50,10 +54,17 @@ public class Hush extends javax.swing.JFrame {
         DatabaseManager.categorizeScores();
         usersList = DatabaseManager.getNames();
         scoresList = DatabaseManager.getScores();
-        
-        //Hush.soundManager.playBgmusic();
+        if(titlePage == null){
+            System.out.println("titlePage is null");
+            
+        }
         initComponents();
+        if(titlePage == null){
+            System.out.println("titlePage is null");
+            
+        }
         
+        //getContentPane().add(controlPanel, "controlCard");
         addOtherCards();
         
         int length = usersList.size();
@@ -85,7 +96,8 @@ public class Hush extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void addOtherCards() throws Exception{
+    private void addOtherCards() throws Exception{        
+        
         loginPanel = new GUI.LoginPanel();
         getContentPane().add(loginPanel, "loginCard");
         
@@ -100,18 +112,62 @@ public class Hush extends javax.swing.JFrame {
         
         hallPanel = new GUI.HallOfUsers();
         getContentPane().add(hallPanel, "hallCard");
+        
     }
     
     public static Hush getHush(){
         return hush;
-    }
+       }
     
     public DecoyPlay getDecoyPlay(){
         return playPanel.getGamePanel();
     }
+    
+    //public ControlPanel getControlPanel(){
+        //return controlPanel;
+    //}
+    
+    public About getAboutPanel(){
+        return aboutPanel;
+    }
+    
+    public HallOfUsers getHallOfUsers(){
+        return hallPanel;
+    }
+  
+    public DatabaseManager getDatabaseManager(){
+        return databaseManager;
+    }
+    
+    public static boolean isBGactive(){
+        return activeBG;
+    }
+    
     public ScoreSummary getScoreSummary(){
         return scoreSummaryPanel;
     }
+    
+     public LayoutManager getCardLayout(){
+        return getContentPane().getLayout();
+    }
+    
+    public void navigate(String cardName){
+       System.out.println("State: " +  RoutesManager.currState() + " to " + cardName);
+       hush = Hush.getHush();
+       CardLayout cardLayout = (CardLayout) hush.getCardLayout();
+       cardLayout.show(hush.getContentPane(), cardName);
+       RoutesManager.push(cardName);
+       
+       //aboutPanel.addControlPanel();
+       //Hush.soundManager.isActiveBgmusic()
+       //controlPanel.setSoundsIcon(soundManager.isActiveBgmusic());
+       System.out.println("Active sounds: " + soundManager.isActiveBgmusic());
+    //   activeBG = soundManager.isActiveBgmusic();
+       
+       Hush.soundManager.playClickOff();
+    
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -139,6 +195,7 @@ public class Hush extends javax.swing.JFrame {
         }
         //</editor-fold>
         hush = new Hush();
+        
         hush.setVisible(true);
         hush.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /* Create and display the form */
@@ -149,29 +206,11 @@ public class Hush extends javax.swing.JFrame {
             }
         });
     }
-    
-    public LayoutManager getCardLayout(){
-        return getContentPane().getLayout();
+    /*
+    public static ControlPanel getControlPanel(){
+        //return ;
     }
-    
-    public void navigate(String cardName){
-       System.out.println("State: " +  RoutesManager.currState() + " to " + cardName);
-       hush = Hush.getHush();
-       CardLayout cardLayout = (CardLayout) hush.getCardLayout();
-       cardLayout.show(hush.getContentPane(), cardName);
-       RoutesManager.push(cardName);
-       Hush.soundManager.playClickOff();
-    
-    }
-    
-    public HallOfUsers getHallOfUsers(){
-        return hallPanel;
-    }
-    
-    public DatabaseManager getDatabaseManager(){
-        return databaseManager;
-    }
-    
+    * */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.TitlePage titlePage;
     // End of variables declaration//GEN-END:variables

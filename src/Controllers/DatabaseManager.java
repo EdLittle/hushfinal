@@ -35,7 +35,6 @@ public class DatabaseManager {
     static ArrayList<Integer> scoresList = new ArrayList<Integer>();
     static String[] usernames = null;
     static String[] scoresString = null;
-    static Hashtable<String, Integer> scoresTable = new Hashtable<String, Integer>();
     static Vector gold_scorers;
     static Vector silver_scorers;
     static Vector bronze_scorers;
@@ -69,17 +68,13 @@ public class DatabaseManager {
     public static void updateUsername(String usernameInput) throws Exception{
         if (!usersList.contains(usernameInput)){
             
-    //        System.out.println("New player: " + usernameInput + " at " + usernames[usernames.length]);
             System.out.println("New player: " + usernameInput + " at " + (usersList.size()));
             System.out.println("New score: 0 at " + (scoresList.size()));
-            usersList.add(usernameInput);
             
-            usernames = new String[usersList.size()];
-            for (int x=0; x<usersList.size(); x++){
-                usernames[x] = usersList.get(x);
-            }
+            usersList.add(usernameInput);
             scoresList.add(0);
-             System.out.println("useres size: " + usersList.size() + " scoresList size: " + scoresList.size());
+            
+            System.out.println("New users size: " + usersList.size() + " scoresList size: " + scoresList.size());
            
             BufferedWriter bw = new BufferedWriter(new FileWriter(usersFile, true));
 
@@ -99,15 +94,15 @@ public class DatabaseManager {
                 gold_scorers.add(usersList.get(x));        
            }
            else if (ScoreManager.getCategory(scoresList.get(x)) == 1){
-                System.out.println("sILVER: " + usersList.get(x));
+                System.out.println("Silver: " + usersList.get(x));
                 silver_scorers.add(usersList.get(x));               
            }
            else if (ScoreManager.getCategory(scoresList.get(x)) == 2){
-                System.out.println("BRO: " + usersList.get(x));
+                System.out.println("Bronze: " + usersList.get(x));
                 bronze_scorers.add(usersList.get(x));               
            }
            else {    
-                System.out.println("WOOD: " + usersList.get(x));
+                System.out.println("Wood: " + usersList.get(x));
                 wood_scorers.add(usersList.get(x));               
            }
         }
@@ -123,11 +118,10 @@ public class DatabaseManager {
         usernames = names.split("\n");
                 
         System.out.println("get names: " + usernames.length) ;
-        //convert usernames to ArrayList????
         
+        //migrate String usernames to ArrayList
         for (int x=0; x<usernames.length; x++){  
             usersList.add(x, usernames[x]);
-          //  scoresTable.put(usernames[x], scoresList[x]);
         }
         return usersList;
     }
@@ -144,9 +138,8 @@ public class DatabaseManager {
                  
         System.out.println("get Scores: " + scoresString.length) ;
         
-        //convert read scores(in char) to list of integers and copy it to scoresTable
+        //convert read scores(in char) to list of integers
         for (int x=0; x<scoresString.length; x++){  
-       // System.out.println("get Scores---: " + scoresString[x]) ;
             scoresList.add(x, Integer.parseInt(scoresString[x]));
            
         }
@@ -158,14 +151,7 @@ public class DatabaseManager {
         System.out.println("get list: " + usersList.size() + " get unames: " + usernames.length) ;
         System.out.println("usersList: " + usersList.toString()) ;
         System.out.println("unames: " + usernames.toString()) ;
-      /*  
-        if(usernames.length!=usersList.size()){
-            for (int x=usersList.size(); x<usernames.length; x++){
-                System.out.println("Add " + usernames[x] + " to " + usersList.size());
-                usersList.add(usernames[x]);
-            }
-        }
-        * */
+    
         return usersList;
     }
     public static ArrayList getScoresList() throws Exception{
@@ -209,7 +195,6 @@ public class DatabaseManager {
        
        if(score>scoresList.get(counter))
             scoresList.set(counter, score);
-        System.out.println("ScoreString size: " + scoresString.length);
         
         BufferedWriter bw = new BufferedWriter(new FileWriter(scoresFile, false));
   
@@ -221,13 +206,8 @@ public class DatabaseManager {
         }
         bw.close();
         
-            System.out.println("scoresTable: " + scoresTable.toString());
     }
-      public static Hashtable getTable(){
-          return scoresTable;
-      }
-    
-    
+         
     public static void setUsernames(ArrayList usernames) throws FileNotFoundException, IOException{
         System.out.println("set userNames") ;
         for(int i = 0; i < usernames.size(); i++){

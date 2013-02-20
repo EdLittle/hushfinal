@@ -59,7 +59,6 @@ public class PlayPanel extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        controlPanel = new GUI.ControlPanel();
         jPanel9 = new javax.swing.JPanel();
 
         setMaximumSize(new java.awt.Dimension(650, 550));
@@ -220,8 +219,6 @@ public class PlayPanel extends javax.swing.JPanel {
 
         jPanel8.setMinimumSize(new java.awt.Dimension(500, 75));
         jPanel8.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel8.add(controlPanel);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -247,7 +244,6 @@ public class PlayPanel extends javax.swing.JPanel {
         add(jPanel9, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GUI.ControlPanel controlPanel;
     private GUI.DecoyPlay decoyPlay1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

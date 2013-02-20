@@ -3,6 +3,8 @@
  * and open the template in the editor.
  */
 package Controllers;
+import GUI.Hush;
+import GUI.ControlPanel;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import sun.audio.*;
@@ -17,6 +19,9 @@ import javax.sound.sampled.AudioSystem;
  */
 
 public class SoundManager {
+    public Hush hush;
+    public ControlPanel controlPanel;
+    
     public InputStream in;
     public AudioStream as;
     
@@ -61,10 +66,21 @@ public class SoundManager {
        
     public void stopBgmusic(){
        bgmusicClip.stop();
-    //   bgmusicClip.setMicrosecondPosition(0);
     }
     
     public boolean isActiveBgmusic(){
+        
+       /* 
+        hush = Hush.getHush();
+        *System.out.println("-------------isActiveBgmusic?" + bgmusicClip.isActive() );     
+          System.out.println("-------------Active sounds: " + Hush.soundManager.isActiveBgmusic());
+         if (bgmusicClip.isActive()){
+              System.out.println("-------------ACTIVE!");
+              
+         else{   
+            System.out.println("-------------NOT ACTIVE!");
+            sounds.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/med/MD-volume-0.png"))); // NOI18N
+         } */
         return bgmusicClip.isActive();
     }
     
