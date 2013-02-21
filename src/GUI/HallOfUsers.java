@@ -374,7 +374,7 @@ public class HallOfUsers extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    public javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private static javax.swing.JTabbedPane jTabbedPane1;
     private java.awt.Label label1;

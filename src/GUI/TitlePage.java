@@ -24,16 +24,17 @@ import java.util.logging.Logger;
  */
 public class TitlePage extends javax.swing.JPanel {
     private static Color defaultFontColor = new Color(153, 153, 153);
+    private CardLayout cardLayout;
     private Hush hush;
     private SoundManager soundManager;
     private ControlPanel controlPanel;
     private GUI.About aboutPanel;
+    private GUI.LoginPanel loginPanel;
     private GUI.HallOfUsers hallOfUsers;
     
     /** Creates new form TitlePage */
     public TitlePage() {
         initComponents();
-        controlPanel = new ControlPanel();
     }
     
     /** This method is called from within the constructor to
@@ -243,16 +244,7 @@ public class TitlePage extends javax.swing.JPanel {
     private void aboutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutIconMouseClicked
 // TODO add your handling code here:
         hush = Hush.getHush();
-        aboutPanel = hush.getAboutPanel();
-        ControlPanel controlPanel = aboutPanel.controlPanel;
-        if(controlPanel == null){
-            System.out.println("Ooh");
-        }
-        //aboutPanel.addControlPanel();
-        controlPanel = aboutPanel.controlPanel;
-        if(controlPanel == null){
-            System.out.println("Yeah");
-        }
+        hush.getAboutPanel().updateControlPanel();
         hush.navigate("aboutCard");
         
         
@@ -272,7 +264,7 @@ public class TitlePage extends javax.swing.JPanel {
 
     private void scoresIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scoresIconMouseClicked
         // TODO add your handling code here:
-        hush = Hush.getHush();
+        hush = Hush.getHush();    
         hush.navigate("hallCard");
         hallOfUsers = hush.getHallOfUsers();
         try {
@@ -285,6 +277,11 @@ public class TitlePage extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(TitlePage.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        controlPanel = hush.getControlPanel();
+        System.out.println("control panel? " + controlPanel.getToolTipText());
+        hallOfUsers.jPanel8.add(controlPanel);
+      
     }//GEN-LAST:event_scoresIconMouseClicked
 
     private void playIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseExited
@@ -301,14 +298,14 @@ public class TitlePage extends javax.swing.JPanel {
 
     private void playIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseClicked
 // TODO add your handling code here:
-        hush = Hush.getHush();
+        hush = Hush.getHush();        
+        controlPanel = hush.getControlPanel();
+        loginPanel = hush.getLoginPanel();
+        loginPanel.jPanel8.add(controlPanel);
 //        Hush.soundManager.playBgmusic();
         hush.navigate("loginCard");
     }//GEN-LAST:event_playIconMouseClicked
 
-    public ControlPanel getControlPanel(){
-        return this.controlPanel;
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel aboutIcon;

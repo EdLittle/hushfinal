@@ -19,14 +19,25 @@ import java.util.logging.Logger;
  * @author FREAK
  */
 public class PlayPanel extends javax.swing.JPanel {
-
+    private Hush hush;
+    private GUI.ControlPanel controlPanel;
+    
     /** Creates new form PlayPanel */
     public PlayPanel() throws Exception {
         initComponents(); 
         ScoreManager.setSlots(jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7);
     }
+   
+    public void updateControlPanel(){
+        hush = Hush.getHush();                
+        controlPanel = hush.getControlPanel();
+        this.jPanel9.add(controlPanel);
+    }  
     
     public DecoyPlay getGamePanel(){
+        hush = Hush.getHush();                
+        controlPanel = hush.getControlPanel();
+        this.jPanel8.add(controlPanel);
         return decoyPlay1;
     }
     /** This method is called from within the constructor to
@@ -259,7 +270,7 @@ public class PlayPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    public javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
 }

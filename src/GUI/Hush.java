@@ -27,7 +27,7 @@ public class Hush extends javax.swing.JFrame {
 
     public static Hush hush;
     public static SoundManager soundManager;
-    //private static GUI.ControlPanel controlPanel = new GUI.ControlPanel();
+    private static GUI.ControlPanel controlPanel;
     private GUI.PlayPanel playPanel;
     private GUI.About aboutPanel;
  
@@ -123,12 +123,24 @@ public class Hush extends javax.swing.JFrame {
         return playPanel.getGamePanel();
     }
     
-    //public ControlPanel getControlPanel(){
-        //return controlPanel;
-    //}
+    public ControlPanel getControlPanel(){
+        return controlPanel;
+    }
     
     public About getAboutPanel(){
         return aboutPanel;
+    }
+    
+    public LoginPanel getLoginPanel(){
+        return loginPanel;
+    }
+    
+    public PlayPanel getPlayPanel(){
+        return playPanel;
+    }
+    
+    public TitlePage getTitlePage(){
+        return titlePage;
     }
     
     public HallOfUsers getHallOfUsers(){
@@ -156,7 +168,7 @@ public class Hush extends javax.swing.JFrame {
        hush = Hush.getHush();
        CardLayout cardLayout = (CardLayout) hush.getCardLayout();
        cardLayout.show(hush.getContentPane(), cardName);
-       RoutesManager.push(cardName);
+      RoutesManager.push(cardName);
        
        //aboutPanel.addControlPanel();
        //Hush.soundManager.isActiveBgmusic()
@@ -194,8 +206,9 @@ public class Hush extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Hush.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        hush = new Hush();
         
+        controlPanel = new GUI.ControlPanel();
+        hush = new Hush();
         hush.setVisible(true);
         hush.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /* Create and display the form */

@@ -38,6 +38,11 @@ public class LoginPanel extends javax.swing.JPanel {
         loginPanel = this;
     }
     
+    public void updateControlPanel(){
+        hush = Hush.getHush();                
+        controlPanel = hush.getControlPanel();
+        this.jPanel9.add(controlPanel);
+    } 
     public void setNames(ArrayList users){
         usersList = new ArrayList<String>();
         this.usersList = users;
@@ -75,7 +80,7 @@ public class LoginPanel extends javax.swing.JPanel {
         }
     }
     
-    public static LoginPanel getLoginPanel(){
+    public LoginPanel getLoginPanel(){
         return loginPanel;
     }
     
@@ -385,7 +390,7 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    public javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel nameHolder1;
     private javax.swing.JPanel nameHolder2;

@@ -28,6 +28,8 @@ public class ScoreSummary extends javax.swing.JPanel {
     private String[] msgGreeting = {"Excellent work", "Good job", "Nice playing", "Hi"};
     private String[] starCategories = {"GOLD", "SILVER", "BRONZE", "WOOD"};
  
+    private Hush hush;
+    private GUI.ControlPanel controlPanel;
     /**
      * Enumerate all right colors and shapes after
      * under the star.
@@ -52,6 +54,9 @@ public class ScoreSummary extends javax.swing.JPanel {
         this.msg.setText(greeting + ", " + username + "!"); 
         this.msg2.setText("You now have " + categ + " badge.");
 
+        controlPanel = hush.getControlPanel();
+        this.jPanel8.add(controlPanel);
+       
         this.repaint();
         
         HallOfUsers.gameOver();
@@ -427,7 +432,7 @@ public class ScoreSummary extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    public javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel listOfCorrAns;
     private java.awt.Label msg;

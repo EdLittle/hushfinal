@@ -33,6 +33,7 @@ import javax.swing.Icon;
 public class ControlPanel extends javax.swing.JPanel {
     private Hush hush;
     public SoundManager soundManager;
+    public LoginPanel loginPanel;
     private CardLayout cardLayout;
     private Icon activeSoundIcon;
     private Icon muteSoundIcon;
@@ -41,6 +42,8 @@ public class ControlPanel extends javax.swing.JPanel {
         activeSoundIcon = new javax.swing.ImageIcon(getClass().getResource("/med/MD-sound.png")); // NOI18N
         muteSoundIcon = new javax.swing.ImageIcon(getClass().getResource("/med/MD-volume-0.png")); // NOI18N
         initComponents();  
+        
+            System.out.println("created");  
     }
 
     /** This method is called from within the constructor to
@@ -130,7 +133,12 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             newGame("loginCard");
         }
         else            
-            System.out.println("Cannot Restart");       
+            System.out.println("Cannot Restart");  
+        
+        
+        hush = Hush.getHush();                
+        loginPanel = hush.getLoginPanel();
+        loginPanel.jPanel8.add(this);
 }//GEN-LAST:event_restartMouseClicked
 
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked

@@ -16,11 +16,10 @@ package GUI;
  */
 public class About extends javax.swing.JPanel {
     /** Creates new form About */
-    private Hush hush;
+    public Hush hush;
     public GUI.ControlPanel controlPanel;
     
     public About() {
-        hush = Hush.getHush();
         initComponents();
         
     }
@@ -45,7 +44,6 @@ public class About extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        controlPanel1 = hush.getControlPanel();
         jPanel10 = new javax.swing.JPanel();
 
         setMaximumSize(new java.awt.Dimension(650, 550));
@@ -169,8 +167,6 @@ public class About extends javax.swing.JPanel {
 
         jPanel9.setMinimumSize(new java.awt.Dimension(500, 75));
         jPanel9.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel9.add(controlPanel1);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -217,7 +213,6 @@ public class About extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GUI.ControlPanel controlPanel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -228,7 +223,7 @@ public class About extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
+    public javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
     /*
     public void addControlPanel(){
@@ -251,7 +246,9 @@ public class About extends javax.swing.JPanel {
         }
     }
     * */
-    public ControlPanel geControlPanel(){
-        return controlPanel;
+    public void updateControlPanel(){
+        hush = Hush.getHush();                
+        controlPanel = hush.getControlPanel();
+        this.jPanel9.add(controlPanel);
     }
 }

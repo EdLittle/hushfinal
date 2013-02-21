@@ -27,6 +27,8 @@ import javax.swing.JPanel;
  */
 public class NamePanel extends javax.swing.JPanel {
     private Hush hush;
+    private GUI.ControlPanel controlPanel;
+    private GUI.PlayPanel playPanel;
     int number;
     static ArrayList<String> usersList = new ArrayList<String>();
     static JPanel[] panels;
@@ -105,7 +107,10 @@ public class NamePanel extends javax.swing.JPanel {
        
         hush = Hush.getHush();
         hush.navigate("playCard");   
- 
+        controlPanel = hush.getControlPanel();
+        playPanel = hush.getPlayPanel();
+        playPanel.jPanel8.add(controlPanel);
+        
         try {
             hush.getDecoyPlay().startGame();
         } catch (FileNotFoundException ex) {
