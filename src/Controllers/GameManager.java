@@ -73,7 +73,7 @@ public class GameManager {
         displayLabel = decoyPlay.getJLabel1();        
         running = false;
         round = 0;
-        level = 1;
+        level = 0;
         bandsAnalyzer = new BandsAnalyzer();
         scoreManager = new ScoreManager();       
         camera = decoyPlay.getCamera();
@@ -218,7 +218,9 @@ public class GameManager {
                             
                             if(correct) {                                
                                 getFuture().cancel(true);
-                                soundManager.playCorrectAns();
+                                if (Hush.soundManager.isActiveBgmusic()){
+                                    soundManager.playCorrectAns();
+                                }
                                 scoreManager.addScore(detectedColor, level);
                             }
 
@@ -299,7 +301,10 @@ public class GameManager {
                             if(correct) {
                                 System.out.println("Correct " + randomShapes[round-1]);                                               
                                 getFuture().cancel(true);
-                                soundManager.playCorrectAns();
+                                
+                                if (Hush.soundManager.isActiveBgmusic()){
+                                    soundManager.playCorrectAns();
+                                }
                                 scoreManager.addScore(randomShapes[round-1], level);
                             }
 
@@ -332,6 +337,7 @@ public class GameManager {
                                     round = 0;
                                     level = 0;
                                     
+                                    hush.getScoreSummary().updateControlPanel();
                                     scoreSummary.setMessage();
                                 }
                             }

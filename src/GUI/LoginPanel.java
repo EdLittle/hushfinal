@@ -41,8 +41,9 @@ public class LoginPanel extends javax.swing.JPanel {
     public void updateControlPanel(){
         hush = Hush.getHush();                
         controlPanel = hush.getControlPanel();
-        this.jPanel9.add(controlPanel);
+        this.jPanel8.add(controlPanel);
     } 
+    
     public void setNames(ArrayList users){
         usersList = new ArrayList<String>();
         this.usersList = users;

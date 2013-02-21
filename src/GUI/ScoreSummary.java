@@ -54,9 +54,6 @@ public class ScoreSummary extends javax.swing.JPanel {
         this.msg.setText(greeting + ", " + username + "!"); 
         this.msg2.setText("You now have " + categ + " badge.");
 
-        controlPanel = hush.getControlPanel();
-        this.jPanel8.add(controlPanel);
-       
         this.repaint();
         
         HallOfUsers.gameOver();
@@ -104,6 +101,14 @@ public class ScoreSummary extends javax.swing.JPanel {
             
 
     }
+    
+    
+    public void updateControlPanel(){
+        hush = Hush.getHush();                
+        controlPanel = hush.getControlPanel();
+        this.jPanel8.add(controlPanel);
+    } 
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is

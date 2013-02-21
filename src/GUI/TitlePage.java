@@ -225,7 +225,9 @@ public class TitlePage extends javax.swing.JPanel {
 
     private void quitIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quitIconMouseClicked
 // TODO add your handling code here:
-        Hush.soundManager.playClickOff();
+        if (Hush.soundManager.isActiveBgmusic()){
+            Hush.soundManager.playClickOff();
+        }
         System.exit(0);
     }//GEN-LAST:event_quitIconMouseClicked
 
@@ -265,8 +267,11 @@ public class TitlePage extends javax.swing.JPanel {
     private void scoresIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scoresIconMouseClicked
         // TODO add your handling code here:
         hush = Hush.getHush();    
+        hush.getHallOfUsers().updateControlPanel();
         hush.navigate("hallCard");
+        
         hallOfUsers = hush.getHallOfUsers();
+        
         try {
             if (hallOfUsers == null){
                 hallOfUsers = new HallOfUsers();
@@ -278,9 +283,6 @@ public class TitlePage extends javax.swing.JPanel {
             Logger.getLogger(TitlePage.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        controlPanel = hush.getControlPanel();
-        System.out.println("control panel? " + controlPanel.getToolTipText());
-        hallOfUsers.jPanel8.add(controlPanel);
       
     }//GEN-LAST:event_scoresIconMouseClicked
 
@@ -298,12 +300,10 @@ public class TitlePage extends javax.swing.JPanel {
 
     private void playIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseClicked
 // TODO add your handling code here:
-        hush = Hush.getHush();        
-        controlPanel = hush.getControlPanel();
-        loginPanel = hush.getLoginPanel();
-        loginPanel.jPanel8.add(controlPanel);
-//        Hush.soundManager.playBgmusic();
+        hush = Hush.getHush();      
+        hush.getLoginPanel().updateControlPanel();
         hush.navigate("loginCard");
+//        Hush.soundManager.playBgmusic();
     }//GEN-LAST:event_playIconMouseClicked
 
     

@@ -24,7 +24,9 @@ public class HallOfUsers extends javax.swing.JPanel {
     private Vector silver_scorers = new Vector();
     private Vector bronze_scorers = new Vector();
     private Vector wood_scorers = new Vector();
+    
     private Hush hush;
+    private GUI.ControlPanel controlPanel;
     /**
      * Creates new form HallOfUsers
      */
@@ -127,6 +129,12 @@ public class HallOfUsers extends javax.swing.JPanel {
     public static void gameOver() throws Exception{
         DatabaseManager.storeScores(ScoreManager.getUsername(), ScoreManager.getScore());
     }
+    
+    public void updateControlPanel(){
+        hush = Hush.getHush();                
+        controlPanel = hush.getControlPanel();
+        this.jPanel8.add(controlPanel);
+    } 
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

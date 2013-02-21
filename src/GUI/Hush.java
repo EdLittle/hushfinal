@@ -176,8 +176,9 @@ public class Hush extends javax.swing.JFrame {
        System.out.println("Active sounds: " + soundManager.isActiveBgmusic());
     //   activeBG = soundManager.isActiveBgmusic();
        
-       Hush.soundManager.playClickOff();
-    
+       if (Hush.soundManager.isActiveBgmusic()){
+            Hush.soundManager.playClickOff();
+       }
     }
     
     /**
