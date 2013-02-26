@@ -16,6 +16,11 @@
  * See http://www.imagingbook.com for details and licensing conditions.
  * 
  * Date: 2010/01/27
+ * 
+ * Implementing Hough Transform using Hessian  Normal Form line representation
+ * Stage 1: creates 2D accumulator array and fill it from the binary image with edge pixels (1)
+ * stage 2: search maxLines from the accumulator array and list of parameter pairs for K strongestLines id computed
+ * 
  */
 package hough;
 import ij.IJ;
@@ -42,17 +47,18 @@ public class LinearHT {
 
 	// --------------  public methods ------------------------
 	
+        
 	public LinearHT(ImageProcessor ip, int nAng, int nRad) {
 		this.ip = ip;
-		this.uc = ip.getWidth()/2; 
-		this.vc = ip.getHeight()/2;
+		this.uc = ip.getWidth()/2;                  //image center
+		this.vc = ip.getHeight()/2;                 //image center
 		this.nAng = nAng; 
-		this.dAng = Math.PI / nAng;
+		this.dAng = Math.PI / nAng;                 //angular increment
 		this.nRad = nRad;
 		this.cRad = nRad / 2;
-		this.rMax = Math.sqrt(uc * uc + vc * vc);
-		this.dRad = (2.0 * rMax) / nRad;
-		this.houghArray = new int[nAng][nRad]; // cells are initialized to zero
+		this.rMax = Math.sqrt(uc * uc + vc * vc);   //max radius is half the img diagonal
+		this.dRad = (2.0 * rMax) / nRad;            //radical increment
+		this.houghArray = new int[nAng][nRad];      // cells are initialized to zero
 		fillHoughArray();
 		findLocalMaxima();
                 
@@ -122,6 +128,18 @@ public class LinearHT {
 	
 	// --------------  nonpublic methods ------------------------
 	
+        
+        
+        /*
+         * ip - binary image
+         * nAng - discrete steps to use for the Angle (Ntetha steps for tetha i = 0 to pi
+         * nRad - Nr steps for  r i = -rmax to rmax
+         * 
+         * change tehta = pi/Ntetha
+         * change r = 2*rmax / Nr
+         * 
+         * ---very noisy edges results
+         */
 	void fillHoughArray() {
 	//	IJ.log("filling accumulator ...");
 		int h = ip.getHeight();
@@ -150,6 +168,10 @@ public class LinearHT {
 		}
 	}
 	
+        
+        /*
+         * localizing maximum values
+         */
 	void findLocalMaxima() {
 	//	IJ.log("finding local maxima");
 		localMaxArray = new int[nAng][nRad]; //initialized to zero
