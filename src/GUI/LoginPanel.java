@@ -29,12 +29,20 @@ public class LoginPanel extends javax.swing.JPanel {
     public JPanel[] panels;
     public static NamePanel[] namePanels;
     public FieldPanel[] fieldPanels;
+    public Hush hush;
+    public GUI.ControlPanel controlPanel;
     
     /** Creates new form LoginPanel */
     public LoginPanel() {
         initComponents();
         loginPanel = this;
     }
+    
+    public void updateControlPanel(){
+        hush = Hush.getHush();                
+        controlPanel = hush.getControlPanel();
+        this.jPanel8.add(controlPanel);
+    } 
     
     public void setNames(ArrayList users){
         usersList = new ArrayList<String>();
@@ -73,8 +81,15 @@ public class LoginPanel extends javax.swing.JPanel {
         }
     }
     
-    public static LoginPanel getLoginPanel(){
+    public LoginPanel getLoginPanel(){
         return loginPanel;
+    }
+    
+    /*
+    public void addControlPanel(){
+        hush = Hush.getHush();
+        controlPanel = hush.getControlPanel();
+        jPanel8.add(controlPanel);
     }
     /*
     public static void gatherNames(){
@@ -135,7 +150,6 @@ public class LoginPanel extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        controlPanel = new GUI.ControlPanel();
         jPanel9 = new javax.swing.JPanel();
 
         setMaximumSize(new java.awt.Dimension(650, 550));
@@ -334,8 +348,6 @@ public class LoginPanel extends javax.swing.JPanel {
         jPanel8.setMaximumSize(new java.awt.Dimension(500, 75));
         jPanel8.setMinimumSize(new java.awt.Dimension(500, 75));
         jPanel8.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel8.add(controlPanel);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -362,7 +374,6 @@ public class LoginPanel extends javax.swing.JPanel {
         add(jPanel9, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GUI.ControlPanel controlPanel;
     private GUI.FieldPanel fieldPanel1;
     private GUI.FieldPanel fieldPanel2;
     private GUI.FieldPanel fieldPanel3;
@@ -380,7 +391,7 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    public javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel nameHolder1;
     private javax.swing.JPanel nameHolder2;

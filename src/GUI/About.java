@@ -15,10 +15,13 @@ package GUI;
  * @author FREAK
  */
 public class About extends javax.swing.JPanel {
-
     /** Creates new form About */
+    public Hush hush;
+    public GUI.ControlPanel controlPanel;
+    
     public About() {
         initComponents();
+        
     }
 
     /** This method is called from within the constructor to
@@ -41,7 +44,6 @@ public class About extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        controlPanel = new GUI.ControlPanel();
         jPanel10 = new javax.swing.JPanel();
 
         setMaximumSize(new java.awt.Dimension(650, 550));
@@ -165,8 +167,6 @@ public class About extends javax.swing.JPanel {
 
         jPanel9.setMinimumSize(new java.awt.Dimension(500, 75));
         jPanel9.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel9.add(controlPanel);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -211,8 +211,8 @@ public class About extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GUI.ControlPanel controlPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -223,6 +223,32 @@ public class About extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
+    public javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
+    /*
+    public void addControlPanel(){
+        hush = Hush.getHush();
+        //System.out.println("getHush!" + hush.getControlPanel().getToolTipText());
+        controlPanel = hush.getControlPanel();
+        if(controlPanel == null){
+        System.out.println("Warsh");
+        }
+        System.out.println("added CP!" + controlPanel.getName());
+        int count = jPanel9.getComponentCount();
+        System.out.println("count" + count);
+        jPanel9.add(controlPanel);
+        count = jPanel9.getComponentCount();
+        System.out.println("count" + count);
+        
+        this.repaint();
+        if(this == hush.getAboutPanel()){
+            System.out.println("Yah");
+        }
+    }
+    * */
+    public void updateControlPanel(){
+        hush = Hush.getHush();                
+        controlPanel = hush.getControlPanel();
+        this.jPanel9.add(controlPanel);
+    }
 }

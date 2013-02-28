@@ -124,8 +124,9 @@ public class DecoyPlay extends javax.swing.JPanel {
         if(!gameManager.isRunning()){
             try {
                 hush = Hush.getHush();
+            if (Hush.soundManager.isActiveBgmusic()){
                 Hush.soundManager.playClickOff();                                  
-                
+            }
                 gameManager.startGame();
             } catch (InterruptedException ex) {
                 Logger.getLogger(DecoyPlay.class.getName()).log(Level.SEVERE, null, ex);

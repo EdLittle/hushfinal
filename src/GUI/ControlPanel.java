@@ -33,11 +33,17 @@ import javax.swing.Icon;
 public class ControlPanel extends javax.swing.JPanel {
     private Hush hush;
     public SoundManager soundManager;
+    public LoginPanel loginPanel;
     private CardLayout cardLayout;
-    
+    private Icon activeSoundIcon;
+    private Icon muteSoundIcon;
     /** Creates new form ControlPanel */
     public ControlPanel() {
-        initComponents();     
+        activeSoundIcon = new javax.swing.ImageIcon(getClass().getResource("/med/MD-sound.png")); // NOI18N
+        muteSoundIcon = new javax.swing.ImageIcon(getClass().getResource("/med/MD-volume-0.png")); // NOI18N
+        initComponents();  
+        
+            System.out.println("created");  
     }
 
     /** This method is called from within the constructor to
@@ -49,16 +55,13 @@ public class ControlPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
         restart = new javax.swing.JLabel();
         sounds = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
         reset = new javax.swing.JLabel();
 
-        jLabel4.setText("jLabel4");
-
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        setToolTipText("Home");
+        setToolTipText("ControlPanel");
         setMinimumSize(new java.awt.Dimension(500, 75));
         setPreferredSize(new java.awt.Dimension(500, 75));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,7 +83,7 @@ public class ControlPanel extends javax.swing.JPanel {
         });
         add(restart, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 50));
 
-        sounds.setIcon(setSoundsIcon(Hush.soundManager.isActiveBgmusic()));
+        sounds.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/MD-volume-0.png"))); // NOI18N
         sounds.setToolTipText("Mute");
         sounds.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         sounds.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -130,7 +133,12 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             newGame("loginCard");
         }
         else            
-            System.out.println("Cannot Restart");       
+            System.out.println("Cannot Restart");  
+        
+        
+        hush = Hush.getHush();                
+        loginPanel = hush.getLoginPanel();
+        loginPanel.jPanel8.add(this);
 }//GEN-LAST:event_restartMouseClicked
 
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
@@ -141,7 +149,9 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             hush = Hush.getHush();
             cardLayout = (CardLayout) hush.getCardLayout();        
             cardLayout.show(hush.getContentPane(), "titleCard");
-            Hush.soundManager.playClickOff();
+            if (Hush.soundManager.isActiveBgmusic()){
+              Hush.soundManager.playClickOff();
+            }
         }
         else {            
             newGame("titleCard"); 
@@ -152,12 +162,12 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             // TODO add your handling code here:
             if (Hush.soundManager.isActiveBgmusic()){
                 System.out.println("Music off!"); 
-                sounds.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/MD-volume-0.png"))); // NOI18N
+                sounds.setIcon(muteSoundIcon); // NOI18N
                 Hush.soundManager.stopBgmusic();
             }
             else{                
                 System.out.println("Music on!");
-                sounds.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/MD-sound.png"))); // NOI18N
+                sounds.setIcon(activeSoundIcon); // NOI18N
                 Hush.soundManager.playBgmusic();
             }
     }//GEN-LAST:event_soundsMouseClicked
@@ -193,13 +203,18 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         // TODO add your handling code here:
     }//GEN-LAST:event_soundsMouseEntered
     
-    private Icon setSoundsIcon(boolean active){
+    public void setSoundsIcon(boolean active){
+        
+       System.out.println("-------------Active sounds: " + Hush.soundManager.isActiveBgmusic() + " current status: " + active);
          if (active){
-            return new javax.swing.ImageIcon(getClass().getResource("/med/MD-sound.png")); // NOI18N
-         }
-         else{                
-            return new javax.swing.ImageIcon(getClass().getResource("/med/MD-volume-0.png")); // NOI18N
-         }      
+                System.out.println("ACTIVE"); 
+                sounds.setIcon(activeSoundIcon); // NOI18N
+            }
+            else{                
+                System.out.println("MUTE");
+                sounds.setIcon(muteSoundIcon); // NOI18N
+            }
+         //setSoundsIcon(Hush.soundManager.isActiveBgmusic())
     }   
     private void newGame(String cardName){     
         String bogusCardName = RoutesManager.pop();
@@ -224,7 +239,6 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel home;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel reset;
     private javax.swing.JLabel restart;
     private javax.swing.JLabel sounds;

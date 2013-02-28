@@ -62,15 +62,26 @@ public class CircleHT implements PlugInFilter {
     public void processImage(ImagePlus pic) {
         new ImageConverter(pic).convertToGray16();
         ImageProcessor ip = pic.getProcessor();
-        ImageProcessor edges = ImageEdge.areaEdge(ip, (double) 5, (float).10, (float) 100, (float) 50);
-        ip = ImageEdge.areaEdge(ip, 5, (float)1.0, 100, 50);
-        run(ip);       
+        
+        //added
+        ip.setRoi(Roi.previousRoi);
+        ImageProcessor ip2 = ip.crop();
+        String title = pic.getTitle() + "cropped";
+        ImagePlus imp2 = new ImagePlus(title, ip2);
+        ImageProcessor edges = ImageEdge.areaEdge(ip2, (double) 5, (float).10, (float) 100, (float) 50);
+        ip2 = ImageEdge.areaEdge(ip2, 5, (float)1.0, 100, 50);
+        run(ip2);       
+    
+        
+  //      ImageProcessor edges = ImageEdge.areaEdge(ip, (double) 5, (float).10, (float) 100, (float) 50);
+  //      ip = ImageEdge.areaEdge(ip, 5, (float)1.0, 100, 50);
+  //      run(ip);       
     }
     public void run(ImageProcessor ip) {
 
         imageValues = (byte[])ip.getPixels();
-        Rectangle r = ip.getRoi();
-
+        Rectangle r = ip.getRoi();                                           
+                               
         offx = r.x;
         offy = r.y;
         width = r.width;

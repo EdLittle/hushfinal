@@ -27,7 +27,9 @@ public class ScoreSummary extends javax.swing.JPanel {
     private Vector rightShapes = new Vector();
     private String[] msgGreeting = {"Excellent work", "Good job", "Nice playing", "Hi"};
     private String[] starCategories = {"GOLD", "SILVER", "BRONZE", "WOOD"};
-    private PlayersStat playersStat;
+ 
+    private Hush hush;
+    private GUI.ControlPanel controlPanel;
     /**
      * Enumerate all right colors and shapes after
      * under the star.
@@ -54,7 +56,7 @@ public class ScoreSummary extends javax.swing.JPanel {
 
         this.repaint();
         
-        PlayersStat.gameOver();
+        HallOfUsers.gameOver();
     }
     
     public void correctAns(){
@@ -99,6 +101,14 @@ public class ScoreSummary extends javax.swing.JPanel {
             
 
     }
+    
+    
+    public void updateControlPanel(){
+        hush = Hush.getHush();                
+        controlPanel = hush.getControlPanel();
+        this.jPanel8.add(controlPanel);
+    } 
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -135,7 +145,6 @@ public class ScoreSummary extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        controlPanel1 = new GUI.ControlPanel();
         jPanel9 = new javax.swing.JPanel();
 
         setMaximumSize(new java.awt.Dimension(650, 550));
@@ -221,6 +230,8 @@ public class ScoreSummary extends javax.swing.JPanel {
         jPanel5.setPreferredSize(new java.awt.Dimension(500, 400));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel10.setPreferredSize(new java.awt.Dimension(500, 400));
+
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/star.png"))); // NOI18N
 
         msg.setFont(new java.awt.Font("Kristen ITC", 0, 14)); // NOI18N
@@ -262,7 +273,7 @@ public class ScoreSummary extends javax.swing.JPanel {
                 .addComponent(msg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(msg2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, -1));
@@ -385,8 +396,6 @@ public class ScoreSummary extends javax.swing.JPanel {
         add(jPanel7, gridBagConstraints);
 
         jPanel8.setPreferredSize(new java.awt.Dimension(500, 75));
-        jPanel8.add(controlPanel1);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -414,7 +423,6 @@ public class ScoreSummary extends javax.swing.JPanel {
     private javax.swing.JLabel black;
     private javax.swing.JLabel blue;
     private javax.swing.JLabel circle;
-    private GUI.ControlPanel controlPanel1;
     private javax.swing.JLabel green;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -429,7 +437,7 @@ public class ScoreSummary extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    public javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel listOfCorrAns;
     private java.awt.Label msg;

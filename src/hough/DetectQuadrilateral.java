@@ -43,13 +43,14 @@ public class DetectQuadrilateral {
         
         //set cropped image for detection (same size)
         //ip.setRoi(260, 172, 569, 390);
-        ip.setRoi(Roi.previousRoi);
         //220, 25, 350, 250
+        ip.setRoi(Roi.previousRoi);
         ImageProcessor ip2 = ip.crop();
+        
         String title = pic.getTitle() + "cropped";
         ImagePlus imp2 = new ImagePlus(title, ip2);
         
-        ip.sharpen();
+        //ip2.sharpen();
         
         IJ.run(pic, "Enhance Contrast", "saturated=1.0");
         
@@ -65,8 +66,6 @@ public class DetectQuadrilateral {
         
         //show grayscale image
         imp2.show();
-        
-        //imp2.show();
     }
     
     public void processLines(){
@@ -96,8 +95,10 @@ public class DetectQuadrilateral {
                 double angle2 = line2.getAngle();
                 
                 double angle3 = Math.abs(angle1 - angle2);
-                
-                if (Math.abs(right_angle - angle3) < 0.05){
+                 
+                System.out.println("QUADRI---right_angle: " + right_angle + " angle3: " + angle3);
+                   
+                if (Math.abs(right_angle - angle3) < 0.04){
                     System.out.println("Perpendicular! Pairs " + pair1[0] + " " + pair1[1] + " and " + pair2[0] + " " +pair2[1]);
                     perpendicularPairs.add(new int[]{i, j});
                 }
@@ -124,6 +125,9 @@ public class DetectQuadrilateral {
                     double angle2 = line2.getAngle();
                     
                     double angle3 = Math.abs(angle1 - angle2);
+                      
+                System.out.println("parallel---angle_threshold: " + angle_threshold + " angle3: " + angle3);
+              
                     if (angle3 < angle_threshold){
                         int[] pair = {0, 0};
                         
