@@ -10,6 +10,7 @@
  */
 package GUI;
 
+import hough.HoughTransform;
 import Controllers.SoundManager;
 import Controllers.DatabaseManager;
 import Controllers.RoutesManager;
@@ -30,6 +31,7 @@ public class Hush extends javax.swing.JFrame {
     private static GUI.ControlPanel controlPanel;
     private GUI.PlayPanel playPanel;
     private GUI.About aboutPanel;
+    public HoughTransform ht;
  
     static ArrayList<String> usersList;
     static ArrayList<Integer> scoresList;
@@ -44,7 +46,7 @@ public class Hush extends javax.swing.JFrame {
     /** Creates new form Hush */
     public Hush() throws Exception{
         
-        
+        ht = new HoughTransform();
         soundManager = new SoundManager();
         usersList = new ArrayList<String>();
         scoresList = new ArrayList<Integer>();
