@@ -56,7 +56,7 @@ public class DetectQuadrilateral {
         
         ImageProcessor edges = ImageEdge.areaEdge(ip2, (double) 5, (float).10, (float) 100, (float) 50);
         ip2 = ImageEdge.areaEdge(ip2, 5, (float)0.5, 100, 50);
-        LinearHT linearHT = new LinearHT(ip2, 256, 256);
+        LinearHT linearHT = new LinearHT(ip2, 256, 180);
         lines = linearHT.getMaxLines(10, 125);
 
         //show green lines

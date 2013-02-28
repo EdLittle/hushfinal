@@ -55,9 +55,9 @@ import java.io.IOException;
  
 public class HoughTransform extends Thread { 
  
-    public static void main(String[] args) throws Exception { 
- //   public HoughTransform() throws IOException{
-        String filename = "/D:/Karein/HuSh/med/quad6.jpg"; 
+//    public static void main(String[] args) throws Exception { 
+    public HoughTransform() throws IOException{
+        String filename = "/D:/Karein/HuSh/med/cap.jpg"; 
         System.out.println("Image: " + filename);
         System.out.println("Exists? " + new File(filename).exists());
         // load the file using Java's imageIO library 

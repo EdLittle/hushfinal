@@ -72,8 +72,8 @@ public class GameManager {
         stopLight2 = decoyPlay.getStopLight2();
         displayLabel = decoyPlay.getJLabel1();        
         running = false;
-        round = 0;
-        level = 0;
+        round = 1;
+        level = 1;
         bandsAnalyzer = new BandsAnalyzer();
         scoreManager = new ScoreManager();       
         camera = decoyPlay.getCamera();

@@ -46,7 +46,7 @@ public class Hush extends javax.swing.JFrame {
     /** Creates new form Hush */
     public Hush() throws Exception{
         
-        ht = new HoughTransform();
+       // ht = new HoughTransform();
         soundManager = new SoundManager();
         usersList = new ArrayList<String>();
         scoresList = new ArrayList<Integer>();
