@@ -54,6 +54,7 @@ public class GameManager {
     private boolean running;
     private int round;
     private int level;
+    private boolean done;
     private Vector colorResult;
     private Vector shapeResult;
     private Future gameTask;
@@ -72,8 +73,9 @@ public class GameManager {
         stopLight2 = decoyPlay.getStopLight2();
         displayLabel = decoyPlay.getJLabel1();        
         running = false;
-        round = 1;
+        round = 0;
         level = 1;
+        done = false;
         bandsAnalyzer = new BandsAnalyzer();
         scoreManager = new ScoreManager();       
         camera = decoyPlay.getCamera();
@@ -96,7 +98,7 @@ public class GameManager {
         //for level        
         executor = Executors.newScheduledThreadPool(15);
         for(k = 0; k < 1; k++){
-        
+            done = false;
             round++;
             executor.schedule(new Runnable(){
 
@@ -174,7 +176,8 @@ public class GameManager {
             executor.schedule(new Runnable(){
 
                 @Override
-                public void run() {
+                public void run() {                    
+                    done = true;
                     stopLight1.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
                     if (!((level==1)&&(round==2)))
@@ -268,19 +271,20 @@ public class GameManager {
             gameTask = executor.scheduleAtFixedRate(new Runnable(){
                     int tries = 1;
                     int random;
+                    
                     @Override
                     public void run(){
                         try {
                             random = (int) (Math.random() * 100) % 5;
                             BufferedImage image = camera.grabImage();
                             
-                            System.out.println("Detecting for...." + randomShapes[round-1]);
+                            System.out.println("Detecting for...." + randomShapes[round-1] + " at " + tries);
                             
                             boolean correct = false;   
                             
                             //CIRCLE
                             //pic.show();
-                            if (round == 1) {
+                            if ((round == 1) && (done == false)) {
                                 ImagePlus pic = new ImagePlus(null, camera.grabImage());                                
                                 circleDetector = new CircleHT();
                                 circleDetector.processImage(pic);
@@ -290,12 +294,14 @@ public class GameManager {
                             
                             //SQUARE
                             //pic.show();
-                            else if(round == 2) {
+                            else if ((round == 2) && (done == false)) {
                                 DetectQuadrilateral detector = new DetectQuadrilateral();
                                 ImagePlus pic = new ImagePlus(null, camera.grabImage());
                                 detector.processImagePlus(pic);                              
                                 detector.processLines();
                                 correct = detector.isQuadPresent();
+                                System.out.println("Squaring");                                
+                            
                             }
                             
                             if(correct) {
