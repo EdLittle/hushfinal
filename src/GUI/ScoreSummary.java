@@ -15,6 +15,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Vector;
+import javax.swing.Icon;
 import javax.swing.JLabel;
 
 /**
@@ -33,6 +34,10 @@ public class ScoreSummary extends javax.swing.JPanel {
     private JLabel[] list;// = {"red", "orange", "yellow", "green", "blue", "white", "black", "circle", "square"};
     private Hush hush;
     private GUI.ControlPanel controlPanel;
+    private Icon coinIcon;
+    private Icon coinsIcon;
+    private Icon goldBarIcon;
+    private Icon diamondIcon;
     /**
      * Enumerate all right colors and shapes after
      * under the star.
@@ -41,6 +46,10 @@ public class ScoreSummary extends javax.swing.JPanel {
      * 
     /** Creates new form ScoreSummary */
     public ScoreSummary() {
+        coinIcon = new javax.swing.ImageIcon(getClass().getResource("/med/coin.png"));
+        coinsIcon = new javax.swing.ImageIcon(getClass().getResource("/med/coins.png"));
+        goldBarIcon = new javax.swing.ImageIcon(getClass().getResource("/med/gold bars.png"));
+        diamondIcon = new javax.swing.ImageIcon(getClass().getResource("/med/diamond.png"));
         initComponents();
     }
 
@@ -53,16 +62,20 @@ public class ScoreSummary extends javax.swing.JPanel {
         this.categ = starCategories[ScoreManager.getCategory(score)];
         
         if(this.categ == "GOLD") {
-            jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/coin.png")));
+            System.out.println("Britney");
+            jLabel13.setIcon(diamondIcon);
         }
         else if (this.categ == "SILVER"){
-            jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/coins.png")));
+            System.out.println("Brittnay");
+            jLabel13.setIcon(goldBarIcon);
         }
         else if(this.categ == "BRONZE"){
-            jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/gold bars.png")));
+            System.out.println("Brittany");
+            jLabel13.setIcon(coinsIcon);
         }
         else{
-            jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/diamond.png")));
+            System.out.println("Britt");
+            jLabel13.setIcon(coinIcon);
         }
         
         correctAns();
