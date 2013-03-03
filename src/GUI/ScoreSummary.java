@@ -45,19 +45,32 @@ public class ScoreSummary extends javax.swing.JPanel {
     }
 
     public void setMessage () throws Exception{
-        System.out.println("For here");
         this.rightColors = ScoreManager.getRightColors();
         this.rightShapes = ScoreManager.getRightShapes();
         this.username = ScoreManager.getUsername();
         this.score = ScoreManager.getScore();
         this.greeting = msgGreeting[ScoreManager.getCategory(score)];
         this.categ = starCategories[ScoreManager.getCategory(score)];
-        System.out.println("Score: " + ScoreManager.getScore() + ";    Categ: " + ScoreManager.getCategory(score) + ";   User: " + username);
+        
+        if(this.categ == "GOLD") {
+            jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/coin.png")));
+        }
+        else if (this.categ == "SILVER"){
+            jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/coins.png")));
+        }
+        else if(this.categ == "BRONZE"){
+            jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/gold bars.png")));
+        }
+        else{
+            jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/diamond.png")));
+        }
+        
         correctAns();
+        
         this.msg.setText(greeting + ", " + username + "!"); 
         this.msg2.setText("You now have " + categ + " badge.");
-  
-        this.repaint();      
+
+        this.repaint();
         HallOfUsers.gameOver();
     }
     
