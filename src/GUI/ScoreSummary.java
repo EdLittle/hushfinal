@@ -12,7 +12,10 @@ package GUI;
 
 import Controllers.ScoreManager;
 import java.awt.Color;
+import java.awt.Component;
+import java.util.ArrayList;
 import java.util.Vector;
+import javax.swing.JLabel;
 
 /**
  *
@@ -27,7 +30,7 @@ public class ScoreSummary extends javax.swing.JPanel {
     private Vector rightShapes = new Vector();
     private String[] msgGreeting = {"Excellent work", "Good job", "Nice playing", "Hi"};
     private String[] starCategories = {"GOLD", "SILVER", "BRONZE", "WOOD"};
- 
+    private JLabel[] list;// = {"red", "orange", "yellow", "green", "blue", "white", "black", "circle", "square"};
     private Hush hush;
     private GUI.ControlPanel controlPanel;
     /**
@@ -53,9 +56,8 @@ public class ScoreSummary extends javax.swing.JPanel {
         correctAns();
         this.msg.setText(greeting + ", " + username + "!"); 
         this.msg2.setText("You now have " + categ + " badge.");
-
-        this.repaint();
-        
+  
+        this.repaint();      
         HallOfUsers.gameOver();
     }
     
@@ -88,21 +90,27 @@ public class ScoreSummary extends javax.swing.JPanel {
                 black.setForeground(Color.BLACK);
                 black.setFont(new java.awt.Font("Century Gothic", 1, 18));
             }
-            
             if (rightShapes.contains("circle")){
-                circle.setForeground(Color.DARK_GRAY);
+                circle.setForeground(Color.MAGENTA);
                 circle.setFont(new java.awt.Font("Century Gothic", 1, 18));
             }
-            
             if (rightShapes.contains("square")){
-                square.setForeground(Color.DARK_GRAY);
+                square.setForeground(Color.MAGENTA);
                 square.setFont(new java.awt.Font("Century Gothic", 1, 18));
-            }
-            
-
+            } 
     }
-    
-    
+       
+    public void clearList(){
+      for(int i=2; i<jPanel11.getComponentCount(); i++){
+            Component label = jPanel11.getComponent(i);     
+            System.out.println("CLEARING: " + label.getName());
+            System.out.println(" " + label.toString());
+            if(i!=9){     
+                label.setFont(new java.awt.Font("Century Gothic", 0, 18));
+                label.setForeground(new java.awt.Color(204, 204, 204));
+            }
+        }
+    }
     public void updateControlPanel(){
         hush = Hush.getHush();                
         controlPanel = hush.getControlPanel();
