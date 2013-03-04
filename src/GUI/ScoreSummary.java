@@ -153,24 +153,24 @@ public class ScoreSummary extends javax.swing.JPanel {
         coinsIcon = new javax.swing.ImageIcon(getClass().getResource("/med/coins.png"));
         goldBarIcon = new javax.swing.ImageIcon(getClass().getResource("/med/gold bars.png"));
         diamondIcon = new javax.swing.ImageIcon(getClass().getResource("/med/diamond.png"));
-        red_s = new javax.swing.ImageIcon(getClass().getResource("/med/red_s.png"));
-        red_g = new javax.swing.ImageIcon(getClass().getResource("/med/red_g.png"));
-        orange_s = new javax.swing.ImageIcon(getClass().getResource("/med/orange_s.png"));
-        orange_g = new javax.swing.ImageIcon(getClass().getResource("/med/orange_g.png"));
-        yellow_s = new javax.swing.ImageIcon(getClass().getResource("/med/yellow_s.png"));
-        yellow_g = new javax.swing.ImageIcon(getClass().getResource("/med/yellow_g.png"));
-        green_s = new javax.swing.ImageIcon(getClass().getResource("/med/green_s.png"));
-        green_g = new javax.swing.ImageIcon(getClass().getResource("/med/green_g.png"));
-        blue_s = new javax.swing.ImageIcon(getClass().getResource("/med/blue_s.png"));
-        blue_g = new javax.swing.ImageIcon(getClass().getResource("/med/blue_g.png"));
-        white_s = new javax.swing.ImageIcon(getClass().getResource("/med/white_s.png"));
-        white_g = new javax.swing.ImageIcon(getClass().getResource("/med/white_g.png"));
-        black_s = new javax.swing.ImageIcon(getClass().getResource("/med/black_s.png"));
-        black_g = new javax.swing.ImageIcon(getClass().getResource("/med/black_g.png"));
-        square_s = new javax.swing.ImageIcon(getClass().getResource("/med/square_s.png"));
-        square_g = new javax.swing.ImageIcon(getClass().getResource("/med/square_g.png"));
-        circle_s = new javax.swing.ImageIcon(getClass().getResource("/med/circle_s.png"));
-        circle_g = new javax.swing.ImageIcon(getClass().getResource("/med/circle_g.png"));
+        red_s = new javax.swing.ImageIcon(getClass().getResource("/med/red-s.png"));
+        red_g = new javax.swing.ImageIcon(getClass().getResource("/med/red-g.png"));
+        orange_s = new javax.swing.ImageIcon(getClass().getResource("/med/orange-s.png"));
+        orange_g = new javax.swing.ImageIcon(getClass().getResource("/med/orange-g.png"));
+        yellow_s = new javax.swing.ImageIcon(getClass().getResource("/med/yellow-s.png"));
+        yellow_g = new javax.swing.ImageIcon(getClass().getResource("/med/yellow-g.png"));
+        green_s = new javax.swing.ImageIcon(getClass().getResource("/med/green-s.png"));
+        green_g = new javax.swing.ImageIcon(getClass().getResource("/med/green-g.png"));
+        blue_s = new javax.swing.ImageIcon(getClass().getResource("/med/blue-s.png"));
+        blue_g = new javax.swing.ImageIcon(getClass().getResource("/med/blue-g.png"));
+        white_s = new javax.swing.ImageIcon(getClass().getResource("/med/white-s.png"));
+        white_g = new javax.swing.ImageIcon(getClass().getResource("/med/white-g.png"));
+        black_s = new javax.swing.ImageIcon(getClass().getResource("/med/black-s.png"));
+        black_g = new javax.swing.ImageIcon(getClass().getResource("/med/black-g.png"));
+        square_s = new javax.swing.ImageIcon(getClass().getResource("/med/square-s.png"));
+        square_g = new javax.swing.ImageIcon(getClass().getResource("/med/square-g.png"));
+        circle_s = new javax.swing.ImageIcon(getClass().getResource("/med/circle-s.png"));
+        circle_g = new javax.swing.ImageIcon(getClass().getResource("/med/circle-g.png"));
     }
     
     /** This method is called from within the constructor to
