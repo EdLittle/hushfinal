@@ -38,6 +38,25 @@ public class ScoreSummary extends javax.swing.JPanel {
     private Icon coinsIcon;
     private Icon goldBarIcon;
     private Icon diamondIcon;
+    private Icon red_s;
+    private Icon red_g;
+    private Icon orange_s;
+    private Icon orange_g;
+    private Icon yellow_s;
+    private Icon yellow_g;
+    private Icon green_s;
+    private Icon green_g;
+    private Icon blue_s;
+    private Icon blue_g;
+    private Icon white_s;
+    private Icon white_g;
+    private Icon black_s;
+    private Icon black_g;
+    private Icon square_s;
+    private Icon square_g;
+    private Icon circle_s;
+    private Icon circle_g;
+    
     /**
      * Enumerate all right colors and shapes after
      * under the star.
@@ -46,10 +65,7 @@ public class ScoreSummary extends javax.swing.JPanel {
      * 
     /** Creates new form ScoreSummary */
     public ScoreSummary() {
-        coinIcon = new javax.swing.ImageIcon(getClass().getResource("/med/coin.png"));
-        coinsIcon = new javax.swing.ImageIcon(getClass().getResource("/med/coins.png"));
-        goldBarIcon = new javax.swing.ImageIcon(getClass().getResource("/med/gold bars.png"));
-        diamondIcon = new javax.swing.ImageIcon(getClass().getResource("/med/diamond.png"));
+        createImageAssets();
         initComponents();
     }
 
@@ -62,15 +78,12 @@ public class ScoreSummary extends javax.swing.JPanel {
         this.categ = starCategories[ScoreManager.getCategory(score)];
         
         if(this.categ == "GOLD") {
-            System.out.println("Britney");
             jLabel13.setIcon(diamondIcon);
         }
         else if (this.categ == "SILVER"){
-            System.out.println("Brittnay");
             jLabel13.setIcon(goldBarIcon);
         }
         else if(this.categ == "BRONZE"){
-            System.out.println("Brittany");
             jLabel13.setIcon(coinsIcon);
         }
         else{
@@ -89,40 +102,32 @@ public class ScoreSummary extends javax.swing.JPanel {
     
     public void correctAns(){
             if (rightColors.contains("red")){
-                red.setForeground(Color.RED);
-                red.setFont(new java.awt.Font("Century Gothic", 1, 18));
+                red.setIcon(red_s);
+                
             }
             if (rightColors.contains("orange")){
-                orange.setForeground(Color.ORANGE);
-                orange.setFont(new java.awt.Font("Century Gothic", 1, 18));
+                orange.setIcon(orange_s);
             }
             if (rightColors.contains("yellow")){
-                yellow.setForeground(Color.YELLOW);
-                yellow.setFont(new java.awt.Font("Century Gothic", 1, 18));
+                yellow.setIcon(yellow_s);
             }
             if (rightColors.contains("green")){
-                green.setForeground(Color.GREEN);
-                green.setFont(new java.awt.Font("Century Gothic", 1, 18));
+                green.setIcon(green_s);
             }
             if (rightColors.contains("blue")){
-                blue.setForeground(Color.BLUE);
-                blue.setFont(new java.awt.Font("Century Gothic", 1, 18));
+                blue.setIcon(blue_s);
             }
             if (rightColors.contains("white")){
-                white.setForeground(Color.WHITE);
-                white.setFont(new java.awt.Font("Century Gothic", 1, 18));
+                white.setIcon(white_s);
             }
             if (rightColors.contains("black")){
-                black.setForeground(Color.BLACK);
-                black.setFont(new java.awt.Font("Century Gothic", 1, 18));
+                black.setIcon(black_s);
             }
             if (rightShapes.contains("circle")){
-                circle.setForeground(Color.MAGENTA);
-                circle.setFont(new java.awt.Font("Century Gothic", 1, 18));
+                circle.setIcon(circle_s);
             }
             if (rightShapes.contains("square")){
-                square.setForeground(Color.MAGENTA);
-                square.setFont(new java.awt.Font("Century Gothic", 1, 18));
+                square.setIcon(square_s);
             } 
     }
        
@@ -142,6 +147,31 @@ public class ScoreSummary extends javax.swing.JPanel {
         controlPanel = hush.getControlPanel();
         this.jPanel8.add(controlPanel);
     } 
+    
+    private void createImageAssets(){
+        coinIcon = new javax.swing.ImageIcon(getClass().getResource("/med/coin.png"));
+        coinsIcon = new javax.swing.ImageIcon(getClass().getResource("/med/coins.png"));
+        goldBarIcon = new javax.swing.ImageIcon(getClass().getResource("/med/gold bars.png"));
+        diamondIcon = new javax.swing.ImageIcon(getClass().getResource("/med/diamond.png"));
+        red_s = new javax.swing.ImageIcon(getClass().getResource("/med/red_s.png"));
+        red_g = new javax.swing.ImageIcon(getClass().getResource("/med/red_g.png"));
+        orange_s = new javax.swing.ImageIcon(getClass().getResource("/med/orange_s.png"));
+        orange_g = new javax.swing.ImageIcon(getClass().getResource("/med/orange_g.png"));
+        yellow_s = new javax.swing.ImageIcon(getClass().getResource("/med/yellow_s.png"));
+        yellow_g = new javax.swing.ImageIcon(getClass().getResource("/med/yellow_g.png"));
+        green_s = new javax.swing.ImageIcon(getClass().getResource("/med/green_s.png"));
+        green_g = new javax.swing.ImageIcon(getClass().getResource("/med/green_g.png"));
+        blue_s = new javax.swing.ImageIcon(getClass().getResource("/med/blue_s.png"));
+        blue_g = new javax.swing.ImageIcon(getClass().getResource("/med/blue_g.png"));
+        white_s = new javax.swing.ImageIcon(getClass().getResource("/med/white_s.png"));
+        white_g = new javax.swing.ImageIcon(getClass().getResource("/med/white_g.png"));
+        black_s = new javax.swing.ImageIcon(getClass().getResource("/med/black_s.png"));
+        black_g = new javax.swing.ImageIcon(getClass().getResource("/med/black_g.png"));
+        square_s = new javax.swing.ImageIcon(getClass().getResource("/med/square_s.png"));
+        square_g = new javax.swing.ImageIcon(getClass().getResource("/med/square_g.png"));
+        circle_s = new javax.swing.ImageIcon(getClass().getResource("/med/circle_s.png"));
+        circle_g = new javax.swing.ImageIcon(getClass().getResource("/med/circle_g.png"));
+    }
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -289,7 +319,7 @@ public class ScoreSummary extends javax.swing.JPanel {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(128, 128, 128)
                         .addComponent(msg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,7 +337,7 @@ public class ScoreSummary extends javax.swing.JPanel {
                 .addComponent(msg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(msg2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, -1));
@@ -329,43 +359,43 @@ public class ScoreSummary extends javax.swing.JPanel {
         red.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         red.setForeground(new java.awt.Color(204, 204, 204));
         red.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        red.setText("Red");
+        red.setIcon(red_g);
         jPanel11.add(red);
 
         orange.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         orange.setForeground(new java.awt.Color(204, 204, 204));
         orange.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        orange.setText("Orange");
+        orange.setIcon(orange_g);
         jPanel11.add(orange);
 
         green.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         green.setForeground(new java.awt.Color(204, 204, 204));
         green.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        green.setText("Green");
+        green.setIcon(green_g);
         jPanel11.add(green);
 
         yellow.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         yellow.setForeground(new java.awt.Color(204, 204, 204));
         yellow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        yellow.setText("Yellow");
+        yellow.setIcon(yellow_g);
         jPanel11.add(yellow);
 
         blue.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         blue.setForeground(new java.awt.Color(204, 204, 204));
         blue.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        blue.setText("Blue");
+        blue.setIcon(blue_g);
         jPanel11.add(blue);
 
         black.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         black.setForeground(new java.awt.Color(204, 204, 204));
         black.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        black.setText("Black");
+        black.setIcon(black_g);
         jPanel11.add(black);
 
         white.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         white.setForeground(new java.awt.Color(204, 204, 204));
         white.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        white.setText("White");
+        white.setIcon(white_g);
         jPanel11.add(white);
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
@@ -377,13 +407,13 @@ public class ScoreSummary extends javax.swing.JPanel {
         square.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         square.setForeground(new java.awt.Color(204, 204, 204));
         square.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        square.setText("Square");
+        square.setIcon(square_g);
         jPanel11.add(square);
 
         circle.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         circle.setForeground(new java.awt.Color(204, 204, 204));
         circle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        circle.setText("Circle");
+        circle.setIcon(circle_g);
         jPanel11.add(circle);
 
         jPanel5.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 130, 400));

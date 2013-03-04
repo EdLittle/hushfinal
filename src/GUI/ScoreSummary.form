@@ -200,7 +200,7 @@
                       <Component id="msg" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="msg2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="120" max="32767" attributes="0"/>
+                      <EmptySpace pref="128" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -289,8 +289,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Red"/>
+                <Property name="horizontalAlignment" type="int" value="0" postCode="red.setIcon(red_g);"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="orange">
@@ -301,8 +300,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Orange"/>
+                <Property name="horizontalAlignment" type="int" value="0" postCode="orange.setIcon(orange_g);"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="green">
@@ -314,8 +312,10 @@
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Green"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="green.setIcon(green_g);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="yellow">
               <Properties>
@@ -326,8 +326,10 @@
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Yellow"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="yellow.setIcon(yellow_g);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="blue">
               <Properties>
@@ -338,8 +340,10 @@
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Blue"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="blue.setIcon(blue_g);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="black">
               <Properties>
@@ -350,8 +354,10 @@
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Black"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="black.setIcon(black_g);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="white">
               <Properties>
@@ -362,8 +368,10 @@
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="White"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="white.setIcon(white_g);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
@@ -388,8 +396,10 @@
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Square"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="square.setIcon(square_g);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="circle">
               <Properties>
@@ -400,8 +410,10 @@
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Circle"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="circle.setIcon(circle_g);"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
