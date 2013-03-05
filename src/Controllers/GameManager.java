@@ -177,7 +177,6 @@ public class GameManager {
 
                 @Override
                 public void run() {                    
-                    done = true;
                     stopLight1.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
                     if (!((level==1)&&(round==2)))
@@ -284,6 +283,8 @@ public class GameManager {
                             
                             //CIRCLE
                             //pic.show();
+                            
+                            System.out.println("round: " + round + ", done: " + done);
                             if ((round == 1) && (done == false)) {
                                 ImagePlus pic = new ImagePlus(null, camera.grabImage());                                
                                 circleDetector = new CircleHT();
@@ -294,6 +295,7 @@ public class GameManager {
                             
                             //SQUARE
                             //pic.show();
+                            
                             else if ((round == 2) && (done == false)) {
                                 DetectQuadrilateral detector = new DetectQuadrilateral();
                                 ImagePlus pic = new ImagePlus(null, camera.grabImage());
