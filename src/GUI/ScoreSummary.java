@@ -132,6 +132,16 @@ public class ScoreSummary extends javax.swing.JPanel {
     }
        
     public void clearList(){
+        red.setIcon(red_g);
+        orange.setIcon(orange_g);
+        yellow.setIcon(yellow_g);
+        green.setIcon(green_g);
+        blue.setIcon(blue_g);
+        black.setIcon(black_g);
+        white.setIcon(white_g);
+        square.setIcon(square_g);
+        circle.setIcon(circle_g);
+        /*
       for(int i=2; i<jPanel11.getComponentCount(); i++){
             Component label = jPanel11.getComponent(i);     
             System.out.println("CLEARING: " + label.getName());
@@ -140,7 +150,7 @@ public class ScoreSummary extends javax.swing.JPanel {
                 label.setFont(new java.awt.Font("Century Gothic", 0, 18));
                 label.setForeground(new java.awt.Color(204, 204, 204));
             }
-        }
+        }*/
     }
     public void updateControlPanel(){
         hush = Hush.getHush();                
