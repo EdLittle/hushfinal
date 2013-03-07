@@ -54,7 +54,9 @@ public class GameManager {
     private boolean running;
     private int round;
     private int level;
-    private boolean done;
+    private boolean done;    
+    private int livesDeduc;
+    private boolean correct;
     private Vector colorResult;
     private Vector shapeResult;
     private Future gameTask;
@@ -74,8 +76,10 @@ public class GameManager {
         displayLabel = decoyPlay.getJLabel1();        
         running = false;
         round = 0;
-        level = 1;
+        level = 0;
         done = false;
+        livesDeduc = 0;
+        correct = false;
         bandsAnalyzer = new BandsAnalyzer();
         scoreManager = new ScoreManager();       
         camera = decoyPlay.getCamera();
@@ -98,8 +102,22 @@ public class GameManager {
         //for level        
         executor = Executors.newScheduledThreadPool(15);
         for(k = 0; k < 1; k++){
+            if ((done==true)&&(correct==false)){
+                livesDeduc++;
+                System.out.println("Lives deducted: " + livesDeduc);
+                if (livesDeduc==3){
+                    try {      
+                        System.out.println("G A M E O V E R");
+                        gameOver();
+                    } catch (Exception ex) {
+                        Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
             done = false;
+            correct = false;
             round++;
+                        System.out.println("Round #: " + round);
             executor.schedule(new Runnable(){
 
                 @Override
@@ -180,10 +198,6 @@ public class GameManager {
                     done = true;
                     stopLight1.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
-                    if (!((level==1)&&(round==2)))
-                        displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/nextround.png")));
-                   else
-                        displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/done.png")));             
                 }
             
             }, 14, TimeUnit.SECONDS);
@@ -217,7 +231,7 @@ public class GameManager {
                             String detectedColor = bandsAnalyzer.analyzeImage(image);
                             
                             System.out.println(detectedColor + " against hush's " + randomColors[round-1]);
-                            boolean correct = detectedColor.equals(randomColors[round-1]);
+                            correct = detectedColor.equals(randomColors[round-1]);
                             
                             if(correct) {                                
                                 getFuture().cancel(true);
@@ -280,7 +294,7 @@ public class GameManager {
                             
                             System.out.println("Detecting for...." + randomShapes[round-1] + " at " + tries);
                             
-                            boolean correct = false;   
+                            correct = false;   
                             
                             //CIRCLE
                             //pic.show();
@@ -323,9 +337,6 @@ public class GameManager {
                                 else if (round == 2){
                                     System.out.println("DONE!");
                                     
-                                    CardLayout cardLayout = (CardLayout) hush.getCardLayout();
-                                    cardLayout.show(hush.getContentPane(), "scoreCard");
-                                    
                                     shapeResult = scoreManager.getRightShapes();
                                     Enumeration e = shapeResult.elements();
                                     
@@ -340,11 +351,8 @@ public class GameManager {
                                         }
                                     }                                   
                                     System.out.println("Total Shape Score: " + shapeResult.size());
-                                    round = 0;
-                                    level = 0;
                                     
-                                    hush.getScoreSummary().updateControlPanel();
-                                    scoreSummary.setMessage();
+                                    gameOver();
                                 }
                             }
                             else{
@@ -360,6 +368,16 @@ public class GameManager {
         
     }
     
+    private void gameOver() throws Exception{
+        getFuture().cancel(true);                              
+        CardLayout cardLayout = (CardLayout) hush.getCardLayout();
+        cardLayout.show(hush.getContentPane(), "scoreCard");
+        round = 8;
+        level = 2;
+                                    
+        hush.getScoreSummary().updateControlPanel();
+        scoreSummary.setMessage();
+    }
     private Future<?> getFuture(){
         return gameTask;
     }
@@ -387,7 +405,6 @@ public class GameManager {
     
     public void restartGame(){
         //shut down game
-        //this.running = false;
         if (running)
             executor.shutdownNow();
         //score back to zero
