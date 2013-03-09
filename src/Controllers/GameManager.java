@@ -43,6 +43,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class GameManager {
     private Hush hush;
     private DecoyPlay decoyPlay;
+    private PlayPanel playPanel;
     private ScoreSummary scoreSummary;
     private JLabel stopLight1;
     private JLabel stopLight2;
@@ -70,6 +71,7 @@ public class GameManager {
     public GameManager() throws FileNotFoundException{
         hush = Hush.hush;
         decoyPlay = hush.getDecoyPlay();
+        playPanel = hush.getPlayPanel();
         scoreSummary = hush.getScoreSummary();
         stopLight1 = decoyPlay.getStopLight1();
         stopLight2 = decoyPlay.getStopLight2();
@@ -104,6 +106,7 @@ public class GameManager {
         for(k = 0; k < 1; k++){
             if ((done==true)&&(correct==false)){
                 livesDeduc++;
+                playPanel.mistake(livesDeduc);
                 System.out.println("Lives deducted: " + livesDeduc);
                 if (livesDeduc==3){
                     try {      
@@ -180,7 +183,7 @@ public class GameManager {
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-green.png")));                
                 }
             
-            }, 12, TimeUnit.SECONDS);
+            }, 13, TimeUnit.SECONDS);
             
             executor.schedule(new Runnable(){
 
@@ -190,7 +193,7 @@ public class GameManager {
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-orange.png")));
                 }
             
-            }, 13, TimeUnit.SECONDS);
+            }, 14, TimeUnit.SECONDS);
             executor.schedule(new Runnable(){
 
                 @Override
@@ -200,7 +203,7 @@ public class GameManager {
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
                 }
             
-            }, 14, TimeUnit.SECONDS);
+            }, 15, TimeUnit.SECONDS);
             
             //ASK FOR COLORS OR SHAPES
             if(level == 0){
