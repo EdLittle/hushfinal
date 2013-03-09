@@ -102,8 +102,7 @@ public class ScoreSummary extends javax.swing.JPanel {
     
     public void correctAns(){
             if (rightColors.contains("red")){
-                red.setIcon(red_s);
-                
+                red.setIcon(red_s);                
             }
             if (rightColors.contains("orange")){
                 orange.setIcon(orange_s);

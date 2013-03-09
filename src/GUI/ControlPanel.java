@@ -34,6 +34,7 @@ public class ControlPanel extends javax.swing.JPanel {
     private Hush hush;
     public SoundManager soundManager;
     public LoginPanel loginPanel;
+    public PlayPanel playPanel;
     public ScoreSummary scoreSummary;
     private CardLayout cardLayout;
     private Icon activeSoundIcon;
@@ -223,6 +224,9 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         
         scoreSummary = hush.getScoreSummary();
         scoreSummary.clearList();
+        
+        playPanel = hush.getPlayPanel();
+        playPanel.resetLives();
         
         hush.navigate(cardName);
         GameManager gameManager = hush.getDecoyPlay().getGameManager();

@@ -34,6 +34,16 @@ public class PlayPanel extends javax.swing.JPanel {
         this.jPanel9.add(controlPanel);
     }  
     
+    public void mistake(int livesDeduc){
+        jPanel4.getComponent(livesDeduc-1).setVisible(false);
+    }
+    
+    public void resetLives(){
+        for(int i=0; i<jPanel4.countComponents();i++){            
+            jPanel4.getComponent(i).setVisible(true);
+        }
+    }
+    
     public DecoyPlay getGamePanel(){
         hush = Hush.getHush();                
         controlPanel = hush.getControlPanel();
@@ -61,6 +71,9 @@ public class PlayPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         try {
             decoyPlay1 = new GUI.DecoyPlay();
@@ -161,15 +174,35 @@ public class PlayPanel extends javax.swing.JPanel {
         jPanel4.setMinimumSize(new java.awt.Dimension(75, 400));
         jPanel4.setPreferredSize(new java.awt.Dimension(75, 400));
 
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/life.png"))); // NOI18N
+        jLabel8.setText("life2");
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/life.png"))); // NOI18N
+        jLabel9.setText("life1");
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/life.png"))); // NOI18N
+        jLabel10.setText("life3");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 75, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(163, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -257,12 +290,15 @@ public class PlayPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.DecoyPlay decoyPlay1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
