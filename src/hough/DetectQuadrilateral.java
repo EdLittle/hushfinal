@@ -109,16 +109,55 @@ public class DetectQuadrilateral {
             quad = false;
         else
             quad = true;
-        /*
-        if (!quad){
-            //checkForThreeSides();
-        }*/
+        
+        if ((!quad) && (lines.size() >= 3)){
+            checkForThreeSides();
+        }
     }
     
     private void checkForThreeSides(){
         System.out.println("Checking for three sides!");
         
         System.out.println("Number of lines: " + this.lines.size());
+        List<HoughLine> pair = new ArrayList();
+        int i, j, k;
+        int size = lines.size();
+        double angle_threshold = 0.05;
+        HoughLine line1, line2, line3;
+        double angle1, angle2, angle3, angle4, angle5;
+        double right_angle = Math.PI/2;
+        
+        outer_loop:
+        for(i = 0; i < size; i++){
+            for(j = 0; j < size; j++){
+                if(i != j){
+                    line1 = lines.get(i);
+                    line2 = lines.get(j);
+                    angle1 = line1.getAngle();
+                    angle2 = line2.getAngle();
+                    
+                    angle3 = Math.abs(angle1 - angle2);
+                    
+                    if (angle3 < angle_threshold){
+                        for(k = 0; k < size; k++ ){
+                            if((i != j) && (j != k)){
+                                line3 = lines.get(k);
+                                angle4 = line3.getAngle();
+                                
+                                if(Math.abs(right_angle - angle3) < 0.04){
+                                    quad = true;
+                                    break outer_loop;
+                                }
+                            }
+                        }
+                    }
+                }
+                else{
+                    quad = false;
+                }
+            }
+        }
+        
     }
     private static List<int[]> getParallelPairs(List<HoughLine> lines){
         double angle_threshold = 0.05;
