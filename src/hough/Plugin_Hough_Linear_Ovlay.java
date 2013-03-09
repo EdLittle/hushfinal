@@ -62,9 +62,9 @@ public class Plugin_Hough_Linear_Ovlay implements PlugInFilter {
 	
 	boolean askForParameters() {
                 N_ANGLE = 256;			// resolution of angle
-                N_RADIUS = 256;			// resolution of radius
+                N_RADIUS = 180;			// resolution of radius
                 MAX_LINES = 10;			// max. number of lines to be detected
-                MIN_PNTSONLINE = 150;
+                MIN_PNTSONLINE = 125;
                 
                 SHOW_ACCUMULATOR = false;
                 SHOW_LOCALMAXIMA = false;
@@ -110,7 +110,7 @@ public class Plugin_Hough_Linear_Ovlay implements PlugInFilter {
 			resultIm.show(); // image must be displayed to have a canvas != null
 			drawLines(lines, resultIm);
 			resultIm.updateAndDraw();
-                        printLines(lines);
+                        //printLines(lines);
 		}
 	}
 

@@ -58,7 +58,7 @@ public class DetectQuadrilateral {
         ip2 = ImageEdge.areaEdge(ip2, 5, (float)0.5, 100, 50);
         LinearHT linearHT = new LinearHT(ip2, 256, 180);
         lines = linearHT.getMaxLines(10, 125);
-
+        System.out.println("Lines on get Max lines: " + lines.size());
         //show green lines
         Plugin_Hough_Linear_Ovlay ovlay = new Plugin_Hough_Linear_Ovlay();
         ovlay.setup(null, pic);
@@ -96,10 +96,10 @@ public class DetectQuadrilateral {
                 
                 double angle3 = Math.abs(angle1 - angle2);
                  
-                System.out.println("QUADRI---right_angle: " + right_angle + " angle3: " + angle3);
+                ///System.out.println("QUADRI---right_angle: " + right_angle + " angle3: " + angle3);
                    
                 if (Math.abs(right_angle - angle3) < 0.04){
-                    System.out.println("Perpendicular! Pairs " + pair1[0] + " " + pair1[1] + " and " + pair2[0] + " " +pair2[1]);
+                    //System.out.println("Perpendicular! Pairs " + pair1[0] + " " + pair1[1] + " and " + pair2[0] + " " +pair2[1]);
                     perpendicularPairs.add(new int[]{i, j});
                 }
             }
@@ -109,9 +109,17 @@ public class DetectQuadrilateral {
             quad = false;
         else
             quad = true;
+        /*
+        if (!quad){
+            //checkForThreeSides();
+        }*/
     }
     
-    
+    private void checkForThreeSides(){
+        System.out.println("Checking for three sides!");
+        
+        System.out.println("Number of lines: " + this.lines.size());
+    }
     private static List<int[]> getParallelPairs(List<HoughLine> lines){
         double angle_threshold = 0.05;
         List<int[]> parallelPairs = new ArrayList<int[]>();
@@ -126,7 +134,7 @@ public class DetectQuadrilateral {
                     
                     double angle3 = Math.abs(angle1 - angle2);
                       
-                System.out.println("parallel---angle_threshold: " + angle_threshold + " angle3: " + angle3);
+                //System.out.println("parallel---angle_threshold: " + angle_threshold + " angle3: " + angle3);
               
                     if (angle3 < angle_threshold){
                         int[] pair = {0, 0};
