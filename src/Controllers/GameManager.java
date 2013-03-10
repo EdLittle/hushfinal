@@ -203,6 +203,7 @@ public class GameManager {
                     done = true;
                     stopLight1.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
+                    done = true;
                 }
             
             }, 15, TimeUnit.SECONDS);

@@ -70,7 +70,7 @@ public class ControlPanel extends javax.swing.JPanel {
 
         restart.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         restart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        restart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/options.png"))); // NOI18N
+        restart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/MD-repeat-alt.png"))); // NOI18N
         restart.setToolTipText("Restart");
         restart.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         restart.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -112,7 +112,7 @@ public class ControlPanel extends javax.swing.JPanel {
 
         reset.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         reset.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/enter.png"))); // NOI18N
+        reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/MD-repeat.png"))); // NOI18N
         reset.setToolTipText("Reset");
         reset.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         reset.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

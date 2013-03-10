@@ -60,12 +60,14 @@ public class DetectQuadrilateral {
         lines = linearHT.getMaxLines(10, 125);
         System.out.println("Lines on get Max lines: " + lines.size());
         //show green lines
+        /*
         Plugin_Hough_Linear_Ovlay ovlay = new Plugin_Hough_Linear_Ovlay();
         ovlay.setup(null, pic);
         ovlay.run(ip2);
-        
+        *
         //show grayscale image
         imp2.show();
+        */
     }
     
     public void processLines(){

@@ -39,7 +39,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/med/options.png"/>
+          <Image iconType="3" name="/med/MD-repeat-alt.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Restart"/>
         <Property name="verticalAlignment" type="int" value="1"/>
@@ -98,7 +98,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/med/enter.png"/>
+          <Image iconType="3" name="/med/MD-repeat.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Reset"/>
         <Property name="verticalAlignment" type="int" value="1"/>
