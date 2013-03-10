@@ -174,14 +174,14 @@ public class PlayPanel extends javax.swing.JPanel {
         jPanel4.setMinimumSize(new java.awt.Dimension(75, 400));
         jPanel4.setPreferredSize(new java.awt.Dimension(75, 400));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/life.png"))); // NOI18N
-        jLabel8.setText("life2");
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/user-alt-2.png"))); // NOI18N
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/life.png"))); // NOI18N
-        jLabel9.setText("life1");
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/user-alt-2.png"))); // NOI18N
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/life.png"))); // NOI18N
-        jLabel10.setText("life3");
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/user-alt-2.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
