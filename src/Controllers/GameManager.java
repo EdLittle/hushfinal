@@ -78,7 +78,7 @@ public class GameManager {
         displayLabel = decoyPlay.getJLabel1();        
         running = false;
         round = 0;
-        level = 1;
+        level = 0;
         done = false;
         livesDeduc = 0;
         correct = false;
@@ -120,7 +120,9 @@ public class GameManager {
             done = false;
             correct = false;
             round++;
-                        System.out.println("Round #: " + round);
+         
+             
+                       System.out.println("Round #: " + round);
             executor.schedule(new Runnable(){
 
                 @Override
@@ -195,9 +197,10 @@ public class GameManager {
             
             }, 14, TimeUnit.SECONDS);
             executor.schedule(new Runnable(){
-
+                
                 @Override
-                public void run() {                    
+                public void run() {                      
+                    done = true;
                     stopLight1.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
                     stopLight2.setIcon( new javax.swing.ImageIcon(getClass().getResource("/med/trafficlight-red.png")));
                 }
@@ -205,7 +208,17 @@ public class GameManager {
             }, 15, TimeUnit.SECONDS);
             
             //ASK FOR COLORS OR SHAPES
-            if(level == 0){
+            if(level == 0){   
+            try {
+              
+                    Hush.soundManager.playItem(randomColors[round-1]);
+           } catch (UnsupportedAudioFileException ex) {
+                Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (LineUnavailableException ex) {
+                Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
                 executor.schedule(new Runnable(){
                     public void run(){
                         displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/" + randomColors[round-1] + ".png")));
@@ -214,6 +227,18 @@ public class GameManager {
                 }, 4, TimeUnit.SECONDS);
             }
             else if(level == 1){
+                 try {
+              
+                    Hush.soundManager.playItem(randomShapes[round-1]);
+           } catch (UnsupportedAudioFileException ex) {
+                Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (LineUnavailableException ex) {
+                Logger.getLogger(GameManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+                
                 executor.schedule(new Runnable(){
                     public void run(){displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/" + randomShapes[round-1] + ".png")));
                         System.out.println("Asking for " + randomShapes[round-1]);

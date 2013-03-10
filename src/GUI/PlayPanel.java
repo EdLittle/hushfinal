@@ -35,10 +35,12 @@ public class PlayPanel extends javax.swing.JPanel {
     }  
     
     public void mistake(int livesDeduc){
+        System.out.println("Mistake: " + livesDeduc);
         jPanel4.getComponent(livesDeduc-1).setVisible(false);
     }
     
     public void resetLives(){
+        System.out.println("ResetLives");
         for(int i=0; i<jPanel4.countComponents();i++){            
             jPanel4.getComponent(i).setVisible(true);
         }

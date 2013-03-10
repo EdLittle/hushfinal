@@ -27,11 +27,13 @@ public class SoundManager {
     
     public AudioInputStream correctAns;
     public AudioInputStream clickOff;
-    public AudioInputStream bgmusic;    
+    public AudioInputStream bgmusic;   
+    public AudioInputStream item;    
     
     public Clip clickOffClip;
     public Clip correctAnsClip;
-    public Clip bgmusicClip;
+    public Clip bgmusicClip; 
+    public Clip itemClip; 
     
     public SoundManager() throws FileNotFoundException, IOException, UnsupportedAudioFileException, LineUnavailableException{
          clickOff = AudioSystem.getAudioInputStream(new File("sounds/click off.wav").getAbsoluteFile());
@@ -46,6 +48,7 @@ public class SoundManager {
         
         bgmusicClip = AudioSystem.getClip();
         bgmusicClip.open(bgmusic);
+       
     }
     
     public void playCorrectAns(){
@@ -63,24 +66,23 @@ public class SoundManager {
         bgmusicClip.setFramePosition(0);
         bgmusicClip.loop(Clip.LOOP_CONTINUOUSLY);
     }
-       
+    
     public void stopBgmusic(){
        bgmusicClip.stop();
     }
     
-    public boolean isActiveBgmusic(){
+    public void playItem(String itemString) throws UnsupportedAudioFileException, IOException, LineUnavailableException{
+        itemString = ("sounds/" + itemString + ".wav");
+        item = AudioSystem.getAudioInputStream(new File(itemString).getAbsoluteFile());
         
-       /* 
-        hush = Hush.getHush();
-        *System.out.println("-------------isActiveBgmusic?" + bgmusicClip.isActive() );     
-          System.out.println("-------------Active sounds: " + Hush.soundManager.isActiveBgmusic());
-         if (bgmusicClip.isActive()){
-              System.out.println("-------------ACTIVE!");
-              
-         else{   
-            System.out.println("-------------NOT ACTIVE!");
-            sounds.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/med/MD-volume-0.png"))); // NOI18N
-         } */
+        itemClip = AudioSystem.getClip();
+        itemClip.open(item);
+       
+        itemClip.start();
+        itemClip.setFramePosition(0);
+    }
+       
+    public boolean isActiveBgmusic(){        
         return bgmusicClip.isActive();
     }
     
