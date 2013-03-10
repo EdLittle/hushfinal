@@ -78,7 +78,7 @@ public class GameManager {
         displayLabel = decoyPlay.getJLabel1();        
         running = false;
         round = 0;
-        level = 1;
+        level = 0;
         done = false;
         livesDeduc = 0;
         correct = false;
