@@ -175,6 +175,7 @@ public class PlayPanel extends javax.swing.JPanel {
         jPanel4.setMinimumSize(new java.awt.Dimension(75, 400));
         jPanel4.setPreferredSize(new java.awt.Dimension(75, 400));
 
+        label1.setFont(new java.awt.Font("Impact", 0, 13)); // NOI18N
         label1.setText("Lives:");
         jPanel4.add(label1);
 

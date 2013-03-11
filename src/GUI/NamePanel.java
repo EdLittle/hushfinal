@@ -105,6 +105,8 @@ public class NamePanel extends javax.swing.JPanel {
             Logger.getLogger(NamePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
        
+        Hush.soundManager.playClickOff();
+        
         hush = Hush.getHush();
         hush.navigate("playCard");   
         controlPanel = hush.getControlPanel();

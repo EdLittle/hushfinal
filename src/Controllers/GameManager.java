@@ -263,9 +263,9 @@ public class GameManager {
                             
                             if(correct) {                                
                                 getFuture().cancel(true);
-                                if (Hush.soundManager.isActiveBgmusic()){
+                                //if (Hush.soundManager.isActiveBgmusic()){
                                     soundManager.playCorrectAns();
-                                }
+                                //}
                                 scoreManager.addScore(detectedColor, level);
                             }
 
@@ -353,9 +353,9 @@ public class GameManager {
                                 System.out.println("Correct " + randomShapes[round-1]);                                               
                                 getFuture().cancel(true);
                                 
-                                if (Hush.soundManager.isActiveBgmusic()){
+                                //if (Hush.soundManager.isActiveBgmusic()){
                                     soundManager.playCorrectAns();
-                                }
+                                //}
                                 scoreManager.addScore(randomShapes[round-1], level);
                             }
 

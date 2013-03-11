@@ -181,6 +181,9 @@
       <SubComponents>
         <Component class="java.awt.Label" name="label1">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Impact" size="13" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Lives:"/>
           </Properties>
         </Component>

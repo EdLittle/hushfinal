@@ -307,13 +307,14 @@ public class ScoreSummary extends javax.swing.JPanel {
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/star.png"))); // NOI18N
 
-        msg.setFont(new java.awt.Font("Kristen ITC", 0, 14)); // NOI18N
+        msg.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         msg.setText(greeting + ", " + username + "!");
 
-        msg2.setFont(new java.awt.Font("Kristen ITC", 0, 14)); // NOI18N
+        msg2.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         msg2.setText("You now have " + categ + " badge");
 
-        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Showcard Gothic", 1, 36)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(153, 0, 0));
         jLabel14.setText("Game Over");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -321,20 +322,16 @@ public class ScoreSummary extends javax.swing.JPanel {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jLabel13))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(msg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(msg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
                     .addComponent(msg2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 59, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addGap(136, 136, 136))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,7 +343,7 @@ public class ScoreSummary extends javax.swing.JPanel {
                 .addComponent(msg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(msg2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, -1));

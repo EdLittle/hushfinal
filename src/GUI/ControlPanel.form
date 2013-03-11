@@ -7,7 +7,7 @@
         <EtchetBorder/>
       </Border>
     </Property>
-    <Property name="toolTipText" type="java.lang.String" value="ControlPanel"/>
+    <Property name="toolTipText" type="java.lang.String" value=""/>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[500, 75]"/>
     </Property>

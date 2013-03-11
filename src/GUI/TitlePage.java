@@ -134,6 +134,7 @@ public class TitlePage extends javax.swing.JPanel {
         scoresIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoresIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/medal.png"))); // NOI18N
         scoresIcon.setText("SCORES");
+        scoresIcon.setToolTipText("Show Scores");
         scoresIcon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         scoresIcon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         scoresIcon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -154,6 +155,7 @@ public class TitlePage extends javax.swing.JPanel {
         aboutIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         aboutIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/about.png"))); // NOI18N
         aboutIcon.setText("ABOUT");
+        aboutIcon.setToolTipText("HuSh");
         aboutIcon.setFocusable(false);
         aboutIcon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         aboutIcon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -175,6 +177,7 @@ public class TitlePage extends javax.swing.JPanel {
         quitIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         quitIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/power-standby.png"))); // NOI18N
         quitIcon.setText("QUIT");
+        quitIcon.setToolTipText("Exit");
         quitIcon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         quitIcon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         quitIcon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -225,9 +228,9 @@ public class TitlePage extends javax.swing.JPanel {
 
     private void quitIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quitIconMouseClicked
 // TODO add your handling code here:
-        if (Hush.soundManager.isActiveBgmusic()){
+        //if (Hush.soundManager.isActiveBgmusic()){
             Hush.soundManager.playClickOff();
-        }
+        //}
         System.exit(0);
     }//GEN-LAST:event_quitIconMouseClicked
 
@@ -245,6 +248,8 @@ public class TitlePage extends javax.swing.JPanel {
 
     private void aboutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutIconMouseClicked
 // TODO add your handling code here:
+        Hush.soundManager.playClickOff();
+        
         hush = Hush.getHush();
         hush.getAboutPanel().updateControlPanel();
         hush.navigate("aboutCard");
@@ -266,6 +271,8 @@ public class TitlePage extends javax.swing.JPanel {
 
     private void scoresIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scoresIconMouseClicked
         // TODO add your handling code here:
+        Hush.soundManager.playClickOff();
+        
         hush = Hush.getHush();    
         hush.getHallOfUsers().updateControlPanel();
         hush.navigate("hallCard");
@@ -300,6 +307,8 @@ public class TitlePage extends javax.swing.JPanel {
 
     private void playIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseClicked
 // TODO add your handling code here:
+        Hush.soundManager.playClickOff(); 
+        
         hush = Hush.getHush();      
         hush.getLoginPanel().updateControlPanel();
         hush.navigate("loginCard");

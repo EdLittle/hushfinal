@@ -191,7 +191,8 @@ public class HallOfUsers extends javax.swing.JPanel {
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         label1.setAlignment(java.awt.Label.CENTER);
-        label1.setFont(new java.awt.Font("Lucida Grande", 0, 48)); // NOI18N
+        label1.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
+        label1.setForeground(new java.awt.Color(153, 0, 0));
         label1.setText("HALL OF SCORES");
         jPanel2.add(label1);
 
@@ -242,6 +243,7 @@ public class HallOfUsers extends javax.swing.JPanel {
         jPanel5.setLayout(new java.awt.BorderLayout());
 
         jTabbedPane1.setBackground(new java.awt.Color(51, 0, 51));
+        jTabbedPane1.setFont(new java.awt.Font("Showcard Gothic", 0, 11)); // NOI18N
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(479, 354));
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(479, 354));
 
@@ -255,6 +257,7 @@ public class HallOfUsers extends javax.swing.JPanel {
         });
         jPanel10.add(gold_list, java.awt.BorderLayout.CENTER);
 
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         jLabel1.setText("People who garnered 8 stars and up");
         jPanel10.add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
@@ -267,6 +270,8 @@ public class HallOfUsers extends javax.swing.JPanel {
         jPanel11.add(silver_list, java.awt.BorderLayout.CENTER);
 
         label2.setBackground(new java.awt.Color(238, 238, 238));
+        label2.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        label2.setForeground(new java.awt.Color(0, 0, 0));
         label2.setText("People who garnered 6-7 stars");
         jPanel11.add(label2, java.awt.BorderLayout.PAGE_START);
 
@@ -279,6 +284,8 @@ public class HallOfUsers extends javax.swing.JPanel {
         jPanel12.add(bronze_list, java.awt.BorderLayout.CENTER);
 
         label3.setBackground(new java.awt.Color(238, 238, 238));
+        label3.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        label3.setForeground(new java.awt.Color(0, 0, 0));
         label3.setText("People who garnered 4-6 stars");
         jPanel12.add(label3, java.awt.BorderLayout.PAGE_START);
 
@@ -291,6 +298,8 @@ public class HallOfUsers extends javax.swing.JPanel {
         jPanel13.add(wood_list, java.awt.BorderLayout.CENTER);
 
         label4.setBackground(new java.awt.Color(238, 238, 238));
+        label4.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        label4.setForeground(new java.awt.Color(0, 0, 0));
         label4.setText("People who garnered less than 4 stars");
         jPanel13.add(label4, java.awt.BorderLayout.PAGE_START);
 

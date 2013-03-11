@@ -63,7 +63,7 @@ public class ControlPanel extends javax.swing.JPanel {
         reset = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        setToolTipText("ControlPanel");
+        setToolTipText("");
         setMinimumSize(new java.awt.Dimension(500, 75));
         setPreferredSize(new java.awt.Dimension(500, 75));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -130,17 +130,18 @@ public class ControlPanel extends javax.swing.JPanel {
 
 private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restartMouseClicked
 // TODO add your handling code here:
-        System.out.println("Restart");       
+        System.out.println("Restart");      
+        Hush.soundManager.playClickOff();
+        
         if (enableIcon(1)){
             newGame("loginCard");
+            hush = Hush.getHush();                
+            loginPanel = hush.getLoginPanel();
+            loginPanel.jPanel8.add(this);
         }
         else            
             System.out.println("Cannot Restart");  
         
-        
-        hush = Hush.getHush();                
-        loginPanel = hush.getLoginPanel();
-        loginPanel.jPanel8.add(this);
 }//GEN-LAST:event_restartMouseClicked
 
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
@@ -151,9 +152,9 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             hush = Hush.getHush();
             cardLayout = (CardLayout) hush.getCardLayout();        
             cardLayout.show(hush.getContentPane(), "titleCard");
-            if (Hush.soundManager.isActiveBgmusic()){
+           // if (Hush.soundManager.isActiveBgmusic()){
               Hush.soundManager.playClickOff();
-            }
+          //  }
         }
         else {            
             newGame("titleCard"); 
@@ -176,7 +177,9 @@ private void restartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
 
     private void resetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseClicked
         // TODO add your handling code here:
-        System.out.println("Reset");        
+        System.out.println("Reset");   
+        Hush.soundManager.playClickOff();
+        
         if (enableIcon(1)){
             newGame("playCard");
             try {

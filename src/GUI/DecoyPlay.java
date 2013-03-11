@@ -92,7 +92,7 @@ public class DecoyPlay extends javax.swing.JPanel {
         jLabel1.setBackground(new java.awt.Color(204, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/start.png"))); // NOI18N
-        jLabel1.setToolTipText("");
+        jLabel1.setToolTipText("Click to start the game");
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -124,9 +124,9 @@ public class DecoyPlay extends javax.swing.JPanel {
         if(!gameManager.isRunning()){
             try {
                 hush = Hush.getHush();
-            if (Hush.soundManager.isActiveBgmusic()){
+           // if (Hush.soundManager.isActiveBgmusic()){
                 Hush.soundManager.playClickOff();                                  
-            }
+           // }
                 gameManager.startGame();
             } catch (InterruptedException ex) {
                 Logger.getLogger(DecoyPlay.class.getName()).log(Level.SEVERE, null, ex);

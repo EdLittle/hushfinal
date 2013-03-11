@@ -152,6 +152,7 @@
               <Image iconType="3" name="/med/medal.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="SCORES"/>
+            <Property name="toolTipText" type="java.lang.String" value="Show Scores"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
@@ -174,6 +175,7 @@
               <Image iconType="3" name="/med/about.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="ABOUT"/>
+            <Property name="toolTipText" type="java.lang.String" value="HuSh"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
@@ -197,6 +199,7 @@
               <Image iconType="3" name="/med/power-standby.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="QUIT"/>
+            <Property name="toolTipText" type="java.lang.String" value="Exit"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
