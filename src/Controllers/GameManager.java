@@ -106,9 +106,12 @@ public class GameManager {
         for(k = 0; k < 1; k++){
             if ((done==true)&&(correct==false)){
                 livesDeduc++;
-                playPanel.mistake(livesDeduc);
+                
+                if(livesDeduc < 3){
+                    playPanel.mistake(livesDeduc);
+                }
                 System.out.println("Lives deducted: " + livesDeduc);
-                if (livesDeduc==3){
+                if (livesDeduc==10){
                     try {      
                         System.out.println("G A M E O V E R");
                         gameOver();
@@ -294,6 +297,7 @@ public class GameManager {
                                     System.out.println("Total Color Score: " + colorResult.size());
                                     round = 0;
                                     level++;
+                                    done = false;
                                     displayLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/med/nextlevel.png")));
                                     startGame();
                                 }
