@@ -51,7 +51,7 @@ public class GameManager {
     private ScheduledExecutorService executor;
     private String colors[] = {"black", "blue", "green", "orange", "yellow", "red", "white"};
     private String randomColors[] = {"", "", "", "", "" , "", ""};
-    private String randomShapes[] = {"square", "circle"};
+    private String randomShapes[] = {"circle", "square"};
     private boolean running;
     private int round;
     private int level;
@@ -332,7 +332,7 @@ public class GameManager {
                             //pic.show();
                             
                             System.out.println("round: " + round + ", done: " + done);
-                            if ((round == 2) && (done == false)) {
+                            if ((round == 1) && (done == false)) {
                                 ImagePlus pic = new ImagePlus(null, camera.grabImage());                                
                                 circleDetector = new CircleHT();
                                 circleDetector.processImage(pic);
@@ -343,7 +343,7 @@ public class GameManager {
                             //SQUARE
                             //pic.show();
                             
-                            else if ((round == 1) && (done == false)) {
+                            else if ((round == 2) && (done == false)) {
                                 DetectQuadrilateral detector = new DetectQuadrilateral();
                                 ImagePlus pic = new ImagePlus(null, camera.grabImage());
                                 detector.processImagePlus(pic);                              
