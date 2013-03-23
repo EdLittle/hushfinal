@@ -50,8 +50,6 @@ public class DetectQuadrilateral {
         String title = pic.getTitle() + "cropped";
         ImagePlus imp2 = new ImagePlus(title, ip2);
         
-        //ip2.sharpen();
-        
         IJ.run(pic, "Enhance Contrast", "saturated=1.0");
         
         ImageProcessor edges = ImageEdge.areaEdge(ip2, (double) 5, (float).10, (float) 100, (float) 50);
@@ -59,8 +57,8 @@ public class DetectQuadrilateral {
         LinearHT linearHT = new LinearHT(ip2, 256, 180);
         lines = linearHT.getMaxLines(10, 125);
         System.out.println("Lines on get Max lines: " + lines.size());
-        //show green lines
         
+        //show green lines
         Plugin_Hough_Linear_Ovlay ovlay = new Plugin_Hough_Linear_Ovlay();
         ovlay.setup(null, pic);
         ovlay.run(ip2);
