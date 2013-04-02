@@ -336,25 +336,27 @@ public class GameManager {
                             
                             System.out.println("round: " + round + ", done: " + done);
                             if ((round == 1) && (done == false)) {
+                                
                                 ImagePlus pic = new ImagePlus(null, camera.grabImage());                                
                                 circleDetector = new CircleHT();
                                 circleDetector.processImage(pic);
                                 correct = circleDetector.isDetected();
                                 System.out.println("Circling");
                                 done = false;
+
                             }
                             
                             //SQUARE
                             //pic.show();
                             
                             else if ((round == 2) && (done == false)) {
+
                                 DetectQuadrilateral detector = new DetectQuadrilateral();
                                 ImagePlus pic = new ImagePlus(null, camera.grabImage());
                                 detector.processImagePlus(pic);                              
                                 detector.processLines();
                                 correct = detector.isQuadPresent();
-                                System.out.println("Squaring");                                
-                            
+                                
                             }
                             
                             if(correct) {
