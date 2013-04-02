@@ -324,6 +324,9 @@ public class GameManager {
                             random = (int) (Math.random() * 100) % 5;
                             BufferedImage image = camera.grabImage();
                             
+                            if(tries < NUMBER_OF_TRIES){
+                                done = false;
+                            }
                             System.out.println("Detecting for...." + randomShapes[round-1] + " at " + tries);
                             
                             correct = false;   
@@ -337,7 +340,8 @@ public class GameManager {
                                 circleDetector = new CircleHT();
                                 circleDetector.processImage(pic);
                                 correct = circleDetector.isDetected();
-                                System.out.println("Circling");                                
+                                System.out.println("Circling");
+                                done = false;
                             }
                             
                             //SQUARE
@@ -367,7 +371,8 @@ public class GameManager {
                                 getFuture().cancel(true);
 
                                 if(round < 2){                                
-                                    startGame();                                    
+                                    startGame();
+                                    done = false;
                                 }
                                 else if (round == 2){
                                     System.out.println("DONE!");
@@ -386,7 +391,7 @@ public class GameManager {
                                         }
                                     }                                   
                                     System.out.println("Total Shape Score: " + shapeResult.size());
-                                    
+                                    done = true;
                                     gameOver();
                                 }
                             }
