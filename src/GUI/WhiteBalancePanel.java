@@ -64,7 +64,6 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
         setSize(new java.awt.Dimension(650, 550));
         setLayout(new java.awt.GridBagLayout());
 
-        panel1.setBackground(new java.awt.Color(0, 255, 153));
         panel1.setPreferredSize(new java.awt.Dimension(75, 75));
 
         org.jdesktop.layout.GroupLayout panel1Layout = new org.jdesktop.layout.GroupLayout(panel1);
@@ -83,7 +82,6 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         add(panel1, gridBagConstraints);
 
-        panel2.setBackground(new java.awt.Color(102, 204, 0));
         panel2.setPreferredSize(new java.awt.Dimension(500, 75));
 
         org.jdesktop.layout.GroupLayout panel2Layout = new org.jdesktop.layout.GroupLayout(panel2);
@@ -102,7 +100,6 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         add(panel2, gridBagConstraints);
 
-        panel3.setBackground(new java.awt.Color(0, 153, 102));
         panel3.setPreferredSize(new java.awt.Dimension(75, 75));
 
         org.jdesktop.layout.GroupLayout panel3Layout = new org.jdesktop.layout.GroupLayout(panel3);
