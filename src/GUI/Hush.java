@@ -41,13 +41,14 @@ public class Hush extends javax.swing.JFrame {
     private GUI.ScoreSummary scoreSummaryPanel;
     private HallOfUsers hallPanel;
     private DatabaseManager databaseManager;
+    private int white_balance_config;
     //public static CardLayout cardlayout;
 
     /** Creates new form Hush */
     public Hush() throws Exception{
         
        // ht = new HoughTransform();
-        soundManager = new SoundManager();
+        //soundManager = new SoundManager();
         usersList = new ArrayList<String>();
         scoresList = new ArrayList<Integer>();
         RoutesManager.push("titleCard");
@@ -151,6 +152,14 @@ public class Hush extends javax.swing.JFrame {
   
     public DatabaseManager getDatabaseManager(){
         return databaseManager;
+    }
+    
+    public void setWBConfig(int i){
+        this.white_balance_config = i; 
+    }
+    
+    public int getWBConfig(){
+        return white_balance_config;
     }
     
     public static boolean isBGactive(){
