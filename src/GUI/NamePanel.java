@@ -93,7 +93,6 @@ public class NamePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         CardLayout cardLayout = (CardLayout) panels[this.number].getLayout();
         cardLayout.show(panels[number], "card2");
-               
     }//GEN-LAST:event_buttonMouseClicked
 
     private void nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameMouseClicked

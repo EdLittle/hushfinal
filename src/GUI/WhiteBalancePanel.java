@@ -23,7 +23,6 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
      */
     public WhiteBalancePanel() {
         initComponents();
-        this.hush = Hush.hush;
     }
     
     
@@ -306,42 +305,58 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
+        this.hush = Hush.getHush();
         hush.setWBConfig(CANDLELIGHT);
+        hush.navigate("loginCard");
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
+        this.hush = Hush.getHush();
         hush.setWBConfig(TUNGSTEN);
+        hush.navigate("loginCard");
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         // TODO add your handling code here:
+        this.hush = Hush.getHush();
         hush.setWBConfig(SUNRISE);
+        hush.navigate("loginCard");
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
+        this.hush = Hush.getHush();
         hush.setWBConfig(FLOURESCENT);
+        hush.navigate("loginCard");
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
+        this.hush = Hush.getHush();
         hush.setWBConfig(FLASH);
+        hush.navigate("loginCard");
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
         // TODO add your handling code here:
+        this.hush = Hush.getHush();
         hush.setWBConfig(DAYLIGHT);
+        hush.navigate("loginCard");
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
+        this.hush = Hush.getHush();
         hush.setWBConfig(CLOUDY);
+        hush.navigate("loginCard");
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
+        this.hush = Hush.getHush();
         hush.setWBConfig(OVERCAST);
+        hush.navigate("loginCard");
     }//GEN-LAST:event_jLabel9MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
