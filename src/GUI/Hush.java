@@ -10,7 +10,7 @@
  */
 package GUI;
 
-import hough.HoughTransform;
+//import hough.HoughTransform;
 import Controllers.SoundManager;
 import Controllers.DatabaseManager;
 import Controllers.RoutesManager;
@@ -31,7 +31,7 @@ public class Hush extends javax.swing.JFrame {
     private static GUI.ControlPanel controlPanel;
     private GUI.PlayPanel playPanel;
     private GUI.About aboutPanel;
-    public HoughTransform ht;
+    //public HoughTransform ht;
  
     static ArrayList<String> usersList;
     static ArrayList<Integer> scoresList;

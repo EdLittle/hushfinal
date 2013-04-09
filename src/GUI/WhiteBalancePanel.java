@@ -10,13 +10,20 @@ package GUI;
  */
 public class WhiteBalancePanel extends javax.swing.JPanel {
     private Hush hush;
+    private int CANDLELIGHT = 1;
+    private int TUNGSTEN = 2;
+    private int SUNRISE = 3;
+    private int FLOURESCENT = 4;
+    private int FLASH = 5;
+    private int DAYLIGHT = 6;
+    private int CLOUDY = 7;
+    private int OVERCAST = 8;
     /**
      * Creates new form WhiteBalancePanel
      */
     public WhiteBalancePanel() {
         initComponents();
         this.hush = Hush.hush;
-        System.out.println("Hi there Titan");
     }
     
     
@@ -29,53 +36,336 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        label1 = new java.awt.Label();
-        label3 = new java.awt.Label();
-        label5 = new java.awt.Label();
-        label7 = new java.awt.Label();
-        label2 = new java.awt.Label();
-        label4 = new java.awt.Label();
-        label6 = new java.awt.Label();
-        label8 = new java.awt.Label();
+        panel1 = new java.awt.Panel();
+        panel2 = new java.awt.Panel();
+        panel3 = new java.awt.Panel();
+        panel4 = new java.awt.Panel();
+        panel5 = new java.awt.Panel();
+        panel10 = new java.awt.Panel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        panel6 = new java.awt.Panel();
+        panel7 = new java.awt.Panel();
+        panel8 = new java.awt.Panel();
+        panel9 = new java.awt.Panel();
 
-        setMaximumSize(new java.awt.Dimension(404, 54));
-        setPreferredSize(new java.awt.Dimension(404, 54));
-        setSize(new java.awt.Dimension(404, 54));
-        setLayout(new java.awt.GridLayout(2, 4));
+        setMaximumSize(new java.awt.Dimension(650, 550));
+        setMinimumSize(new java.awt.Dimension(650, 550));
+        setPreferredSize(new java.awt.Dimension(650, 550));
+        setSize(new java.awt.Dimension(650, 550));
+        setLayout(new java.awt.GridBagLayout());
 
-        label1.setText("label1");
-        add(label1);
+        panel1.setBackground(new java.awt.Color(0, 255, 153));
+        panel1.setPreferredSize(new java.awt.Dimension(75, 75));
 
-        label3.setText("label3");
-        add(label3);
+        org.jdesktop.layout.GroupLayout panel1Layout = new org.jdesktop.layout.GroupLayout(panel1);
+        panel1.setLayout(panel1Layout);
+        panel1Layout.setHorizontalGroup(
+            panel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 75, Short.MAX_VALUE)
+        );
+        panel1Layout.setVerticalGroup(
+            panel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 75, Short.MAX_VALUE)
+        );
 
-        label5.setText("label5");
-        add(label5);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        add(panel1, gridBagConstraints);
 
-        label7.setText("label7");
-        add(label7);
+        panel2.setBackground(new java.awt.Color(102, 204, 0));
+        panel2.setPreferredSize(new java.awt.Dimension(500, 75));
 
-        label2.setText("label2");
-        add(label2);
+        org.jdesktop.layout.GroupLayout panel2Layout = new org.jdesktop.layout.GroupLayout(panel2);
+        panel2.setLayout(panel2Layout);
+        panel2Layout.setHorizontalGroup(
+            panel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 500, Short.MAX_VALUE)
+        );
+        panel2Layout.setVerticalGroup(
+            panel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 75, Short.MAX_VALUE)
+        );
 
-        label4.setText("label4");
-        add(label4);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        add(panel2, gridBagConstraints);
 
-        label6.setText("label6");
-        add(label6);
+        panel3.setBackground(new java.awt.Color(0, 153, 102));
+        panel3.setPreferredSize(new java.awt.Dimension(75, 75));
 
-        label8.setText("label8");
-        add(label8);
+        org.jdesktop.layout.GroupLayout panel3Layout = new org.jdesktop.layout.GroupLayout(panel3);
+        panel3.setLayout(panel3Layout);
+        panel3Layout.setHorizontalGroup(
+            panel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 75, Short.MAX_VALUE)
+        );
+        panel3Layout.setVerticalGroup(
+            panel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 75, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        add(panel3, gridBagConstraints);
+
+        panel4.setMinimumSize(new java.awt.Dimension(75, 400));
+        panel4.setPreferredSize(new java.awt.Dimension(75, 400));
+        panel4.setSize(new java.awt.Dimension(75, 400));
+
+        org.jdesktop.layout.GroupLayout panel4Layout = new org.jdesktop.layout.GroupLayout(panel4);
+        panel4.setLayout(panel4Layout);
+        panel4Layout.setHorizontalGroup(
+            panel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 75, Short.MAX_VALUE)
+        );
+        panel4Layout.setVerticalGroup(
+            panel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 400, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        add(panel4, gridBagConstraints);
+
+        panel5.setMinimumSize(new java.awt.Dimension(500, 400));
+        panel5.setPreferredSize(new java.awt.Dimension(500, 400));
+        panel5.setLayout(new java.awt.BorderLayout());
+
+        panel10.setLayout(new java.awt.GridLayout(4, 2));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Candlelight");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        panel10.add(jLabel2);
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Tungsten Bulb");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        panel10.add(jLabel3);
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Sunrise/Sunset");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        panel10.add(jLabel4);
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Flourescent");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        panel10.add(jLabel5);
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Electronic Flash");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        panel10.add(jLabel6);
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Daylight with Clear Sky");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel7MouseEntered(evt);
+            }
+        });
+        panel10.add(jLabel7);
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Moderately Overcast Sky");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        panel10.add(jLabel8);
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Overcast");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+        panel10.add(jLabel9);
+
+        panel5.add(panel10, java.awt.BorderLayout.CENTER);
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("What is your lighting?");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        panel5.add(jLabel1, java.awt.BorderLayout.NORTH);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        add(panel5, gridBagConstraints);
+
+        panel6.setMinimumSize(new java.awt.Dimension(75, 400));
+        panel6.setPreferredSize(new java.awt.Dimension(75, 400));
+        panel6.setSize(new java.awt.Dimension(75, 400));
+
+        org.jdesktop.layout.GroupLayout panel6Layout = new org.jdesktop.layout.GroupLayout(panel6);
+        panel6.setLayout(panel6Layout);
+        panel6Layout.setHorizontalGroup(
+            panel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 75, Short.MAX_VALUE)
+        );
+        panel6Layout.setVerticalGroup(
+            panel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 400, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        add(panel6, gridBagConstraints);
+
+        panel7.setPreferredSize(new java.awt.Dimension(75, 75));
+
+        org.jdesktop.layout.GroupLayout panel7Layout = new org.jdesktop.layout.GroupLayout(panel7);
+        panel7.setLayout(panel7Layout);
+        panel7Layout.setHorizontalGroup(
+            panel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 75, Short.MAX_VALUE)
+        );
+        panel7Layout.setVerticalGroup(
+            panel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 75, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        add(panel7, gridBagConstraints);
+
+        panel8.setPreferredSize(new java.awt.Dimension(500, 75));
+
+        org.jdesktop.layout.GroupLayout panel8Layout = new org.jdesktop.layout.GroupLayout(panel8);
+        panel8.setLayout(panel8Layout);
+        panel8Layout.setHorizontalGroup(
+            panel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 500, Short.MAX_VALUE)
+        );
+        panel8Layout.setVerticalGroup(
+            panel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 75, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        add(panel8, gridBagConstraints);
+
+        panel9.setPreferredSize(new java.awt.Dimension(75, 75));
+
+        org.jdesktop.layout.GroupLayout panel9Layout = new org.jdesktop.layout.GroupLayout(panel9);
+        panel9.setLayout(panel9Layout);
+        panel9Layout.setHorizontalGroup(
+            panel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 75, Short.MAX_VALUE)
+        );
+        panel9Layout.setVerticalGroup(
+            panel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 75, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        add(panel9, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        hush.setWBConfig(CANDLELIGHT);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        hush.setWBConfig(TUNGSTEN);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        hush.setWBConfig(SUNRISE);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        hush.setWBConfig(FLOURESCENT);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        hush.setWBConfig(FLASH);
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
+        // TODO add your handling code here:
+        hush.setWBConfig(DAYLIGHT);
+    }//GEN-LAST:event_jLabel7MouseEntered
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        // TODO add your handling code here:
+        hush.setWBConfig(CLOUDY);
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        hush.setWBConfig(OVERCAST);
+    }//GEN-LAST:event_jLabel9MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Label label1;
-    private java.awt.Label label2;
-    private java.awt.Label label3;
-    private java.awt.Label label4;
-    private java.awt.Label label5;
-    private java.awt.Label label6;
-    private java.awt.Label label7;
-    private java.awt.Label label8;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private java.awt.Panel panel1;
+    private java.awt.Panel panel10;
+    private java.awt.Panel panel2;
+    private java.awt.Panel panel3;
+    private java.awt.Panel panel4;
+    private java.awt.Panel panel5;
+    private java.awt.Panel panel6;
+    private java.awt.Panel panel7;
+    private java.awt.Panel panel8;
+    private java.awt.Panel panel9;
     // End of variables declaration//GEN-END:variables
 }
