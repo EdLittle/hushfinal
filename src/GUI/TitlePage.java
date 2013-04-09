@@ -311,7 +311,8 @@ public class TitlePage extends javax.swing.JPanel {
         
         hush = Hush.getHush();      
         hush.getLoginPanel().updateControlPanel();
-        hush.navigate("loginCard");
+        hush.navigate("whiteBalanceCard");
+        //hush.navigate("loginCard");
 //        Hush.soundManager.playBgmusic();
     }//GEN-LAST:event_playIconMouseClicked
 

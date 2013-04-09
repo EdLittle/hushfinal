@@ -31,6 +31,7 @@ public class Hush extends javax.swing.JFrame {
     private static GUI.ControlPanel controlPanel;
     private GUI.PlayPanel playPanel;
     private GUI.About aboutPanel;
+    private GUI.WhiteBalancePanel whiteBalancePanel;
     //public HoughTransform ht;
  
     static ArrayList<String> usersList;
@@ -115,6 +116,9 @@ public class Hush extends javax.swing.JFrame {
         
         hallPanel = new GUI.HallOfUsers();
         getContentPane().add(hallPanel, "hallCard");
+        
+        whiteBalancePanel = new GUI.WhiteBalancePanel();
+        getContentPane().add(hallPanel, "whitePanelCard");
         
     }
     
