@@ -307,12 +307,12 @@ public class TitlePage extends javax.swing.JPanel {
 
     private void playIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playIconMouseClicked
 // TODO add your handling code here:
-        Hush.soundManager.playClickOff(); 
+        //Hush.soundManager.playClickOff(); 
         
         hush = Hush.getHush();      
         hush.getLoginPanel().updateControlPanel();
-        hush.navigate("whiteBalanceCard");
-        //hush.navigate("loginCard");
+        hush.navigate("whitePanelCard");
+        ///hush.navigate("loginCard");
 //        Hush.soundManager.playBgmusic();
     }//GEN-LAST:event_playIconMouseClicked
 

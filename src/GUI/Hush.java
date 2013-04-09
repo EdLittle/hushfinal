@@ -49,7 +49,7 @@ public class Hush extends javax.swing.JFrame {
     public Hush() throws Exception{
         
        // ht = new HoughTransform();
-        //soundManager = new SoundManager();
+        soundManager = new SoundManager();
         usersList = new ArrayList<String>();
         scoresList = new ArrayList<Integer>();
         RoutesManager.push("titleCard");
@@ -118,7 +118,7 @@ public class Hush extends javax.swing.JFrame {
         getContentPane().add(hallPanel, "hallCard");
         
         whiteBalancePanel = new GUI.WhiteBalancePanel();
-        getContentPane().add(hallPanel, "whitePanelCard");
+        getContentPane().add(whiteBalancePanel, "whitePanelCard");
         
     }
     
@@ -183,12 +183,12 @@ public class Hush extends javax.swing.JFrame {
        hush = Hush.getHush();
        CardLayout cardLayout = (CardLayout) hush.getCardLayout();
        cardLayout.show(hush.getContentPane(), cardName);
-      RoutesManager.push(cardName);
+       RoutesManager.push(cardName);
        
        //aboutPanel.addControlPanel();
        //Hush.soundManager.isActiveBgmusic()
        //controlPanel.setSoundsIcon(soundManager.isActiveBgmusic());
-       System.out.println("Active sounds: " + soundManager.isActiveBgmusic());
+       //S//ystem.out.println("Active sounds: " + soundManager.isActiveBgmusic());
     //   activeBG = soundManager.isActiveBgmusic();
        
        if (Hush.soundManager.isActiveBgmusic()){
