@@ -67,6 +67,10 @@ public class GameManager {
     private BandsAnalyzer bandsAnalyzer;
     private CircleHT circleDetector;
     private final int NUMBER_OF_TRIES = 15;
+    private int white_balance_config;
+    private int maxRed;
+    private int maxGreen;
+    private int maxBlue;
     
     public GameManager() throws FileNotFoundException{
         hush = Hush.hush;
@@ -85,7 +89,9 @@ public class GameManager {
         bandsAnalyzer = new BandsAnalyzer();
         scoreManager = new ScoreManager();       
         camera = decoyPlay.getCamera();
+        white_balance_config = hush.getWBConfig();
         setRandomColors();
+        setWhiteBalanceRGBs();
         try {
             soundManager = new SoundManager();
         } catch (IOException ex) {
@@ -259,6 +265,9 @@ public class GameManager {
                         try {
                             
                             BufferedImage image = camera.grabImage();
+                            
+                            //Insert stuff here
+                            
                             String detectedColor = bandsAnalyzer.analyzeImage(image);
                             
                             System.out.println(detectedColor + " against hush's " + randomColors[round-1]);
@@ -471,6 +480,56 @@ public class GameManager {
         order = (Integer[])randomPermutation.toArray(new Integer[0]);
         for (int i = 0; i < 7; i++){
             randomColors[i] = colors[(int)order[i]];       
+        }
+    }
+    
+    private void setWhiteBalanceRGBs(){
+        switch(white_balance_config){
+            case 1:
+                maxRed = 255;
+                maxGreen = 136;
+                maxBlue = 18;
+                break;
+            //case 2: //Tungsten
+                //maxRed = ;
+                //maxGreen = ;
+                //maxBlue = ;
+                //break;
+            case 3: //sunrise/sunset
+                maxRed = 255;
+                maxGreen = 209;
+                maxBlue = 163;
+                break;
+            case 4: //Flourescent
+                maxRed = 255;
+                maxGreen = 228;
+                maxBlue = 206;
+                break;
+            //case 5: //Flash
+                //maxRed = ;
+                //maxGreen = ;
+                //maxBlue = ;
+                //break;
+            case 6: //Daylight
+                maxRed = 255;
+                maxGreen = 249;
+                maxBlue = 246;
+                break;
+            //case 7: //Cloudy
+                //maxRed = ;
+                //maxGreen = ;
+                //maxBlue = ;
+                //break;
+            case 8: //Overcast
+                maxRed = 204;
+                maxGreen = 219;
+                maxBlue = 255;
+                break;
+            default:
+                maxRed = 255;
+                maxGreen = 255;
+                maxBlue = 255;
+                break;
         }
     }
     
