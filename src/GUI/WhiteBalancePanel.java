@@ -44,12 +44,9 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
         panel5 = new java.awt.Panel();
         panel10 = new java.awt.Panel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         panel6 = new java.awt.Panel();
@@ -60,7 +57,6 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(650, 550));
         setMinimumSize(new java.awt.Dimension(650, 550));
         setPreferredSize(new java.awt.Dimension(650, 550));
-        setSize(new java.awt.Dimension(650, 550));
         setLayout(new java.awt.GridBagLayout());
 
         panel1.setPreferredSize(new java.awt.Dimension(75, 75));
@@ -119,7 +115,6 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
 
         panel4.setMinimumSize(new java.awt.Dimension(75, 400));
         panel4.setPreferredSize(new java.awt.Dimension(75, 400));
-        panel4.setSize(new java.awt.Dimension(75, 400));
 
         org.jdesktop.layout.GroupLayout panel4Layout = new org.jdesktop.layout.GroupLayout(panel4);
         panel4.setLayout(panel4Layout);
@@ -141,8 +136,9 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
         panel5.setPreferredSize(new java.awt.Dimension(500, 400));
         panel5.setLayout(new java.awt.BorderLayout());
 
-        panel10.setLayout(new java.awt.GridLayout(4, 2));
+        panel10.setLayout(new java.awt.GridLayout(5, 1));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Candlelight");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -152,15 +148,7 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
         });
         panel10.add(jLabel2);
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Tungsten Bulb");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-        panel10.add(jLabel3);
-
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Sunrise/Sunset");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -170,6 +158,7 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
         });
         panel10.add(jLabel4);
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Flourescent");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -179,33 +168,20 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
         });
         panel10.add(jLabel5);
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Electronic Flash");
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
-            }
-        });
-        panel10.add(jLabel6);
-
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Daylight with Clear Sky");
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel7MouseEntered(evt);
             }
         });
         panel10.add(jLabel7);
 
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Moderately Overcast Sky");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
-            }
-        });
-        panel10.add(jLabel8);
-
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Overcast");
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -230,7 +206,6 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
 
         panel6.setMinimumSize(new java.awt.Dimension(75, 400));
         panel6.setPreferredSize(new java.awt.Dimension(75, 400));
-        panel6.setSize(new java.awt.Dimension(75, 400));
 
         org.jdesktop.layout.GroupLayout panel6Layout = new org.jdesktop.layout.GroupLayout(panel6);
         panel6.setLayout(panel6Layout);
@@ -310,13 +285,6 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
         hush.navigate("loginCard");
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        // TODO add your handling code here:
-        this.hush = Hush.getHush();
-        hush.setWBConfig(TUNGSTEN);
-        hush.navigate("loginCard");
-    }//GEN-LAST:event_jLabel3MouseClicked
-
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         // TODO add your handling code here:
         this.hush = Hush.getHush();
@@ -331,26 +299,9 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
         hush.navigate("loginCard");
     }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        // TODO add your handling code here:
-        this.hush = Hush.getHush();
-        hush.setWBConfig(FLASH);
-        hush.navigate("loginCard");
-    }//GEN-LAST:event_jLabel6MouseClicked
-
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
         // TODO add your handling code here:
-        this.hush = Hush.getHush();
-        hush.setWBConfig(DAYLIGHT);
-        hush.navigate("loginCard");
     }//GEN-LAST:event_jLabel7MouseEntered
-
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        // TODO add your handling code here:
-        this.hush = Hush.getHush();
-        hush.setWBConfig(CLOUDY);
-        hush.navigate("loginCard");
-    }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
@@ -359,15 +310,19 @@ public class WhiteBalancePanel extends javax.swing.JPanel {
         hush.navigate("loginCard");
     }//GEN-LAST:event_jLabel9MouseClicked
 
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+        this.hush = Hush.getHush();
+        hush.setWBConfig(DAYLIGHT);
+        hush.navigate("loginCard");
+    }//GEN-LAST:event_jLabel7MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private java.awt.Panel panel1;
     private java.awt.Panel panel10;

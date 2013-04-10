@@ -6,6 +6,8 @@ package Controllers;
 
 import GUI.*;
 import ij.ImagePlus;
+import ij.IJ;
+
 import java.awt.image.BufferedImage;
 import java.util.Vector;
 import java.util.concurrent.Executors;
@@ -21,7 +23,12 @@ import javax.swing.JPanel;
 import hough.CircleHT;
 import hough.DetectQuadrilateral;
 import ij.ImagePlus;
+import ij.ImageStack;
 import ij.gui.ImageWindow;
+import ij.plugin.ChannelSplitter;
+import ij.plugin.RGBStackMerge;
+import ij.plugin.filter.RGBStackSplitter;
+import ij.process.ColorProcessor;
 import ij.process.ImageConverter;
 import ij.process.ImageProcessor;
 import java.awt.CardLayout;
@@ -267,6 +274,7 @@ public class GameManager {
                             BufferedImage image = camera.grabImage();
                             
                             //Insert stuff here
+                            image = whiteBalance(image);
                             
                             String detectedColor = bandsAnalyzer.analyzeImage(image);
                             
@@ -481,6 +489,62 @@ public class GameManager {
         for (int i = 0; i < 7; i++){
             randomColors[i] = colors[(int)order[i]];       
         }
+    }
+    
+    private BufferedImage whiteBalance(BufferedImage pre_processed){
+        BufferedImage processed;
+        //maxRed = 140;
+        //maxGreen = 140;
+        //maxBlue = 140;
+        
+        ImagePlus ip = new ImagePlus(null, pre_processed);
+        //IJ.run(null);
+        //IJ.run(ip, "Color Balance...", null);
+        //IJ.run(ip,"Make Composite", null);
+        IJ.run(ip, "Split Channels", null);
+        //ColorProcessor cp = new ColorProcessor(ip.getImage());
+        ImageStack redStack = ChannelSplitter.getChannel(ip, 1);
+        ImagePlus redIP = new ImagePlus(null, redStack);
+        IJ.setMinAndMax(redIP, 0, maxRed);
+        redStack = redIP.getStack();
+        
+        ImageStack greenStack = ChannelSplitter.getChannel(ip, 2);
+        ImagePlus greenIP = new ImagePlus(null, greenStack);
+        IJ.setMinAndMax(greenIP, 0, maxGreen);
+        greenStack = greenIP.getStack();
+        
+        ImageStack blueStack = ChannelSplitter.getChannel(ip, 3);
+        ImagePlus blueIP = new ImagePlus(null, blueStack);
+        IJ.setMinAndMax(blueIP, 0, maxBlue);
+        blueStack = blueIP.getStack();
+        
+        ImageStack newImageStack = RGBStackMerge.mergeStacks(redStack, greenStack, blueStack, true);
+        //RGBStackSplitter splitter2;
+        ImagePlus processed_image = new ImagePlus(null, newImageStack);
+        /*
+         1. split channels
+         * 2. apply min and max according to channel
+         * 3. merge
+         */
+        //IJ.Stack.setChannel(1);
+        //IJ.run(ip, "run(\"Make Composite\");Stack.setChannel(1);setMinAndMax(0," + maxRed + ");call(\"ij.ImagePlus.setDefault16bitRange\", 0);Stack.setChannel(2);setMinAndMax(0, " + maxGreen +");call(\"ij.ImagePlus.setDefault16bitRange\", 0);Stack.setChannel(3);setMinAndMax(0," +  maxBlue + ");call(\"ij.ImagePlus.setDefault16bitRange\", 0);", null);
+        //IJ.run(ip, "Stack.setChannel(1)", null);
+        //IJ.setMinAndMax(ip, 0, maxRed);
+        //IJ.setMinAndMax(ip, 0, 140);
+        //IJ.
+        //IJ.setMinAndMax(0, maxRed, 1);
+        //ip.show("Original");
+        //processed_image.show("Filtered");
+        
+        //System.out.println("Warg: " + maxRed + ", " + maxGreen + ", " + maxBlue);
+        //IJ.runMacro("run(\"Make Composite\");Stack.setChannel(1);setMinAndMax(0," + maxRed + ");call(\"ij.ImagePlus.setDefault16bitRange\", 0);Stack.setChannel(2);setMinAndMax(0, " + maxGreen +");call(\"ij.ImagePlus.setDefault16bitRange\", 0);Stack.setChannel(3);setMinAndMax(0," +  maxBlue + ");call(\"ij.ImagePlus.setDefault16bitRange\", 0);");
+        
+        //ImageStack stack = ip.getStack();
+        //IJ.
+        //stack.s
+        //stack.setChannel(1);
+        processed = processed_image.getBufferedImage();
+        return processed;
     }
     
     private void setWhiteBalanceRGBs(){
